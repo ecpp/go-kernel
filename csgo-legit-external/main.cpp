@@ -5,7 +5,7 @@
 #include <iostream>
 #include "src/hacks/hacks.h"
 #include "globals.h"
-#include "driver.h"
+#include "src/utils/driver.h"
 #include "src/utils/loader.h"
 
 int main()

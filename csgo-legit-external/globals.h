@@ -182,5 +182,7 @@ namespace globals {
 	inline std::int32_t localTeam = 0;
 	inline std::uintptr_t localPlayerFlags = 0;
 
+	inline bool run_render = true;
+
 
 }

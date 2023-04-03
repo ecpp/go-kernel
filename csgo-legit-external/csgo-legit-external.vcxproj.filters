@@ -42,6 +42,9 @@
     <ClCompile Include="external\imgui\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\gui\gui_esp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globals.h">
@@ -56,7 +59,7 @@
     <ClInclude Include="src\utils\memory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="driver.h">
+    <ClInclude Include="src\utils\driver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\loader.h">
@@ -87,6 +90,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\gui_esp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\bsp_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

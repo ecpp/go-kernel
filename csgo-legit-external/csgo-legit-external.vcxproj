@@ -50,7 +50,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>NotSet</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -71,10 +71,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ecpp\Desktop\simple-csgo-external\csgo-legit-external\external;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\external;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>C:\Users\ecpp\Desktop\simple-csgo-external\csgo-legit-external\external;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\external;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -146,10 +146,13 @@
     <ClCompile Include="external\imgui\imgui_tables.cpp" />
     <ClCompile Include="external\imgui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\gui\gui_esp.cpp" />
     <ClCompile Include="src\hacks\hacks.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="driver.h" />
+    <ClInclude Include="src\gui\gui_esp.h" />
+    <ClInclude Include="src\utils\bsp_parser.h" />
+    <ClInclude Include="src\utils\driver.h" />
     <ClInclude Include="external\imgui\imconfig.h" />
     <ClInclude Include="external\imgui\imgui.h" />
     <ClInclude Include="external\imgui\imgui_impl_dx11.h" />
