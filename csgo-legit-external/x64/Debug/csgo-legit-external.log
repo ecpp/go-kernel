@@ -1,0 +1,17 @@
+﻿  main.cpp
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\memory.h(79,13): warning C4297: 'MemoryEditor::GetModuleAddress': function assumed not to throw an exception but does
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\memory.h(79,13): message : __declspec(nothrow), throw(), noexcept(true), or noexcept was specified on the function
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\memory.h(95,13): warning C4297: 'MemoryEditor::GetModuleAddress': function assumed not to throw an exception but does
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\memory.h(95,13): message : __declspec(nothrow), throw(), noexcept(true), or noexcept was specified on the function
+  hacks.cpp
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\memory.h(79,13): warning C4297: 'MemoryEditor::GetModuleAddress': function assumed not to throw an exception but does
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\memory.h(79,13): message : __declspec(nothrow), throw(), noexcept(true), or noexcept was specified on the function
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\memory.h(95,13): warning C4297: 'MemoryEditor::GetModuleAddress': function assumed not to throw an exception but does
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\memory.h(95,13): message : __declspec(nothrow), throw(), noexcept(true), or noexcept was specified on the function
+  Generating Code...
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\vector.h(17): warning C4172: returning address of local variable or temporary
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\vector.h(22): warning C4172: returning address of local variable or temporary
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\vector.h(32): warning C4172: returning address of local variable or temporary
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\src\utils\vector.h(46): warning C4172: returning address of local variable or temporary
+C:\Users\ecpp\source\repos\simple-csgo-external\csgo-legit-external\main.cpp(80): warning C4715: '`main'::`2'::<lambda_1>::operator()': not all control paths return a value
+  csgo-legit-external.vcxproj -> C:\Users\ecpp\source\repos\simple-csgo-external\x64\Debug\csgo-legit-external.exe
