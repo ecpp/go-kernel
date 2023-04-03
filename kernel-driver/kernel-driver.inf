@@ -1,0 +1,77 @@
+;
+; kernel-driver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System ; TODO: specify appropriate Class
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=kernel-driver.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+kernel-driver_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+kernel-driver.sys  = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%kernel-driver.DeviceDesc%=kernel-driver_Device, Root\kernel-driver ; TODO: edit hw-id
+
+[kernel-driver_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+kernel-driver.sys
+
+;-------------- Service installation
+[kernel-driver_Device.NT.Services]
+AddService = kernel-driver,%SPSVCINST_ASSOCSERVICE%, kernel-driver_Service_Inst
+
+; -------------- kernel-driver driver install sections
+[kernel-driver_Service_Inst]
+DisplayName    = %kernel-driver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\kernel-driver.sys
+
+;
+;--- kernel-driver_Device Coinstaller installation ------
+;
+
+[kernel-driver_Device.NT.CoInstallers]
+AddReg=kernel-driver_Device_CoInstaller_AddReg
+CopyFiles=kernel-driver_Device_CoInstaller_CopyFiles
+
+[kernel-driver_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[kernel-driver_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[kernel-driver_Device.NT.Wdf]
+KmdfService =  kernel-driver, kernel-driver_wdfsect
+[kernel-driver_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "kernel-driver Installation Disk"
+kernel-driver.DeviceDesc = "kernel-driver Device"
+kernel-driver.SVCDESC = "kernel-driver Service"

@@ -5,22 +5,48 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "csgo-legit-external", "csgo-legit-external\csgo-legit-external.vcxproj", "{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kernel-driver", "kernel-driver\kernel-driver.vcxproj", "{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|ARM64 = Release|ARM64
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Debug|ARM64.ActiveCfg = Debug|x64
+		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Debug|ARM64.Build.0 = Debug|x64
 		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Debug|x64.ActiveCfg = Debug|x64
 		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Debug|x64.Build.0 = Debug|x64
 		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Debug|x86.ActiveCfg = Debug|Win32
 		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Debug|x86.Build.0 = Debug|Win32
+		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Release|ARM64.ActiveCfg = Release|x64
+		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Release|ARM64.Build.0 = Release|x64
 		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Release|x64.ActiveCfg = Release|x64
 		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Release|x64.Build.0 = Release|x64
 		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Release|x86.ActiveCfg = Release|Win32
 		{927CA8C6-5BE7-435C-8BF5-F8F10A2C76CE}.Release|x86.Build.0 = Release|Win32
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|ARM64.Build.0 = Debug|ARM64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|x64.ActiveCfg = Debug|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|x64.Build.0 = Debug|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|x64.Deploy.0 = Debug|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|x86.ActiveCfg = Debug|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|x86.Build.0 = Debug|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Debug|x86.Deploy.0 = Debug|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|ARM64.ActiveCfg = Release|ARM64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|ARM64.Build.0 = Release|ARM64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|ARM64.Deploy.0 = Release|ARM64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|x64.ActiveCfg = Release|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|x64.Build.0 = Release|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|x64.Deploy.0 = Release|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|x86.ActiveCfg = Release|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|x86.Build.0 = Release|x64
+		{C6209F28-1874-4CDD-AEEC-E661FCCB5FBC}.Release|x86.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
