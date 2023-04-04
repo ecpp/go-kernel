@@ -161,13 +161,14 @@ namespace offset
 }
 
 namespace globals {
-	inline bool isaim = false;
-	inline bool isbunny = false;
-	inline bool isradar = false;
-	inline bool islegitAim = false;
+	inline bool isAim = false;
+	inline bool isBunny = false;
+	inline bool isRadar = false;
+	inline bool isAimAssit = false;
 	inline bool isNoRecoil = false;
 	inline bool isTrigger = false;
 	inline bool isEsp = false;
+	inline bool isMenu = false;
 	
 	inline bool runhax = true;
 	inline auto legitAimSmooth = 0.1f;

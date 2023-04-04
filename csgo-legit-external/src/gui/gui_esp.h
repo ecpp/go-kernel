@@ -8,24 +8,62 @@
 #include <dwmapi.h>
 #include <Windows.h>
 #include "../utils/vector.h"
+#include <d2d1.h>
+#include <dwmapi.h>
+#include <dwrite_1.h>
+
+
+#define DIRECTINPUT_VERSION 0x0800
+#include <dinput.h>
+#include <tchar.h>
+#include "gui_menu.h"
+#include "gui_menu.h"
 
 #pragma comment (lib, "dwmapi.lib")
 #pragma comment (lib, "d3d11.lib")
+#pragma comment(lib, "d2d1.lib")
+#pragma comment(lib, "dwrite.lib")
+
+
 
 namespace gui_esp {
-	inline ID3D11Device* device = { nullptr };
-	inline ID3D11DeviceContext* context = { nullptr };
-	inline IDXGISwapChain* swap_chain = { nullptr };
-	inline ID3D11RenderTargetView* render_target_view = { nullptr };
-	inline D3D_FEATURE_LEVEL feature_level = {};
-	inline WNDCLASSEXW wcex = {};
-	inline HWND window = { nullptr };
+	/*inline ID3D11Device* deviceEsp = { nullptr };
+	inline ID3D11DeviceContext* contextEsp = { nullptr };
+	inline IDXGISwapChain* swapChainEsp = { nullptr };
+	inline ID3D11RenderTargetView* renderTargetEsp = { nullptr };
+	inline D3D_FEATURE_LEVEL featureLevelEsp = {};
+	inline WNDCLASSEXW wcexEsp = {};
+	inline HWND windowEsp = { nullptr };*/
 
-	void initWindow();
+	/*void initWindow();
 	void initDevice();
 	void initRender();
-	void shutdown();
+	void shutdown();*/
 
+
+	inline HWND windowEsp = { nullptr };
+	bool init_window_Esp();
+
+	bool init_render();
+	void create_canvas();
+	void cleanup_canvas();
+
+	void begin_draw_esp();
+	void end_draw_esp();
+	void clear_window();
+
+	void shutdown();
+	void drawAll();
+
+	//primitives
+	void rect(float x, float y, float h, float w, const D2D1::ColorF& Clr, float Thick = 1.5f);
+	void fill_rect(float x, float y, float w, float h, const D2D1::ColorF& Clr);
+	void Line(const Vector2& Start, const Vector2& End, const D2D1::ColorF& Clr, float Thick = 1.5f);
+	void Circle(const Vector2& Start, const D2D1::ColorF& Clr, float Rad, float Thick = 1.5f);
+	void CenterString(const Vector2& pos, const wchar_t* Str, const D2D1::ColorF& Clr = D2D1::ColorF(D2D1::ColorF::White), bool big = false);
+	void String(const Vector2& pos, const wchar_t* Str, const D2D1::ColorF& Clr = D2D1::ColorF(D2D1::ColorF::White), bool big = false);
+	void Crosshair(const int& screenWidth, const int& screenHeight, const D2D1::ColorF& Clr = D2D1::ColorF(D2D1::ColorF::White), const float& thick = 2);
+	void drawHealthBar(float Entity_x, float Entity_y, float height, float healthBarY, const D2D1::ColorF& color);
 	
 }
 
@@ -72,3 +110,4 @@ namespace esp {
 		char name[32];
 	};
 }
+

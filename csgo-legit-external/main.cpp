@@ -7,6 +7,7 @@
 #include "globals.h"
 #include "src/utils/driver.h"
 #include "src/utils/loader.h"
+#include "src/gui/gui_esp.h"
 
 int main()
 {
@@ -34,6 +35,7 @@ int main()
 	std::cout << "ID (client.dll):" << globals::client << std::endl;
 	std::cout << "ID (engine.dll):" << globals::engine << std::endl;
 
+	std::thread(hax::menu).detach();
 	std::thread(hax::readGlobals).detach();
 	std::thread(hax::aim).detach();
 	std::thread(hax::bunny).detach();
@@ -41,15 +43,17 @@ int main()
 	std::thread(hax::legitAim).detach();
 	std::thread(hax::noRecoil).detach();
 	std::thread(hax::trigger).detach();
-	std::thread(hax::esp).detach();
+	//std::thread(hax::esp).detach();
+	std::thread(gui_esp::drawAll).detach();
+	
 
 	std::thread getUserInput([&]() {
 		while (globals::runhax) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
-			std::cout << "1) Rage Aim Status: " << globals::isaim << std::endl;
-			std::cout << "2) Legit Aim Status: " << globals::islegitAim << std::endl;
-			std::cout << "3) Radar Status: " << globals::isradar << std::endl;
-			std::cout << "4) Bhop Status: " << globals::isbunny << std::endl;
+			std::cout << "1) Rage Aim Status: " << globals::isAim << std::endl;
+			std::cout << "2) Aim Assit Status: " << globals::isAimAssit << std::endl;
+			std::cout << "3) Radar Status: " << globals::isRadar << std::endl;
+			std::cout << "4) Bhop Status: " << globals::isBunny << std::endl;
 			std::cout << "5) No Recoil Status: " << globals::isNoRecoil<< std::endl;
 			std::cout << "6) Trigger Status: " << globals::isTrigger << std::endl;
 			std::cout << "7) ESP Status: " << globals::isEsp << std::endl;
@@ -58,19 +62,19 @@ int main()
 			std::string input;
 			std::cin >> input;
 			if (input == "1") {
-				globals::islegitAim = false;
-				globals::isaim = !globals::isaim;
+				globals::isAimAssit = false;
+				globals::isAim = !globals::isAim;
 
 			}
 			else if (input == "2") {
-				globals::isaim = false;
-				globals::islegitAim = !globals::islegitAim;
+				globals::isAim = false;
+				globals::isAimAssit = !globals::isAimAssit;
 			}
 			else if (input == "3") {
-				globals::isradar = !globals::isradar;
+				globals::isRadar = !globals::isRadar;
 			}
 			else if (input == "4") {
-				globals::isbunny = !globals::isbunny;
+				globals::isBunny = !globals::isBunny;
 			}
 			else if (input == "5") {
 				globals::isNoRecoil = !globals::isNoRecoil;

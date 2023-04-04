@@ -147,10 +147,13 @@
     <ClCompile Include="external\imgui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\gui\gui_esp.cpp" />
+    <ClCompile Include="src\gui\gui_menu.cpp" />
     <ClCompile Include="src\hacks\hacks.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\gui\gui_esp.h" />
+    <ClInclude Include="src\gui\gui_menu.h" />
+    <ClInclude Include="src\gui\main_gui.h" />
     <ClInclude Include="src\utils\bsp_parser.h" />
     <ClInclude Include="src\utils\driver.h" />
     <ClInclude Include="external\imgui\imconfig.h" />

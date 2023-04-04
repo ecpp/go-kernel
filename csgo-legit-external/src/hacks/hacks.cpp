@@ -6,6 +6,7 @@
 #include "../utils/driver.h"
 #include "../../globals.h"
 #include "../gui/gui_esp.h"
+#include "../gui/gui_menu.h"
 
 constexpr Vector3 CalculateAngle(
 	const Vector3& localPosition,
@@ -33,7 +34,7 @@ void hax::aim() noexcept
 {
 	while (globals::runhax)
 	{
-		if (globals::isaim) {
+		if (globals::isAim) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
 			// aimbot key
@@ -118,7 +119,7 @@ void hax::bunny() noexcept
 {
 	while (globals::runhax)
 	{
-		if (globals::isbunny) {
+		if (globals::isBunny) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 			// bunny key
 			if (!GetAsyncKeyState(VK_SPACE))
@@ -138,7 +139,7 @@ void hax::radar() noexcept {
 
 	while (globals::runhax)
 	{
-		if (globals::isradar) {
+		if (globals::isRadar) {
 
 			std::this_thread::sleep_for(std::chrono::milliseconds(10));
 			for (auto i = 1; i <= 32; ++i)
@@ -164,7 +165,7 @@ void hax::legitAim() noexcept
 {
 	while (globals::runhax)
 	{
-		if (globals::islegitAim) {
+		if (globals::isAimAssit) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
 			// aimbot key
@@ -337,14 +338,24 @@ void hax::trigger() noexcept{
 
 
 void hax::esp() noexcept {
-	gui_esp::initWindow();
-	gui_esp::initDevice();
+	//gui_esp::initWindow();
+
+	//while (globals::run_render) {
+	//	gui_esp::initRender();
+	//	
+	//}
+	////gui_esp::shutdown();
+
+
+}
+
+void hax::menu() noexcept {
+	gui_menu::initWindow();
+	//gui_menu::initDevice();
 
 	while (globals::run_render) {
-		gui_esp::initRender();
-		
+		gui_menu::initRender();
+
 	}
-	gui_esp::shutdown();
-
-
+	gui_menu::shutdown();
 }

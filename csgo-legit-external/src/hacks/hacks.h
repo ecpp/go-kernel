@@ -10,4 +10,5 @@ namespace hax {
 	void noRecoil() noexcept;
 	void trigger() noexcept;
 	void esp() noexcept;
+	void menu() noexcept;
 }
