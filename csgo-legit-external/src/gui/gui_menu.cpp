@@ -239,7 +239,9 @@ void gui_menu::shutdown()
 	UnregisterClass(wcMenu.lpszClassName, wcMenu.hInstance);
 
 }
-
+m_gui::Hotkey aimbot_hotkey = { &globals::aimKey };
+m_gui::Hotkey aimassist_hotkey = { &globals::aimAssitKey };
+m_gui::Hotkey trigger_hotkey = { &globals::triggerKey };
 
 
 void gui_menu::initRender() {
