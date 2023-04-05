@@ -1,9 +1,47 @@
-﻿  gui_menu.cpp
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_menu.cpp(295,26): warning C4305: '=': truncation from 'double' to 'float'
+﻿  gui_esp.cpp
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(478,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(478,43): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(494,138): warning C4267: 'argument': conversion from 'size_t' to 'UINT32', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(495,110): warning C4267: 'argument': conversion from 'size_t' to 'UINT32', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(501,110): warning C4267: 'argument': conversion from 'size_t' to 'UINT32', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(502,110): warning C4267: 'argument': conversion from 'size_t' to 'UINT32', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(532,59): warning C4244: 'argument': conversion from 'uintptr_t' to 'uint32_t', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(537,72): warning C4244: 'argument': conversion from 'uintptr_t' to 'uint32_t', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(556,70): warning C4244: 'argument': conversion from 'uintptr_t' to 'uint32_t', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(563,91): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(579,96): warning C4244: 'argument': conversion from 'type' to 'uint32_t', possible loss of data
+          with
+          [
+              type=uintptr_t
+          ]
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(580,105): warning C4267: 'argument': conversion from 'size_t' to 'uint32_t', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(580,85): warning C4244: 'argument': conversion from 'type' to 'uint32_t', possible loss of data
+          with
+          [
+              type=uintptr_t
+          ]
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(591,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(596,20): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(599,30): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(599,30): warning C4244: 'initializing': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(599,51): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(599,51): warning C4244: 'initializing': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(599,61): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(599,61): warning C4244: 'initializing': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(599,71): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(599,71): warning C4244: 'initializing': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(603,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(604,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(604,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(609,43): warning C4244: 'argument': conversion from 'int' to 'const float', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(617,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(620,50): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  gui_menu.cpp
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_menu.cpp(296,26): warning C4305: '=': truncation from 'double' to 'float'
 C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_menu.cpp(438,10): warning C4101: 'hrs': unreferenced local variable
   Generating code
-  2 of 1692 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    17 functions had inline decision re-evaluated but remain unchanged
+  106 of 1725 functions ( 6.1%) were compiled, the rest were copied from previous compilation.
+    5 functions were new in current compilation
+    36 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   csgo-legit-external.vcxproj -> C:\Users\ecpp\source\repos\go-kernel\x64\Release\csgo-legit-external.exe

@@ -12,6 +12,11 @@
 #pragma comment (lib, "d3d11.lib")
 
 namespace gui_menu {
+	inline m_gui::Hotkey aimbot_hotkey = { &globals::aimKey };
+	inline m_gui::Hotkey aimassist_hotkey = { &globals::aimAssitKey };
+	inline m_gui::Hotkey trigger_hotkey = { &globals::triggerKey };
+
+
 	inline ID3D11Device* deviceMenu = { nullptr };
 	inline ID3D11DeviceContext* contextMenu = { nullptr };
 	inline IDXGISwapChain* swapChainMenu = { nullptr };

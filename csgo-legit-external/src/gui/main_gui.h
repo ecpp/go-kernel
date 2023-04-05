@@ -11,6 +11,7 @@
 #include <dwmapi.h>
 #include <dwrite_1.h>
 #include "gui_menu.h"
+#include <imgui/imgui_internal.h>
 
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
@@ -30,6 +31,47 @@ extern ID2D1HwndRenderTarget* pRenderTarget;
 namespace m_gui {
 	inline LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 	inline HWND gameHWND = NULL;
+
+	struct Hotkey {
+		int* key;
+		bool waiting_for_key = false;
+		bool prev_key_state[512] = {};
+
+		void render() {
+			ImGuiIO& io = ImGui::GetIO();
+			ImGuiWindow* window = ImGui::GetCurrentWindow();
+
+			if (ImGui::Button(waiting_for_key ? "..." : ("Bind: " + std::string(KeyNames[*key])).c_str()))
+			{
+				waiting_for_key = true;
+			}
+
+			// Get the currently pressed key, if any
+			int new_key = -1;
+			for (int i = 0; i < IM_ARRAYSIZE(io.KeysDown); i++)
+			{
+				if (io.KeysDown[i] && i != ImGuiKey_Tab)
+				{
+					new_key = i;
+					break;
+				}
+			}
+
+			// If we're waiting for a new key input and a new key was pressed, update the hotkey and stop waiting
+			if (waiting_for_key && new_key != -1)
+			{
+				*key = new_key;
+				waiting_for_key = false;
+			}
+
+			// Get the string representation of the hotkey
+			const char* key_name = "None";
+			if (*key >= 0 && *key < IM_ARRAYSIZE(KeyCodes))
+			{
+				key_name = KeyNames[*key];
+			}
+		}
+	};
 }
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);

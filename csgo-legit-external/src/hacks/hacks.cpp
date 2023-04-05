@@ -38,7 +38,7 @@ void hax::aim() noexcept
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
 			// aimbot key
-			if (!GetAsyncKeyState(0x58))
+			if (!GetAsyncKeyState(globals::aimKey))
 				continue;
 
 
@@ -169,7 +169,7 @@ void hax::legitAim() noexcept
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
 			// aimbot key
-			if (!GetAsyncKeyState(0x01))
+			if (!GetAsyncKeyState(globals::aimAssitKey))
 				continue;
 
 			// get local player
@@ -302,6 +302,9 @@ void hax::noRecoil() noexcept
 void hax::trigger() noexcept{
 	while (globals::runhax) {
 		if (globals::isTrigger) {
+			if (!GetAsyncKeyState(globals::triggerKey))
+				continue;
+
 			ULONG my_player = Driver::rpm<ULONG>(globals::client + offset::dwLocalPlayer);
 			if (my_player <= 0) { continue; }
 
