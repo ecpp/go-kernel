@@ -41,7 +41,10 @@ void hax::aim() noexcept
 			if (!GetAsyncKeyState(globals::aimKey))
 				continue;
 
+			//get weapon type
 
+			/*const auto weapon = Driver::rpm<std::uint32_t>(globals::localPlayer + offset::m_hActiveWeapon);
+			const auto weaponId = Driver::rpm<std::int32_t>(weapon + offset::m_iItemDefinitionIndex);*/
 
 			// eye position = origin + viewOffset
 			const auto localEyePosition = Driver::rpm<Vector3>(globals::localPlayer + offset::m_vecOrigin) +
@@ -57,13 +60,17 @@ void hax::aim() noexcept
 			const auto viewAngles = Driver::rpm<Vector3>(clientState + offset::dwClientState_ViewAngles);
 			const auto aimPunch = Driver::rpm<Vector3>(globals::localPlayer + offset::m_aimPunchAngle) * 2;
 
+
 			// aimbot fov
-			auto bestFov = 50.f;
+			auto bestFov = globals::aimFov;
 			auto bestAngle = Vector3{ };
 
 			for (auto i = 1; i <= 32; ++i)
 			{
 				const auto player = Driver::rpm<std::uint32_t>(globals::client + offset::dwEntityList + i * 0x10);
+
+				if (!player)
+					continue;
 
 				if (Driver::rpm<std::int32_t>(player + offset::m_iTeamNum) == globals::localTeam)
 					continue;
@@ -191,12 +198,15 @@ void hax::legitAim() noexcept
 			const auto aimPunch = Driver::rpm<Vector3>(localPlayer + offset::m_aimPunchAngle) * 2;
 
 			// aimbot fov
-			auto bestFov = 2.f;
+			auto bestFov = globals::aimFov;
 			auto bestAngle = Vector3{};
 
 			for (auto i = 1; i <= 32; ++i)
 			{
 				const auto player = Driver::rpm<std::uint32_t>(globals::client + offset::dwEntityList + i * 0x10);
+
+				if (!player)
+					continue;
 
 				if (Driver::rpm<std::int32_t>(player + offset::m_iTeamNum) == localTeam)
 					continue;
@@ -325,6 +335,7 @@ void hax::trigger() noexcept{
 					mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
 					Sleep(1);
 					mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+					Sleep(1000);
 				}
 			}
 		}
@@ -334,31 +345,44 @@ void hax::trigger() noexcept{
 
 }
 
-
-
-
-
-
-
-void hax::esp() noexcept {
-	//gui_esp::initWindow();
-
-	//while (globals::run_render) {
-	//	gui_esp::initRender();
-	//	
-	//}
-	////gui_esp::shutdown();
-
-
+void hax::noFlash() noexcept {
+	while (globals::runhax) {
+		if (globals::isFlash) {
+			std::this_thread::sleep_for(std::chrono::milliseconds(10));
+			ULONG localPlayer = Driver::rpm<ULONG>(globals::client + offset::dwLocalPlayer);
+			if (localPlayer <= 0) { continue; }
+			if (Driver::rpm<float>(localPlayer + offset::m_flFlashDuration) > 0.f) {
+				Driver::wpm<float>(localPlayer + offset::m_flFlashDuration, 0.f);
+			}
+		}
+	}
 }
 
-void hax::menu() noexcept {
-	gui_menu::initWindow();
-	//gui_menu::initDevice();
+void hax::skinChanger() noexcept {
 
-	while (globals::run_render) {
-		gui_menu::initRender();
+	//todo
+}
+
+void hax::autoAccept() noexcept {
+	while (globals::runhax){
+		if (!globals::isAutoAccept) { continue; }
+
+		//check if in game
+		auto clientState = Driver::rpm<std::uint32_t>(globals::engine + offset::dwClientState);
+		std::cout << clientState << std::endl;
+		if (clientState == 6 || clientState == 7 || clientState == 5) {
+			globals::isAutoAccept = false;
+		}
+		//check if warmup
+
+
+		
+		//center mouse on screen
+		SetCursorPos(960, 450);
+		//click mouse
+		mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+		mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+		std::this_thread::sleep_for(std::chrono::seconds(3));
 
 	}
-	gui_menu::shutdown();
 }

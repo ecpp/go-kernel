@@ -74,6 +74,8 @@ void imgui_init_style()
 
 void gui_menu::initWindow()
 {
+
+
 	m_gui::gameHWND = FindWindow(0, _T("Counter-Strike: Global Offensive - Direct3D 9"));
 	if (m_gui::gameHWND == NULL)
 	{
@@ -107,8 +109,8 @@ void gui_menu::initWindow()
 		WS_POPUP,
 		100,
 		100,
-		1000,
-		600,
+		750,
+		450,
 		NULL,
 		NULL,
 		wcMenu.hInstance,
@@ -291,13 +293,13 @@ void gui_menu::initRender() {
 
 	if (globals::isMenu && (GetForegroundWindow() == m_gui::gameHWND) || (GetForegroundWindow() == windowMenu)) {
 		ImGui::SetNextWindowPos({ 0, 0 });
-		ImGui::SetNextWindowSize({ 500, 300 });
+		ImGui::SetNextWindowSize({ 750, 450 });
 		ImGui::Begin(
 			"eren.exe",
 			&globals::run_render,
 			ImGuiWindowFlags_NoResize |
 			ImGuiWindowFlags_NoSavedSettings |
-			ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar
+			ImGuiWindowFlags_NoCollapse
 		);
 
 
@@ -325,10 +327,14 @@ void gui_menu::initRender() {
 				//create new column
 				ImGui::Columns(2, nullptr, false);
 				ImGui::Checkbox("AIMBOT", &globals::isAim);
+				//create slider for fov
+				ImGui::SliderFloat("FOV", &globals::aimFov, 0, 100);
 				ImGui::NextColumn();
 				aimbot_hotkey.render();
 				ImGui::NextColumn();
 				ImGui::Checkbox("AIM ASSIST", &globals::isAimAssit);
+				ImGui::Spacing();
+				ImGui::SliderFloat("SMOOTH", &globals::legitAimSmooth, 0.1f, 1.f);
 				ImGui::NextColumn();
 				aimassist_hotkey.render();
 				ImGui::NextColumn();
@@ -350,6 +356,10 @@ void gui_menu::initRender() {
 				ImGui::Checkbox("RADAR", &globals::isRadar);
 				ImGui::Spacing();
 				ImGui::Checkbox("BUNNY", &globals::isBunny);
+				ImGui::Spacing();
+				ImGui::Checkbox("N0 FLASH", &globals::isFlash);
+				ImGui::Spacing();
+				ImGui::Checkbox("AUTO ACCEPT", &globals::isAutoAccept);
 				break;
 
 			}
@@ -363,4 +373,16 @@ void gui_menu::initRender() {
 	}
 
 	
+}
+
+void gui_menu::startMenu()
+{
+	initWindow();
+	//gui_menu::initDevice();
+
+	while (globals::run_render) {
+		initRender();
+
+	}
+	shutdown();
 }

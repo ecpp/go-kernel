@@ -20,10 +20,24 @@ int loader() {
     std::string driver_path = "C:\\Windows\\Temp\\CheatDriver.sys";
 
     // Download kdmapper
-    URLDownloadToFile(NULL, kdmapper_url.c_str(), kdmapper_path.c_str(), 0, NULL);
-
-    // Download driver
-    URLDownloadToFile(NULL, driver_url.c_str(), driver_path.c_str(), 0, NULL);
+    try
+    {
+        URLDownloadToFile(NULL, kdmapper_url.c_str(), kdmapper_path.c_str(), 0, NULL);
+	}
+    catch (std::exception& e) {
+		std::cout << "Failed to download kdmapper file: Check URL. " << e.what() << std::endl;
+		return 1;
+	}
+    
+    try {
+        URLDownloadToFile(NULL, driver_url.c_str(), driver_path.c_str(), 0, NULL);
+    }
+    catch (std::exception& e) {
+        std::cout << "Failed to download driver file: Check URL. " << e.what() << std::endl;
+        return 1;
+    }
+    
+    
 
     // Load driver
     executeKdmapper(kdmapper_path, driver_path);

@@ -1,6 +1,9 @@
 #pragma once
 #include <numbers>
 #include <cmath>
+#include <math.h>
+
+constexpr float M_PI = 3.14159265358979323846;
 
 struct Vector3
 {
@@ -41,6 +44,19 @@ struct Vector3
 		return ((enemyPosition - localPosition).ToAngle() - viewAngles);
 	}
 
+	Vector3 ToVector2()
+	{
+		float pitch, yaw;
+		float hypotenuse = sqrt(x * x + y * y + z * z);
+		pitch = ((double)atan(z / hypotenuse) * 180.0) / M_PI;
+		yaw = ((double)atan(y / x) * 180.0) / M_PI;
+		if (x >= 0.0) {
+			yaw += 180.0;
+		}
+
+		return { pitch, yaw };
+	}
+
 	constexpr const Vector3& ToAngle() const noexcept
 	{
 		return Vector3{
@@ -65,6 +81,22 @@ struct Vector2 {
 		x(x), y(y) { }
 
 	float x, y;
+
+	void Normalize() noexcept
+	{
+		if (x > 89.0) {
+			x -= 360.0;
+		}
+		if (x < -89.0) {
+			x += 360.0;
+		}
+		if (y > 180.0) {
+			y -= 360.0;
+		}
+		if (y < -180.0) {
+			y += 360.0;
+		}
+	}
 
 
 };

@@ -35,7 +35,7 @@ int main()
 	std::cout << "ID (client.dll):" << globals::client << std::endl;
 	std::cout << "ID (engine.dll):" << globals::engine << std::endl;
 
-	std::thread(hax::menu).detach();
+	std::thread(gui_menu::startMenu).detach();
 	std::thread(hax::readGlobals).detach();
 	std::thread(hax::aim).detach();
 	std::thread(hax::bunny).detach();
@@ -45,59 +45,14 @@ int main()
 	std::thread(hax::trigger).detach();
 	//std::thread(hax::esp).detach();
 	std::thread(gui_esp::drawAll).detach();
-	
+	std::thread(hax::noFlash).detach();
+	std::thread(hax::autoAccept).detach();
+	std::cout << "\033[1;31mPress \033[1;32mINSERT\033[1;31m to open in game menu\033[0m" << std::endl;
 
-	std::thread getUserInput([&]() {
-		while (globals::runhax) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(1));
-			std::cout << "1) Rage Aim Status: " << globals::isAim << std::endl;
-			std::cout << "2) Aim Assit Status: " << globals::isAimAssit << std::endl;
-			std::cout << "3) Radar Status: " << globals::isRadar << std::endl;
-			std::cout << "4) Bhop Status: " << globals::isBunny << std::endl;
-			std::cout << "5) No Recoil Status: " << globals::isNoRecoil<< std::endl;
-			std::cout << "6) Trigger Status: " << globals::isTrigger << std::endl;
-			std::cout << "7) ESP Status: " << globals::isEsp << std::endl;
-			std::cout << "8) Exit. " << std::endl;
-			std::cout << "Enter the number you want to activate: ";
-			std::string input;
-			std::cin >> input;
-			if (input == "1") {
-				globals::isAimAssit = false;
-				globals::isAim = !globals::isAim;
 
-			}
-			else if (input == "2") {
-				globals::isAim = false;
-				globals::isAimAssit = !globals::isAimAssit;
-			}
-			else if (input == "3") {
-				globals::isRadar = !globals::isRadar;
-			}
-			else if (input == "4") {
-				globals::isBunny = !globals::isBunny;
-			}
-			else if (input == "5") {
-				globals::isNoRecoil = !globals::isNoRecoil;
-			}
-			else if (input == "6") {
-				globals::isTrigger = !globals::isTrigger;
-			}
-			else if (input == "7") {
-				globals::isEsp = !globals::isEsp;
-				//Driver::setEsp(true);
-			}
-			else {
-				std::cout << "Exiting..." << std::endl;
-				std::this_thread::sleep_for(std::chrono::seconds(1));
-				globals::runhax = false;
-				return 0;
-			}
-			system("CLS");
-
-		}
-		});
-
-	getUserInput.join();
+	while (true) {
+		std::this_thread::sleep_for(std::chrono::seconds(1000));
+	}
 
 	return 0;
 }

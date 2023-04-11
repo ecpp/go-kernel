@@ -259,6 +259,11 @@ void gui_esp::drawAll() {
 		if (GetForegroundWindow() == m_gui::gameHWND || GetForegroundWindow() == gui_menu::windowMenu)
 		{
 			gui_esp::begin_draw_esp();
+			if (globals::isEsp == false)
+				continue;
+
+			//create empty circle
+			gui_esp::Circle({ 1920 / 2, 1080 / 2 }, D2D1::ColorF(D2D1::ColorF::Black), globals::aimFov * 7, 1.0f);
 
 			DWORD localplayer = Driver::rpm<DWORD>(globals::client + offset::dwLocalPlayer);
 			DWORD localTeam = Driver::rpm<DWORD>(localplayer + offset::m_iTeamNum);//fixed
@@ -285,8 +290,7 @@ void gui_esp::drawAll() {
 			for (size_t i = 0; i < 32; i++)
 			{
 
-				if (globals::isEsp == false)
-					continue;
+				
 				DWORD currEnt = Driver::rpm<DWORD>(globals::client + offset::dwEntityList + (i * 0x10));
 				if (!currEnt)
 					continue;
@@ -339,7 +343,7 @@ void gui_esp::drawAll() {
 				gui_esp::String(Vector2(Entity_x + Entity_w, Entity_y + 10), std::wstring(name.begin(), name.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
 
 
-				if (Driver::rpm<std::int32_t>(currEnt + offset::m_bSpottedByMask) & (1 << localPlayerId)) {
+				if (Driver::rpm<std::int32_t>(currEnt + offset::m_bSpottedByMask)) {
 
 					gui_esp::rect(Entity_x, Entity_y, Entity_w, height, D2D1::ColorF(D2D1::ColorF::Blue, 0.5f));
 				}

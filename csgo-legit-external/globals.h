@@ -3,7 +3,8 @@
 #include <thread>
 #include <array>
 #include <chrono>
-
+#include <Windows.h>
+#include <iostream>
 namespace offset
 {
 	constexpr ::std::ptrdiff_t cs_gamerules_data = 0x0;
@@ -163,15 +164,27 @@ namespace offset
 namespace globals {
 	inline bool isAim = false;
     inline auto aimKey = 0x01;
+    inline auto aimFov = 10.f;
+    inline auto aimSmooth = 0.1f;
+
 	inline bool isBunny = false;
 	inline bool isRadar = false;
+
 	inline bool isAimAssit = false;
     inline auto aimAssitKey = 0x02;
+
 	inline bool isNoRecoil = false;
+
 	inline bool isTrigger = false;
     inline auto triggerKey = 0x03;
+
 	inline bool isEsp = false;
+    inline auto enemyColor = ImVec4(1.f, 0.f, 0.f, 1.f);
+
+
+    inline bool isFlash = false;
 	inline bool isMenu = false;
+    inline bool isAutoAccept = false;
 	
 	inline bool runhax = true;
 	inline auto legitAimSmooth = 0.1f;

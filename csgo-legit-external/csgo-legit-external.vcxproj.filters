@@ -98,9 +98,6 @@
     <ClInclude Include="src\gui\gui_esp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\bsp_parser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\gui\gui_menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
