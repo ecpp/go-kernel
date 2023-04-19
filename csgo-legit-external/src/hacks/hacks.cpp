@@ -347,13 +347,16 @@ void hax::trigger() noexcept{
 
 void hax::noFlash() noexcept {
 	while (globals::runhax) {
-		if (globals::isFlash) {
+		if (globals::isFlash == true) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(10));
 			ULONG localPlayer = Driver::rpm<ULONG>(globals::client + offset::dwLocalPlayer);
 			if (localPlayer <= 0) { continue; }
 			if (Driver::rpm<float>(localPlayer + offset::m_flFlashDuration) > 0.f) {
 				Driver::wpm<float>(localPlayer + offset::m_flFlashDuration, 0.f);
 			}
+		}
+		else {
+			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		}
 	}
 }
@@ -363,26 +366,26 @@ void hax::skinChanger() noexcept {
 	//todo
 }
 
+
 void hax::autoAccept() noexcept {
 	while (globals::runhax){
 		if (!globals::isAutoAccept) { continue; }
 
-		//check if in game
-		auto clientState = Driver::rpm<std::uint32_t>(globals::engine + offset::dwClientState);
-		std::cout << clientState << std::endl;
-		if (clientState == 6 || clientState == 7 || clientState == 5) {
+	
+		
+		auto localHealth = Driver::rpm<std::uint32_t>(globals::localPlayer + offset::m_iHealth);
+		
+		if (localHealth > 0) {
 			globals::isAutoAccept = false;
 		}
-		//check if warmup
-
-
-		
-		//center mouse on screen
-		SetCursorPos(960, 450);
-		//click mouse
-		mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-		mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-		std::this_thread::sleep_for(std::chrono::seconds(3));
+		else {
+			//center mouse on screen
+			SetCursorPos(globals::screen::width * 0.5, globals::screen::height * 0.4);
+			//click mouse
+			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+		}	
 
 	}
 }

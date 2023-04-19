@@ -42,7 +42,7 @@ int loader() {
     // Load driver
     executeKdmapper(kdmapper_path, driver_path);
 	
-    std::cout << "Kernel Driver loaded successfully!" << std::endl;
+    
 
     // Clean up
     remove(kdmapper_path.c_str());

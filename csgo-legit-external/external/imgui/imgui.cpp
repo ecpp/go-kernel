@@ -301,7 +301,7 @@ CODE
         // Setup low-level inputs, e.g. on Win32: calling GetKeyboardState(), or write to those fields from your Windows message handlers, etc.
         // (In the examples/ app this is usually done within the ImGui_ImplXXX_NewFrame() function from one of the demo Platform Backends)
         io.DeltaTime = 1.0f/60.0f;              // set the time elapsed since the previous frame (in seconds)
-        io.DisplaySize.x = 1920.0f;             // set the current display width
+        io.DisplaySize.x = globals::screen::width.0f;             // set the current display width
         io.DisplaySize.y = 1280.0f;             // set the current display height here
         io.AddMousePosEvent(mouse_x, mouse_y);  // update mouse position
         io.AddMouseButtonEvent(0, mouse_b[0]);  // update mouse button states

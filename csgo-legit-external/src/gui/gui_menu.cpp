@@ -299,7 +299,7 @@ void gui_menu::initRender() {
 			&globals::run_render,
 			ImGuiWindowFlags_NoResize |
 			ImGuiWindowFlags_NoSavedSettings |
-			ImGuiWindowFlags_NoCollapse
+			ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar
 		);
 
 
@@ -326,13 +326,9 @@ void gui_menu::initRender() {
 			case 0:
 				//create new column
 				ImGui::Columns(2, nullptr, false);
-				ImGui::Checkbox("AIMBOT", &globals::isAim);
 				//create slider for fov
 				ImGui::SliderFloat("FOV", &globals::aimFov, 0, 100);
-				ImGui::NextColumn();
-				aimbot_hotkey.render();
-				ImGui::NextColumn();
-				ImGui::Checkbox("AIM ASSIST", &globals::isAimAssit);
+				ImGui::Checkbox("AIM", &globals::isAimAssit);
 				ImGui::Spacing();
 				ImGui::SliderFloat("SMOOTH", &globals::legitAimSmooth, 0.1f, 1.f);
 				ImGui::NextColumn();

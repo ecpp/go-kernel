@@ -50,8 +50,8 @@ bool gui_esp::init_window_Esp()
 		WS_POPUP,
 		0,
 		0,
-		1920,
-		1080,
+		globals::screen::width,
+		globals::screen::height,
 		NULL,
 		NULL,
 		hInstance,
@@ -263,7 +263,7 @@ void gui_esp::drawAll() {
 				continue;
 
 			//create empty circle
-			gui_esp::Circle({ 1920 / 2, 1080 / 2 }, D2D1::ColorF(D2D1::ColorF::Black), globals::aimFov * 7, 1.0f);
+			gui_esp::Circle({ float(globals::screen::width) / 2, float(globals::screen::height) / 2 }, D2D1::ColorF(D2D1::ColorF::Black), globals::aimFov * 7, 1.0f);
 
 			DWORD localplayer = Driver::rpm<DWORD>(globals::client + offset::dwLocalPlayer);
 			DWORD localTeam = Driver::rpm<DWORD>(localplayer + offset::m_iTeamNum);//fixed
@@ -281,8 +281,8 @@ void gui_esp::drawAll() {
 
 
 			punchAngle.x = punchAngle.x * 12; punchAngle.y = punchAngle.y * 12;
-			float x = 1920 / 2 - punchAngle.y;
-			float y = 1080 / 2 + punchAngle.x;
+			float x = globals::screen::width / 2 - punchAngle.y;
+			float y = globals::screen::height / 2 + punchAngle.x;
 
 
 			esp::MAT4X4 viewMatrix = Driver::rpm<esp::MAT4X4>(globals::client + offset::dwViewMatrix);

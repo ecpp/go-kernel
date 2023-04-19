@@ -9,6 +9,7 @@
 #include "src/utils/loader.h"
 #include "src/gui/gui_esp.h"
 
+
 int main()
 {
 	loader();
@@ -17,13 +18,16 @@ int main()
 	globals::processID = Driver::get_process_id("csgo.exe");
 	
 	while (!globals::processID) {
+		std::cout << "Either csgo.exe is not open or driver failed to load." << std::endl;
 		globals::processID = Driver::get_process_id("csgo.exe");
 	}
+
+	std::cout << RED << "Kernel Driver" << RESET << " loaded successfully!" << std::endl;
 
 	globals::client = Driver::get_client(globals::processID);
 	globals::engine = Driver::get_engine(globals::processID);
 
-	std::cout << "ID (csgo.exe):" << globals::processID << std::endl;
+	std::cout << BLUE << "ID (csgo.exe):" << GREEN << globals::processID << std::endl;
 
 
 	if (!globals::client || !globals::engine) {
@@ -32,12 +36,12 @@ int main()
 		return 0;
 	}
 
-	std::cout << "ID (client.dll):" << globals::client << std::endl;
-	std::cout << "ID (engine.dll):" << globals::engine << std::endl;
+	std::cout << BLUE << "ID (client.dll):" << GREEN << globals::client << std::endl;
+	std::cout << BLUE << "ID (engine.dll):" << GREEN << globals::engine << std::endl;
 
 	std::thread(gui_menu::startMenu).detach();
 	std::thread(hax::readGlobals).detach();
-	std::thread(hax::aim).detach();
+	//std::thread(hax::aim).detach();
 	std::thread(hax::bunny).detach();
 	std::thread(hax::radar).detach();
 	std::thread(hax::legitAim).detach();
