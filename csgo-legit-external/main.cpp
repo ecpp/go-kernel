@@ -10,6 +10,7 @@
 #include "src/gui/gui_esp.h"
 
 
+
 int main()
 {
 	loader();
@@ -38,6 +39,8 @@ int main()
 
 	std::cout << BLUE << "ID (client.dll):" << GREEN << globals::client << std::endl;
 	std::cout << BLUE << "ID (engine.dll):" << GREEN << globals::engine << std::endl;
+
+	
 
 	std::thread(gui_menu::startMenu).detach();
 	std::thread(hax::readGlobals).detach();

@@ -6,6 +6,8 @@
 #include "gui_menu.h"
 #include "main_gui.h"
 
+
+
 ID2D1Factory* pFactory;
 ID2D1HwndRenderTarget* pRenderTarget;
 ID2D1SolidColorBrush* ColorBrush;
@@ -342,7 +344,17 @@ void gui_esp::drawAll() {
 				std::string name = p.name;
 				gui_esp::String(Vector2(Entity_x + Entity_w, Entity_y + 10), std::wstring(name.begin(), name.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
 
+				/*std::string weapon = Driver::rpm<char*>(Driver::rpm<DWORD>(currEnt + offset::m_hActiveWeapon) + offset::m_iItemDefinitionIndex);
+				std::cout << weapon << std::endl;*/
+				//gui_esp::String(Vector2(Entity_x + Entity_w, Entity_y + 20), std::wstring(weapon.begin(), weapon.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
+				//
+				////draw head box
+				//gui_esp::rect(headScreen.x - 1, headScreen.y - 1, 2, 2, D2D1::ColorF(D2D1::ColorF::Green, 1.0f));
+				
+				
 
+				
+				//check if spotted by mask
 				if (Driver::rpm<std::int32_t>(currEnt + offset::m_bSpottedByMask)) {
 
 					gui_esp::rect(Entity_x, Entity_y, Entity_w, height, D2D1::ColorF(D2D1::ColorF::Blue, 0.5f));

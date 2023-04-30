@@ -1,0 +1,19 @@
+﻿  bsp_parser.cpp
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\include\valve-bsp-parser\core\valve_structs.hpp(298,17): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\include\valve-bsp-parser\core\valve_structs.hpp(298,17): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
+  Alloc.c
+  LzFind.c
+  LzmaDec.c
+  LzmaEnc.c
+  LzmaLib.c
+  LzFindMt.c
+  LzmaLibExports.c
+  Threads.c
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\thirdparty\liblzma\src\LzFind.c(4,10): fatal  error C1083: Cannot open include file: 'Precomp.h': No such file or directory
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\thirdparty\liblzma\src\Alloc.c(4,10): fatal  error C1083: Cannot open include file: 'Precomp.h': No such file or directory
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\thirdparty\liblzma\src\win\LzFindMt.c(4,10): fatal  error C1083: Cannot open include file: 'Precomp.h': No such file or directory
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\thirdparty\liblzma\src\LzmaLib.c(4,10): fatal  error C1083: Cannot open include file: 'Alloc.h': No such file or directory
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\thirdparty\liblzma\src\LzmaEnc.c(4,10): fatal  error C1083: Cannot open include file: 'Precomp.h': No such file or directory
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\thirdparty\liblzma\src\LzmaDec.c(4,10): fatal  error C1083: Cannot open include file: 'Precomp.h': No such file or directory
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\thirdparty\liblzma\src\win\Threads.c(4,10): fatal  error C1083: Cannot open include file: 'Precomp.h': No such file or directory
+C:\Users\ecpp\source\repos\go-kernel\valve-bsp-parser-legacy\thirdparty\liblzma\src\win\LzmaLibExports.c(4,10): fatal  error C1083: Cannot open include file: 'Precomp.h': No such file or directory

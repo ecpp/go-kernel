@@ -182,6 +182,7 @@ namespace offset
 }
 
 namespace globals {
+
 	inline bool isAim = false;
     inline auto aimKey = 0x01;
     inline auto aimFov = 10.f;
@@ -217,6 +218,12 @@ namespace globals {
 	inline std::uintptr_t localPlayer = 0;
 	inline std::int32_t localTeam = 0;
 	inline std::uintptr_t localPlayerFlags = 0;
+    inline std::int32_t clientState = 0;
+
+    inline std::array<char, 0x80> mapDirectory = { 0 };
+    inline std::array<char, 0x120> mapName = { 0 };
+    inline std::array<char, 0x100> gameDirectory = { 0 };
+    inline std::string fullPath = "";
 
 	inline bool run_render = true;
 
