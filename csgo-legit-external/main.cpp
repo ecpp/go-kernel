@@ -41,13 +41,11 @@ int main()
 
 	std::thread(gui_menu::startMenu).detach();
 	std::thread(hax::readGlobals).detach();
-	//std::thread(hax::aim).detach();
 	std::thread(hax::bunny).detach();
 	std::thread(hax::radar).detach();
 	std::thread(hax::legitAim).detach();
 	std::thread(hax::noRecoil).detach();
 	std::thread(hax::trigger).detach();
-	//std::thread(hax::esp).detach();
 	std::thread(gui_esp::drawAll).detach();
 	std::thread(hax::noFlash).detach();
 	std::thread(hax::autoAccept).detach();
@@ -55,7 +53,15 @@ int main()
 
 
 	while (true) {
-		std::this_thread::sleep_for(std::chrono::seconds(1000));
+		//check if csgo running
+		if (!Driver::get_process_id("csgo.exe")) {
+			std::cout << "csgo.exe is not running, exiting..." << std::endl;
+			std::this_thread::sleep_for(std::chrono::seconds(5));
+			//exit process
+			ExitProcess(0);
+			return 0;
+		}
+		std::this_thread::sleep_for(std::chrono::minutes(10));
 	}
 
 	return 0;

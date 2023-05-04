@@ -30,98 +30,6 @@ void hax::readGlobals() noexcept
 	
 }
 
-void hax::aim() noexcept
-{
-	while (globals::runhax)
-	{
-		if (globals::isAim) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-			// aimbot key
-			if (!GetAsyncKeyState(globals::aimKey))
-				continue;
-
-			//get weapon type
-
-			/*const auto weapon = Driver::rpm<std::uint32_t>(globals::localPlayer + offset::m_hActiveWeapon);
-			const auto weaponId = Driver::rpm<std::int32_t>(weapon + offset::m_iItemDefinitionIndex);*/
-
-			// eye position = origin + viewOffset
-			const auto localEyePosition = Driver::rpm<Vector3>(globals::localPlayer + offset::m_vecOrigin) +
-				Driver::rpm<Vector3>(globals::localPlayer + offset::m_vecViewOffset);
-
-			const auto clientState = Driver::rpm<std::uint32_t>(globals::engine + offset::dwClientState);
-
-			const auto localPlayerId =
-				Driver::rpm<std::int32_t>(clientState + offset::dwClientState_GetLocalPlayer);
-
-			//bunny(localPlayer, localTeam, localPlayerFlags, memory, client);
-
-			const auto viewAngles = Driver::rpm<Vector3>(clientState + offset::dwClientState_ViewAngles);
-			const auto aimPunch = Driver::rpm<Vector3>(globals::localPlayer + offset::m_aimPunchAngle) * 2;
-
-
-			// aimbot fov
-			auto bestFov = globals::aimFov;
-			auto bestAngle = Vector3{ };
-
-			for (auto i = 1; i <= 32; ++i)
-			{
-				const auto player = Driver::rpm<std::uint32_t>(globals::client + offset::dwEntityList + i * 0x10);
-
-				if (!player)
-					continue;
-
-				if (Driver::rpm<std::int32_t>(player + offset::m_iTeamNum) == globals::localTeam)
-					continue;
-
-				if (Driver::rpm<bool>(player + offset::m_bDormant))
-					continue;
-
-				if (Driver::rpm<std::int32_t>(player + offset::m_lifeState))
-					continue;
-
-				if (Driver::rpm<std::int32_t>(player + offset::m_bSpottedByMask) & (1 << localPlayerId))
-				{
-					const auto boneMatrix = Driver::rpm<std::uint32_t>(player + offset::m_dwBoneMatrix);
-
-					// pos of player head in 3d space
-					// 8 is the head bone index :)
-					const auto playerHeadPosition = Vector3{
-						Driver::rpm<float>(boneMatrix + 0x30 * 8 + 0x0C),
-						Driver::rpm<float>(boneMatrix + 0x30 * 8 + 0x1C),
-						Driver::rpm<float>(boneMatrix + 0x30 * 8 + 0x2C)
-					};
-
-					const auto angle = CalculateAngle(
-						localEyePosition,
-						playerHeadPosition,
-						viewAngles + aimPunch
-					);
-
-					const auto fov = hypot(angle.x, angle.y);
-
-
-
-					if (fov < bestFov)
-					{
-						bestFov = fov;
-						bestAngle = angle;
-					}
-				}
-			}
-			// if we have a best angle, do aimbot
-			if (!bestAngle.IsZero()) {
-				Driver::wpm<Vector3>(clientState + offset::dwClientState_ViewAngles, viewAngles + bestAngle); // smoothing
-			}
-		}
-
-
-	}
-}
-
-
-
 void hax::bunny() noexcept
 {
 	while (globals::runhax)
@@ -138,6 +46,9 @@ void hax::bunny() noexcept
 				std::this_thread::sleep_for(std::chrono::milliseconds(1));
 				Driver::wpm<std::int32_t>(globals::client + offset::dwForceJump, 4);
 			}
+		}
+		else {
+			std::this_thread::sleep_for(std::chrono::seconds(2));
 		}
 	}
 }
@@ -164,6 +75,9 @@ void hax::radar() noexcept {
 
 				Driver::wpm<bool>(player + offset::m_bSpotted, true);
 			}
+		}
+		else {
+			std::this_thread::sleep_for(std::chrono::seconds(2));
 		}
 	}
 }
@@ -260,6 +174,9 @@ void hax::legitAim() noexcept
 				Driver::wpm<Vector3>(clientState + offset::dwClientState_ViewAngles, newAngle);
 			}
 		}
+		else {
+			std::this_thread::sleep_for(std::chrono::seconds(2));
+		}
 	}
 }
 
@@ -306,6 +223,9 @@ void hax::noRecoil() noexcept
 
 
 		}
+		else {
+			std::this_thread::sleep_for(std::chrono::seconds(2));
+		}
 	}
 }
 
@@ -339,6 +259,9 @@ void hax::trigger() noexcept{
 				}
 			}
 		}
+		else {
+			std::this_thread::sleep_for(std::chrono::seconds(2));
+		}
 		
 	}
 	
@@ -356,7 +279,7 @@ void hax::noFlash() noexcept {
 			}
 		}
 		else {
-			std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+			std::this_thread::sleep_for(std::chrono::seconds(2));
 		}
 	}
 }
@@ -369,10 +292,10 @@ void hax::skinChanger() noexcept {
 
 void hax::autoAccept() noexcept {
 	while (globals::runhax){
-		if (!globals::isAutoAccept) { continue; }
-
-	
-		
+		if (!globals::isAutoAccept) {
+			std::this_thread::sleep_for(std::chrono::seconds(2));
+			continue;
+		}
 		auto localHealth = Driver::rpm<std::uint32_t>(globals::localPlayer + offset::m_iHealth);
 		
 		if (localHealth > 0) {

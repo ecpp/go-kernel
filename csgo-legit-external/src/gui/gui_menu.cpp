@@ -23,53 +23,48 @@ WNDCLASS wcMenu = {};
 void imgui_init_style()
 {
 
-	ImGuiIO& io = ImGui::GetIO(); (void)io;
-	ImGuiStyle* style = &ImGui::GetStyle();
-	auto font = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\calibrib.ttf", 15.0f);
-	io.FontGlobalScale = 1.1;
-	//ImGui::PushFont(font);
+	ImGuiStyle& Style = ImGui::GetStyle();
+	auto Color = Style.Colors;
+
+	Style.WindowMinSize = ImVec2(500, 300);
+	Style.WindowBorderSize = 0;
+
+	Style.ChildRounding = 0;
+	Style.FrameRounding = 0;
+	Style.ScrollbarRounding = 0;
+	Style.GrabRounding = 0;
+	Style.PopupRounding = 0;
+	Style.WindowRounding = 3;
 
 
-	style->Alpha = 1.f;
-	style->WindowRounding = 0.7f;
-	style->FrameRounding = 4.0f;
+	Color[ImGuiCol_WindowBg] = ImColor(18, 18, 18, 255);
 
-	style->WindowBorderSize = 1.8f;
-	style->ChildBorderSize = 1.8f;
+	Color[ImGuiCol_FrameBg] = ImColor(31, 31, 31, 255);
+	Color[ImGuiCol_FrameBgActive] = ImColor(41, 41, 41, 255);
+	Color[ImGuiCol_FrameBgHovered] = ImColor(41, 41, 41, 255);
 
-	style->ItemInnerSpacing = ImVec2(4, 4);
-	style->ItemSpacing = ImVec2(8, 4);
+	Color[ImGuiCol_Button] = ImColor(168, 50, 133);
+	Color[ImGuiCol_ButtonActive] = ImColor(168, 50, 133);
+	Color[ImGuiCol_ButtonHovered] = ImColor(168, 50, 133);
 
+	Color[ImGuiCol_Border] = ImColor(0, 0, 0, 0);
+	Color[ImGuiCol_Separator] = ImColor(36, 36, 36, 255);
 
-	style->ScrollbarSize = 10.f;
-	style->ScrollbarRounding = 5.f;
+	Color[ImGuiCol_ResizeGrip] = ImColor(30, 30, 30, 255);
+	Color[ImGuiCol_ResizeGripActive] = ImColor(30, 30, 30, 255);
+	Color[ImGuiCol_ResizeGripHovered] = ImColor(30, 30, 30, 255);
 
-	style->WindowMinSize = ImVec2(425, 360);
+	Color[ImGuiCol_ChildBg] = ImColor(26, 26, 26, 255);
 
+	Color[ImGuiCol_ScrollbarBg] = ImColor(24, 24, 24, 255);
+	Color[ImGuiCol_ScrollbarGrab] = ImColor(24, 24, 24, 255);
+	Color[ImGuiCol_ScrollbarGrabActive] = ImColor(24, 24, 24, 255);
+	Color[ImGuiCol_ScrollbarGrabActive] = ImColor(24, 24, 24, 255);
 
-	ImVec4* colors = ImGui::GetStyle().Colors;
-	colors[ImGuiCol_WindowBg] = ImColor(100, 100, 100, 255);
-	colors[ImGuiCol_ChildBg] = ImColor(100, 100, 100, 255);
-	colors[ImGuiCol_PopupBg] = ImColor(100, 100, 100, 255);
-
-	colors[ImGuiCol_Border] = ImColor(0, 0, 0, 255);
-	colors[ImGuiCol_FrameBg] = ImColor(100, 149, 237, 255);
-	//colors[ImGuiCol_FrameBgActive] = ImColor(139, 0, 139, 255);
-	//colors[ImGuiCol_TitleBg] = ImColor(139, 0, 139, 255);
-	colors[ImGuiCol_CheckMark] = ImColor(100, 100, 100, 255);
-
-
-	//colors[ImGuiCol_FrameBgHovered] = ImColor(255, 0, 0, 255);
-
-	//io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
-
-
-
-	io.IniFilename = nullptr;
-	io.LogFilename = nullptr;
-
-
-	return;
+	Color[ImGuiCol_Header] = ImColor(39, 39, 39, 255);
+	Color[ImGuiCol_HeaderActive] = ImColor(39, 39, 39, 255);
+	Color[ImGuiCol_HeaderHovered] = ImColor(39, 39, 39, 255);
+	Color[ImGuiCol_CheckMark] = ImColor(255, 255, 255, 255);
 }
 
 void gui_menu::initWindow()
@@ -107,10 +102,10 @@ void gui_menu::initWindow()
 		"M3NU Window",
 		"Hack",
 		WS_POPUP,
-		100,
-		100,
-		750,
-		450,
+		0,
+		0,
+		500,
+		300,
 		NULL,
 		NULL,
 		wcMenu.hInstance,
@@ -293,7 +288,7 @@ void gui_menu::initRender() {
 
 	if (globals::isMenu && (GetForegroundWindow() == m_gui::gameHWND) || (GetForegroundWindow() == windowMenu)) {
 		ImGui::SetNextWindowPos({ 0, 0 });
-		ImGui::SetNextWindowSize({ 750, 450 });
+		//ImGui::SetNextWindowSize({ 750, 450 });
 		ImGui::Begin(
 			"eren.exe",
 			&globals::run_render,

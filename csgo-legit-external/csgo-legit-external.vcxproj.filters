@@ -104,5 +104,8 @@
     <ClInclude Include="src\gui\main_gui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\utils\config_manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
