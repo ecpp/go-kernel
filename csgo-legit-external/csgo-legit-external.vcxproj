@@ -171,6 +171,7 @@
     <ClInclude Include="src\hacks\hacks.h" />
     <ClInclude Include="src\utils\loader.h" />
     <ClInclude Include="src\utils\memory.h" />
+    <ClInclude Include="src\utils\obfuscate.h" />
     <ClInclude Include="src\utils\vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

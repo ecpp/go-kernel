@@ -5,24 +5,25 @@
 #include <chrono>
 #include <Windows.h>
 #include <iostream>
+#include "src/utils/obfuscate.h"
 
-#define RESET   "\033[0m"
-#define BLACK   "\033[30m"      /* Black */
-#define RED     "\033[31m"      /* Red */
-#define GREEN   "\033[32m"      /* Green */
-#define YELLOW  "\033[33m"      /* Yellow */
-#define BLUE    "\033[34m"      /* Blue */
-#define MAGENTA "\033[35m"      /* Magenta */
-#define CYAN    "\033[36m"      /* Cyan */
-#define WHITE   "\033[37m"      /* White */
-#define BOLDBLACK   "\033[1m\033[30m"      /* Bold Black */
-#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
-#define BOLDGREEN   "\033[1m\033[32m"      /* Bold Green */
-#define BOLDYELLOW  "\033[1m\033[33m"      /* Bold Yellow */
-#define BOLDBLUE    "\033[1m\033[34m"      /* Bold Blue */
-#define BOLDMAGENTA "\033[1m\033[35m"      /* Bold Magenta */
-#define BOLDCYAN    "\033[1m\033[36m"      /* Bold Cyan */
-#define BOLDWHITE   "\033[1m\033[37m"      /* Bold White */
+#define RESET   AY_OBFUSCATE("\033[0m")
+#define BLACK   AY_OBFUSCATE("\033[30m")      /* Black */
+#define RED     AY_OBFUSCATE("\033[31m")      /* Red */
+#define GREEN   AY_OBFUSCATE("\033[32m")      /* Green */
+#define YELLOW  AY_OBFUSCATE("\033[33m")      /* Yellow */
+#define BLUE    AY_OBFUSCATE("\033[34m")      /* Blue */
+#define MAGENTA AY_OBFUSCATE("\033[35m")      /* Magenta */
+#define CYAN    AY_OBFUSCATE("\033[36m")      /* Cyan */
+#define WHITE   AY_OBFUSCATE("\033[37m")      /* White */
+#define BOLDBLACK   AY_OBFUSCATE("\033[1m\033[30m")      /* Bold Black */
+#define BOLDRED     AY_OBFUSCATE("\033[1m\033[31m")      /* Bold Red */
+#define BOLDGREEN   AY_OBFUSCATE("\033[1m\033[32m")      /* Bold Green */
+#define BOLDYELLOW  AY_OBFUSCATE("\033[1m\033[33m")      /* Bold Yellow */
+#define BOLDBLUE    AY_OBFUSCATE("\033[1m\033[34m")      /* Bold Blue */
+#define BOLDMAGENTA AY_OBFUSCATE("\033[1m\033[35m")      /* Bold Magenta */
+#define BOLDCYAN    AY_OBFUSCATE("\033[1m\033[36m")      /* Bold Cyan */
+#define BOLDWHITE   AY_OBFUSCATE("\033[1m\033[37m")      /* Bold White */
 
 namespace offset
 {
@@ -135,89 +136,89 @@ namespace offset
     constexpr ::std::ptrdiff_t dwClientState_PlayerInfo = 0x52C0;
     constexpr ::std::ptrdiff_t dwClientState_State = 0x108;
     constexpr ::std::ptrdiff_t dwClientState_ViewAngles = 0x4D90;
-    constexpr ::std::ptrdiff_t dwEntityList = 0x4DFFFB4;
-    constexpr ::std::ptrdiff_t dwForceAttack = 0x322DDEC;
-    constexpr ::std::ptrdiff_t dwForceAttack2 = 0x322DDF8;
-    constexpr ::std::ptrdiff_t dwForceBackward = 0x322DE40;
-    constexpr ::std::ptrdiff_t dwForceForward = 0x322DE34;
-    constexpr ::std::ptrdiff_t dwForceJump = 0x52BBD48;
-    constexpr ::std::ptrdiff_t dwForceLeft = 0x322DE4C;
-    constexpr ::std::ptrdiff_t dwForceRight = 0x322DDB0;
+    constexpr ::std::ptrdiff_t dwEntityList = 0x4DFEECC;
+    constexpr ::std::ptrdiff_t dwForceAttack = 0x322CD38;
+    constexpr ::std::ptrdiff_t dwForceAttack2 = 0x322CD44;
+    constexpr ::std::ptrdiff_t dwForceBackward = 0x322CD80;
+    constexpr ::std::ptrdiff_t dwForceForward = 0x322CD74;
+    constexpr ::std::ptrdiff_t dwForceJump = 0x52BAC28;
+    constexpr ::std::ptrdiff_t dwForceLeft = 0x322CCF0;
+    constexpr ::std::ptrdiff_t dwForceRight = 0x322CCFC;
     constexpr ::std::ptrdiff_t dwGameDir = 0x63AD80;
-    constexpr ::std::ptrdiff_t dwGameRulesProxy = 0x532F56C;
-    constexpr ::std::ptrdiff_t dwGetAllClasses = 0xE0BF8C;
+    constexpr ::std::ptrdiff_t dwGameRulesProxy = 0x532E434;
+    constexpr ::std::ptrdiff_t dwGetAllClasses = 0xE0AF1C;
     constexpr ::std::ptrdiff_t dwGlobalVars = 0x59EE60;
-    constexpr ::std::ptrdiff_t dwGlowObjectManager = 0x535AA70;
-    constexpr ::std::ptrdiff_t dwInput = 0x525D588;
-    constexpr ::std::ptrdiff_t dwInterfaceLinkList = 0x99C224;
-    constexpr ::std::ptrdiff_t dwLocalPlayer = 0xDEA964;
-    constexpr ::std::ptrdiff_t dwMouseEnable = 0x52391E8;
-    constexpr ::std::ptrdiff_t dwMouseEnablePtr = 0x52391B8;
-    constexpr ::std::ptrdiff_t dwPlayerResource = 0x322C160;
-    constexpr ::std::ptrdiff_t dwRadarBase = 0x5236A8C;
-    constexpr ::std::ptrdiff_t dwSensitivity = 0xDEEB80;
-    constexpr ::std::ptrdiff_t dwSensitivityPtr = 0xDEEB80;
+    constexpr ::std::ptrdiff_t dwGlowObjectManager = 0x5359980;
+    constexpr ::std::ptrdiff_t dwInput = 0x525C4A0;
+    constexpr ::std::ptrdiff_t dwInterfaceLinkList = 0x99A434;
+    constexpr ::std::ptrdiff_t dwLocalPlayer = 0xDE997C;
+    constexpr ::std::ptrdiff_t dwMouseEnable = 0x5238100;
+    constexpr ::std::ptrdiff_t dwMouseEnablePtr = 0x52380D0;
+    constexpr ::std::ptrdiff_t dwPlayerResource = 0x322B070;
+    constexpr ::std::ptrdiff_t dwRadarBase = 0x52359A4;
+    constexpr ::std::ptrdiff_t dwSensitivity = 0xDEDB98;
+    constexpr ::std::ptrdiff_t dwSensitivityPtr = 0xDEDB98;
     constexpr ::std::ptrdiff_t dwSetClanTag = 0x8DA80;
-    constexpr ::std::ptrdiff_t dwViewMatrix = 0x4DF0DE4;
-    constexpr ::std::ptrdiff_t dwWeaponTable = 0x525E664;
+    constexpr ::std::ptrdiff_t dwViewMatrix = 0x4DEFD14;
+    constexpr ::std::ptrdiff_t dwWeaponTable = 0x525D57C;
     constexpr ::std::ptrdiff_t dwWeaponTableIndex = 0x326C;
-    constexpr ::std::ptrdiff_t dwYawPtr = 0xDEE910;
-    constexpr ::std::ptrdiff_t dwZoomSensitivityRatioPtr = 0xDF4380;
+    constexpr ::std::ptrdiff_t dwYawPtr = 0xDED928;
+    constexpr ::std::ptrdiff_t dwZoomSensitivityRatioPtr = 0xDF3398;
     constexpr ::std::ptrdiff_t dwbSendPackets = 0xDD2B2;
     constexpr ::std::ptrdiff_t dwppDirect3DDevice9 = 0xA62C0;
-    constexpr ::std::ptrdiff_t find_hud_element = 0x35740090;
-    constexpr ::std::ptrdiff_t force_update_spectator_glow = 0x3D96FA;
+    constexpr ::std::ptrdiff_t find_hud_element = 0x2944F370;
+    constexpr ::std::ptrdiff_t force_update_spectator_glow = 0x3D898A;
     constexpr ::std::ptrdiff_t interface_engine_cvar = 0x3FA9C;
-    constexpr ::std::ptrdiff_t is_c4_owner = 0x3E6F10;
+    constexpr ::std::ptrdiff_t is_c4_owner = 0x3E61A0;
     constexpr ::std::ptrdiff_t m_bDormant = 0xED;
     constexpr ::std::ptrdiff_t m_bIsLocalPlayer = 0x3628;
     constexpr ::std::ptrdiff_t m_flSpawnTime = 0x103C0;
     constexpr ::std::ptrdiff_t m_pStudioHdr = 0x2950;
-    constexpr ::std::ptrdiff_t m_pitchClassPtr = 0x52390E0;
-    constexpr ::std::ptrdiff_t m_yawClassPtr = 0xDEE910;
+    constexpr ::std::ptrdiff_t m_pitchClassPtr = 0x5237FF8;
+    constexpr ::std::ptrdiff_t m_yawClassPtr = 0xDED928;
     constexpr ::std::ptrdiff_t model_ambient_min = 0x5A1194;
-    constexpr ::std::ptrdiff_t set_abs_angles = 0x1E76F0;
-    constexpr ::std::ptrdiff_t set_abs_origin = 0x1E7530;
+    constexpr ::std::ptrdiff_t set_abs_angles = 0x1E6AC0;
+    constexpr ::std::ptrdiff_t set_abs_origin = 0x1E6900;
 
 }
 
 namespace globals {
 
-	inline bool isAim = false;
+    inline bool isAim = false;
     inline auto aimKey = 0x01;
     inline auto aimFov = 10.f;
     inline auto aimSmooth = 0.1f;
 
-	inline bool isBunny = false;
-	inline bool isRadar = false;
+    inline bool isBunny = false;
+    inline bool isRadar = false;
 
-	inline bool isAimAssit = false;
+    inline bool isAimAssit = false;
     inline auto aimAssitKey = 0x02;
 
-	inline bool isNoRecoil = false;
+    inline bool isNoRecoil = false;
 
-	inline bool isTrigger = false;
+    inline bool isTrigger = false;
     inline auto triggerKey = 0x03;
 
-	inline bool isEsp = false;
+    inline bool isEsp = false;
 
 
     inline bool isFlash = false;
-	inline bool isMenu = false;
+    inline bool isMenu = false;
     inline bool isAutoAccept = false;
-	
-	inline bool runhax = true;
-	inline auto legitAimSmooth = 0.1f;
-	inline auto legitAimHeadChance = 60;
 
-	inline HANDLE processID = NULL;
-	inline std::uintptr_t client = 0;
-	inline std::uintptr_t engine = 0;
-	inline std::uintptr_t serverbrowser = 0;
+    inline bool runhax = true;
+    inline auto legitAimSmooth = 0.1f;
+    inline auto legitAimHeadChance = 60;
 
-	inline std::uintptr_t localPlayer = 0;
-	inline std::int32_t localTeam = 0;
-	inline std::uintptr_t localPlayerFlags = 0;
+    inline HANDLE processID = NULL;
+    inline std::uintptr_t client = 0;
+    inline std::uintptr_t engine = 0;
+    inline std::uintptr_t serverbrowser = 0;
+
+    inline std::uintptr_t localPlayer = 0;
+    inline std::int32_t localTeam = 0;
+    inline std::uintptr_t localPlayerFlags = 0;
     inline std::int32_t clientState = 0;
 
     inline std::array<char, 0x80> mapDirectory = { 0 };
@@ -225,7 +226,7 @@ namespace globals {
     inline std::array<char, 0x100> gameDirectory = { 0 };
     inline std::string fullPath = "";
 
-	inline bool run_render = true;
+    inline bool run_render = true;
 
     namespace screen {
         inline auto width = GetSystemMetrics(SM_CXSCREEN);
@@ -236,172 +237,172 @@ namespace globals {
 }
 
 static const char* KeyNames[] = {
-    "OFF",
-    "VK_LBUTTON",
-    "VK_RBUTTON",
-    "VK_CANCEL",
-    "VK_MBUTTON",
-    "VK_XBUTTON1",
-    "VK_XBUTTON2",
-    "Unknown",
-    "VK_BACK",
-    "VK_TAB",
-    "Unknown",
-    "Unknown",
-    "VK_CLEAR",
-    "VK_RETURN",
-    "Unknown",
-    "Unknown",
-    "VK_SHIFT",
-    "VK_CONTROL",
-    "VK_MENU",
-    "VK_PAUSE",
-    "VK_CAPITAL",
-    "VK_KANA",
-    "Unknown",
-    "VK_JUNJA",
-    "VK_FINAL",
-    "VK_KANJI",
-    "Unknown",
-    "VK_ESCAPE",
-    "VK_CONVERT",
-    "VK_NONCONVERT",
-    "VK_ACCEPT",
-    "VK_MODECHANGE",
-    "VK_SPACE",
-    "VK_PRIOR",
-    "VK_NEXT",
-    "VK_END",
-    "VK_HOME",
-    "VK_LEFT",
-    "VK_UP",
-    "VK_RIGHT",
-    "VK_DOWN",
-    "VK_SELECT",
-    "VK_PRINT",
-    "VK_EXECUTE",
-    "VK_SNAPSHOT",
-    "VK_INSERT",
-    "VK_DELETE",
-    "VK_HELP",
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-    "VK_LWIN",
-    "VK_RWIN",
-    "VK_APPS",
-    "Unknown",
-    "VK_SLEEP",
-    "VK_NUMPAD0",
-    "VK_NUMPAD1",
-    "VK_NUMPAD2",
-    "VK_NUMPAD3",
-    "VK_NUMPAD4",
-    "VK_NUMPAD5",
-    "VK_NUMPAD6",
-    "VK_NUMPAD7",
-    "VK_NUMPAD8",
-    "VK_NUMPAD9",
-    "VK_MULTIPLY",
-    "VK_ADD",
-    "VK_SEPARATOR",
-    "VK_SUBTRACT",
-    "VK_DECIMAL",
-    "VK_DIVIDE",
-    "VK_F1",
-    "VK_F2",
-    "VK_F3",
-    "VK_F4",
-    "VK_F5",
-    "VK_F6",
-    "VK_F7",
-    "VK_F8",
-    "VK_F9",
-    "VK_F10",
-    "VK_F11",
-    "VK_F12",
-    "VK_F13",
-    "VK_F14",
-    "VK_F15",
-    "VK_F16",
-    "VK_F17",
-    "VK_F18",
-    "VK_F19",
-    "VK_F20",
-    "VK_F21",
-    "VK_F22",
-    "VK_F23",
-    "VK_F24",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "VK_NUMLOCK",
-    "VK_SCROLL",
-    "VK_OEM_NEC_EQUAL",
-    "VK_OEM_FJ_MASSHOU",
-    "VK_OEM_FJ_TOUROKU",
-    "VK_OEM_FJ_LOYA",
-    "VK_OEM_FJ_ROYA",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "Unknown",
-    "VK_LSHIFT",
-    "VK_RSHIFT",
-    "VK_LCONTROL",
-    "VK_RCONTROL",
-    "VK_LMENU",
-    "VK_RMENU"
+    AY_OBFUSCATE("OFF"),
+    AY_OBFUSCATE("VK_LBUTTON"),
+    AY_OBFUSCATE("VK_RBUTTON"),
+    AY_OBFUSCATE("VK_CANCEL"),
+    AY_OBFUSCATE("VK_MBUTTON"),
+    AY_OBFUSCATE("VK_XBUTTON1"),
+    AY_OBFUSCATE("VK_XBUTTON2"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("VK_BACK"),
+    AY_OBFUSCATE("VK_TAB"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("VK_CLEAR"),
+    AY_OBFUSCATE("VK_RETURN"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("VK_SHIFT"),
+    AY_OBFUSCATE("VK_CONTROL"),
+    AY_OBFUSCATE("VK_MENU"),
+    AY_OBFUSCATE("VK_PAUSE"),
+    AY_OBFUSCATE("VK_CAPITAL"),
+    AY_OBFUSCATE("VK_KANA"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("VK_JUNJA"),
+    AY_OBFUSCATE("VK_FINAL"),
+    AY_OBFUSCATE("VK_KANJI"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("VK_ESCAPE"),
+    AY_OBFUSCATE("VK_CONVERT"),
+    AY_OBFUSCATE("VK_NONCONVERT"),
+    AY_OBFUSCATE("VK_ACCEPT"),
+    AY_OBFUSCATE("VK_MODECHANGE"),
+    AY_OBFUSCATE("VK_SPACE"),
+    AY_OBFUSCATE("VK_PRIOR"),
+    AY_OBFUSCATE("VK_NEXT"),
+    AY_OBFUSCATE("VK_END"),
+    AY_OBFUSCATE("VK_HOME"),
+    AY_OBFUSCATE("VK_LEFT"),
+    AY_OBFUSCATE("VK_UP"),
+    AY_OBFUSCATE("VK_RIGHT"),
+    AY_OBFUSCATE("VK_DOWN"),
+    AY_OBFUSCATE("VK_SELECT"),
+    AY_OBFUSCATE("VK_PRINT"),
+    AY_OBFUSCATE("VK_EXECUTE"),
+    AY_OBFUSCATE("VK_SNAPSHOT"),
+    AY_OBFUSCATE("VK_INSERT"),
+    AY_OBFUSCATE("VK_DELETE"),
+    AY_OBFUSCATE("VK_HELP"),
+    AY_OBFUSCATE("0"),
+    AY_OBFUSCATE("1"),
+    AY_OBFUSCATE("2"),
+    AY_OBFUSCATE("3"),
+    AY_OBFUSCATE("4"),
+    AY_OBFUSCATE("5"),
+    AY_OBFUSCATE("6"),
+    AY_OBFUSCATE("7"),
+    AY_OBFUSCATE("8"),
+    AY_OBFUSCATE("9"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("A"),
+    AY_OBFUSCATE("B"),
+    AY_OBFUSCATE("C"),
+    AY_OBFUSCATE("D"),
+    AY_OBFUSCATE("E"),
+    AY_OBFUSCATE("F"),
+    AY_OBFUSCATE("G"),
+    AY_OBFUSCATE("H"),
+    AY_OBFUSCATE("I"),
+    AY_OBFUSCATE("J"),
+    AY_OBFUSCATE("K"),
+    AY_OBFUSCATE("L"),
+    AY_OBFUSCATE("M"),
+    AY_OBFUSCATE("N"),
+    AY_OBFUSCATE("O"),
+    AY_OBFUSCATE("P"),
+    AY_OBFUSCATE("Q"),
+    AY_OBFUSCATE("R"),
+    AY_OBFUSCATE("S"),
+    AY_OBFUSCATE("T"),
+    AY_OBFUSCATE("U"),
+    AY_OBFUSCATE("V"),
+    AY_OBFUSCATE("W"),
+    AY_OBFUSCATE("X"),
+    AY_OBFUSCATE("Y"),
+    AY_OBFUSCATE("Z"),
+    AY_OBFUSCATE("VK_LWIN"),
+    AY_OBFUSCATE("VK_RWIN"),
+    AY_OBFUSCATE("VK_APPS"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("VK_SLEEP"),
+    AY_OBFUSCATE("VK_NUMPAD0"),
+    AY_OBFUSCATE("VK_NUMPAD1"),
+    AY_OBFUSCATE("VK_NUMPAD2"),
+    AY_OBFUSCATE("VK_NUMPAD3"),
+    AY_OBFUSCATE("VK_NUMPAD4"),
+    AY_OBFUSCATE("VK_NUMPAD5"),
+    AY_OBFUSCATE("VK_NUMPAD6"),
+    AY_OBFUSCATE("VK_NUMPAD7"),
+    AY_OBFUSCATE("VK_NUMPAD8"),
+    AY_OBFUSCATE("VK_NUMPAD9"),
+    AY_OBFUSCATE("VK_MULTIPLY"),
+    AY_OBFUSCATE("VK_ADD"),
+    AY_OBFUSCATE("VK_SEPARATOR"),
+    AY_OBFUSCATE("VK_SUBTRACT"),
+    AY_OBFUSCATE("VK_DECIMAL"),
+    AY_OBFUSCATE("VK_DIVIDE"),
+    AY_OBFUSCATE("VK_F1"),
+    AY_OBFUSCATE("VK_F2"),
+    AY_OBFUSCATE("VK_F3"),
+    AY_OBFUSCATE("VK_F4"),
+    AY_OBFUSCATE("VK_F5"),
+    AY_OBFUSCATE("VK_F6"),
+    AY_OBFUSCATE("VK_F7"),
+    AY_OBFUSCATE("VK_F8"),
+    AY_OBFUSCATE("VK_F9"),
+    AY_OBFUSCATE("VK_F10"),
+    AY_OBFUSCATE("VK_F11"),
+    AY_OBFUSCATE("VK_F12"),
+    AY_OBFUSCATE("VK_F13"),
+    AY_OBFUSCATE("VK_F14"),
+    AY_OBFUSCATE("VK_F15"),
+    AY_OBFUSCATE("VK_F16"),
+    AY_OBFUSCATE("VK_F17"),
+    AY_OBFUSCATE("VK_F18"),
+    AY_OBFUSCATE("VK_F19"),
+    AY_OBFUSCATE("VK_F20"),
+    AY_OBFUSCATE("VK_F21"),
+    AY_OBFUSCATE("VK_F22"),
+    AY_OBFUSCATE("VK_F23"),
+    AY_OBFUSCATE("VK_F24"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("VK_NUMLOCK"),
+    AY_OBFUSCATE("VK_SCROLL"),
+    AY_OBFUSCATE("VK_OEM_NEC_EQUAL"),
+    AY_OBFUSCATE("VK_OEM_FJ_MASSHOU"),
+    AY_OBFUSCATE("VK_OEM_FJ_TOUROKU"),
+    AY_OBFUSCATE("VK_OEM_FJ_LOYA"),
+    AY_OBFUSCATE("VK_OEM_FJ_ROYA"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("Unknown"),
+    AY_OBFUSCATE("VK_LSHIFT"),
+    AY_OBFUSCATE("VK_RSHIFT"),
+    AY_OBFUSCATE("VK_LCONTROL"),
+    AY_OBFUSCATE("VK_RCONTROL"),
+    AY_OBFUSCATE("VK_LMENU"),
+    AY_OBFUSCATE("VK_RMENU")
 };
 static const int KeyCodes[] = {
     0x0,  //Undefined
