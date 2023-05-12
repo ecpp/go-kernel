@@ -1,458 +1,153 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="external\imgui\imgui.cpp" />
+    <ClCompile Include="external\imgui\imgui_demo.cpp" />
+    <ClCompile Include="external\imgui\imgui_draw.cpp" />
+    <ClCompile Include="external\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="external\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="external\imgui\imgui_tables.cpp" />
+    <ClCompile Include="external\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\gui\gui_esp.cpp" />
+    <ClCompile Include="src\gui\gui_menu.cpp" />
+    <ClCompile Include="src\hacks\hacks.cpp" />
+    <ClCompile Include="external\OpenSSL-Win64\include\openssl\applink.c" />
+    <ClCompile Include="external\OpenSSL-Win64\tests\ossl_shim\async_bio.cc" />
+    <ClCompile Include="external\OpenSSL-Win64\tests\ossl_shim\ossl_shim.cc" />
+    <ClCompile Include="external\OpenSSL-Win64\tests\ossl_shim\packeted_bio.cc" />
+    <ClCompile Include="external\OpenSSL-Win64\tests\ossl_shim\test_config.cc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\hacks\hacks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui_demo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui_draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui_impl_dx11.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui_impl_win32.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui_tables.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui_widgets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gui\gui_esp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\gui\gui_menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\OpenSSL-Win64\include\openssl\applink.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\OpenSSL-Win64\tests\ossl_shim\async_bio.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\OpenSSL-Win64\tests\ossl_shim\ossl_shim.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\OpenSSL-Win64\tests\ossl_shim\packeted_bio.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\OpenSSL-Win64\tests\ossl_shim\test_config.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="src\gui\gui_esp.h" />
+    <ClInclude Include="src\gui\gui_menu.h" />
+    <ClInclude Include="src\gui\main_gui.h" />
+    <ClInclude Include="src\utils\config_manager.h" />
+    <ClInclude Include="src\utils\driver.h" />
+    <ClInclude Include="external\imgui\imconfig.h" />
+    <ClInclude Include="external\imgui\imgui.h" />
+    <ClInclude Include="external\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="external\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="external\imgui\imgui_internal.h" />
+    <ClInclude Include="external\imgui\imstb_rectpack.h" />
+    <ClInclude Include="external\imgui\imstb_textedit.h" />
+    <ClInclude Include="external\imgui\imstb_truetype.h" />
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="src\hacks\hacks.h" />
+    <ClInclude Include="src\utils\loader.h" />
+    <ClInclude Include="src\utils\obfuscate.h" />
+    <ClInclude Include="src\utils\vector.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\__DECC_INCLUDE_EPILOGUE.H" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\__DECC_INCLUDE_PROLOGUE.H" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\aes.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asn1.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asn1_mac.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asn1err.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asn1t.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\async.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asyncerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\bio.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\bioerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\blowfish.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\bn.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\bnerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\buffer.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\buffererr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\camellia.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cast.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cmac.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cms.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cmserr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\comp.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\comperr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\conf.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\conf_api.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\conferr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\crypto.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cryptoerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ct.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cterr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\des.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dh.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dherr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dsa.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dsaerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dtls1.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\e_os2.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ebcdic.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ec.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ecdh.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ecdsa.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ecerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\engine.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\engineerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\err.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\evp.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\evperr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\hmac.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\idea.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\kdf.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\kdferr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\lhash.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\md2.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\md4.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\md5.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\mdc2.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\modes.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\obj_mac.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\objects.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\objectserr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ocsp.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ocsperr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\opensslconf.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\opensslv.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ossl_typ.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pem.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pem2.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pemerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pkcs7.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pkcs7err.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pkcs12.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pkcs12err.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rand.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rand_drbg.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\randerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rc2.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rc4.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rc5.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ripemd.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rsa.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rsaerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\safestack.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\seed.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\sha.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\srp.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\srtp.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ssl.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ssl2.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ssl3.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\sslerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\stack.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\store.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\storeerr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\symhacks.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\tls1.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ts.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\tserr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\txt_db.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ui.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\uierr.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\whrlpool.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509_vfy.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509err.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509v3.h" />
+    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509v3err.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="globals.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hacks\hacks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\vector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\memory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\driver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\loader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hacks\espstuff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imconfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imgui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imgui_impl_dx11.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imgui_impl_win32.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imgui_internal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imstb_rectpack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imstb_textedit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imstb_truetype.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gui\gui_esp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gui\gui_menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\gui\main_gui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\config_manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\__DECC_INCLUDE_EPILOGUE.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\__DECC_INCLUDE_PROLOGUE.H">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\aes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asn1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asn1_mac.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asn1err.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asn1t.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\async.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\asyncerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\bio.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\bioerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\blowfish.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\bn.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\bnerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\buffererr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\camellia.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cast.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cmac.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cms.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cmserr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\comp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\comperr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\conf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\conf_api.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\conferr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\crypto.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cryptoerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\cterr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\des.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dherr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dsa.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dsaerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\dtls1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\e_os2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ebcdic.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ec.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ecdh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ecdsa.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ecerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\engine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\engineerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\err.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\evp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\evperr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\hmac.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\idea.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\kdf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\kdferr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\lhash.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\md2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\md4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\md5.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\mdc2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\modes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\obj_mac.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\objects.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\objectserr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ocsp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ocsperr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\opensslconf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\opensslv.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ossl_typ.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pem2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pemerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pkcs7.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pkcs7err.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pkcs12.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\pkcs12err.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rand_drbg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\randerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rc2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rc4.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rc5.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ripemd.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rsa.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\rsaerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\safestack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\seed.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\sha.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\srp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\srtp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ssl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ssl2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ssl3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\sslerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\store.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\storeerr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\symhacks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\tls1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\tserr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\txt_db.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\ui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\uierr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\whrlpool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509_vfy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509err.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509v3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\OpenSSL-Win64\include\openssl\x509v3err.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="external\OpenSSL-Win64\lib\libcrypto.def">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="external\OpenSSL-Win64\lib\libssl.def">
-      <Filter>Source Files</Filter>
-    </None>
-    <None Include="external\OpenSSL-Win64\tests\fuzz\rand.inc">
-      <Filter>Header Files</Filter>
-    </None>
-    <None Include="external\OpenSSL-Win64\tests\data.bin">
-      <Filter>Resource Files</Filter>
-    </None>
+    <None Include="external\OpenSSL-Win64\lib\libcrypto.def" />
+    <None Include="external\OpenSSL-Win64\lib\libssl.def" />
+    <None Include="external\OpenSSL-Win64\tests\fuzz\rand.inc" />
+    <None Include="external\OpenSSL-Win64\tests\data.bin" />
   </ItemGroup>
 </Project>

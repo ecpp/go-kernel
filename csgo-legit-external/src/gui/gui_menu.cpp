@@ -3,6 +3,7 @@
 #include "../utils/driver.h"
 #include "gui_esp.h"
 #include "main_gui.h"
+#include "../utils/obfuscate.h"
 
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -71,11 +72,11 @@ void gui_menu::initWindow()
 {
 
 
-	m_gui::gameHWND = FindWindow(0, _T("Counter-Strike: Global Offensive - Direct3D 9"));
+	m_gui::gameHWND = FindWindow(0, _T(AY_OBFUSCATE("Counter-Strike: Global Offensive - Direct3D 9")));
 	if (m_gui::gameHWND == NULL)
 	{
-		MessageBox(0, "[GuiEngine MENU] Game not found", "ERROR", MB_OK | MB_ICONERROR);
-		
+		MessageBox(0, AY_OBFUSCATE("[GuiEngine MENU] Game not found"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
+
 	}
 
 	HINSTANCE hInstance = GetModuleHandle(NULL);
@@ -90,17 +91,17 @@ void gui_menu::initWindow()
 	wcMenu.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 0, 0));
 	wcMenu.lpfnWndProc = m_gui::WndProc;
 	wcMenu.hInstance = hInstance;
-	wcMenu.lpszClassName = "M3NU Window";
+	wcMenu.lpszClassName = AY_OBFUSCATE("M3NU Window");
 
 	RegisterClass(&wcMenu);
 
-	
+
 	//cheatMenuHWND = CreateWindowEx(WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW, wcMenu.lpszClassName, wcMenu.lpszMenuName, WS_POPUP, 1, 1, rc.right - rc.left, rc.bottom - rc.top, 0, 0, 0, 0);  // |  WS_EX_CLIENTEDGE| WS_EX_TRANSPARENT 
 	windowMenu = CreateWindowEx
 	(
 		WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW,
-		"M3NU Window",
-		"Hack",
+		AY_OBFUSCATE("M3NU Window"),
+		AY_OBFUSCATE("Hack"),
 		WS_POPUP,
 		0,
 		0,
@@ -122,7 +123,7 @@ void gui_menu::initWindow()
 
 	if (!gui_menu::create_device_D3D(windowMenu))
 	{
-		MessageBox(0, "[ GuiEngine Menu ] create_device_D3D error", "ERROR", MB_OK | MB_ICONERROR);
+		MessageBox(0, AY_OBFUSCATE("[ GuiEngine Menu ] create_device_D3D error"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
 		gui_menu::cleanup_device_D3D();
 		UnregisterClass(wcMenu.lpszClassName, wcMenu.hInstance);
 
@@ -290,7 +291,7 @@ void gui_menu::initRender() {
 		ImGui::SetNextWindowPos({ 0, 0 });
 		//ImGui::SetNextWindowSize({ 750, 450 });
 		ImGui::Begin(
-			"eren.exe",
+			AY_OBFUSCATE("eren.exe"),
 			&globals::run_render,
 			ImGuiWindowFlags_NoResize |
 			ImGuiWindowFlags_NoSavedSettings |
@@ -303,9 +304,9 @@ void gui_menu::initRender() {
 			{ ImGui::GetContentRegionAvail().x * 0.25f, ImGui::GetContentRegionAvail().y },
 			true)) {
 			constexpr auto button_height = 48;
-			if (ImGui::Button("Aimbot", { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 0; }
-			if (ImGui::Button("Visuals", { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 1; }
-			if (ImGui::Button("Other", { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 2; }
+			if (ImGui::Button(AY_OBFUSCATE("Aimbot"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 0; }
+			if (ImGui::Button(AY_OBFUSCATE("Visuals"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 1; }
+			if (ImGui::Button(AY_OBFUSCATE("Other"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 2; }
 
 			ImGui::EndChild();
 		}
@@ -322,35 +323,35 @@ void gui_menu::initRender() {
 				//create new column
 				ImGui::Columns(2, nullptr, false);
 				//create slider for fov
-				ImGui::SliderFloat("FOV", &globals::aimFov, 0, 100);
-				ImGui::Checkbox("AIM", &globals::isAimAssit);
+				ImGui::SliderFloat(AY_OBFUSCATE("FOV"), &globals::aimFov, 0, 100);
+				ImGui::Checkbox(AY_OBFUSCATE("AIM"), &globals::isAimAssit);
 				ImGui::Spacing();
-				ImGui::SliderFloat("SMOOTH", &globals::legitAimSmooth, 0.1f, 1.f);
+				ImGui::SliderFloat(AY_OBFUSCATE("SMOOTH"), &globals::legitAimSmooth, 0.1f, 1.f);
 				ImGui::NextColumn();
 				aimassist_hotkey.render();
 				ImGui::NextColumn();
-				ImGui::Checkbox("TRIGGER", &globals::isTrigger);
+				ImGui::Checkbox(AY_OBFUSCATE("TRIGGER"), &globals::isTrigger);
 				ImGui::NextColumn();
 				trigger_hotkey.render();
 				ImGui::NextColumn();
-				ImGui::Checkbox("NORECOIL", &globals::isNoRecoil);
+				ImGui::Checkbox(AY_OBFUSCATE("NORECOIL"), &globals::isNoRecoil);
 				break;
 
 			case 1:
-				ImGui::Checkbox("ESP", &globals::isEsp);
+				ImGui::Checkbox(AY_OBFUSCATE("ESP"), &globals::isEsp);
 				ImGui::Spacing();
 
 
 				break;
 
 			case 2:
-				ImGui::Checkbox("RADAR", &globals::isRadar);
+				ImGui::Checkbox(AY_OBFUSCATE("RADAR"), &globals::isRadar);
 				ImGui::Spacing();
-				ImGui::Checkbox("BUNNY", &globals::isBunny);
+				ImGui::Checkbox(AY_OBFUSCATE("BUNNY"), &globals::isBunny);
 				ImGui::Spacing();
-				ImGui::Checkbox("N0 FLASH", &globals::isFlash);
+				ImGui::Checkbox(AY_OBFUSCATE("N0 FLASH"), &globals::isFlash);
 				ImGui::Spacing();
-				ImGui::Checkbox("AUTO ACCEPT", &globals::isAutoAccept);
+				ImGui::Checkbox(AY_OBFUSCATE("AUTO ACCEPT"), &globals::isAutoAccept);
 				break;
 
 			}
@@ -363,7 +364,7 @@ void gui_menu::initRender() {
 		end_draw_menu();
 	}
 
-	
+
 }
 
 void gui_menu::startMenu()

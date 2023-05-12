@@ -1,5 +1,4 @@
 #pragma once
-#include "../utils/memory.h"
 
 namespace hax {
 	void readGlobals() noexcept;

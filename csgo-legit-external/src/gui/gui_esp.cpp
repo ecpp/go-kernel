@@ -2,9 +2,9 @@
 #include "../../globals.h"
 #include "../utils/driver.h"
 #include "../utils/vector.h"
-#include "../hacks/espstuff.h"
 #include "gui_menu.h"
 #include "main_gui.h"
+#include "../utils/obfuscate.h"
 
 
 
@@ -27,7 +27,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 bool gui_esp::init_window_Esp()
 {
-	
+
 
 	HINSTANCE hInstance = GetModuleHandle(NULL);
 
@@ -40,15 +40,15 @@ bool gui_esp::init_window_Esp()
 	wcEsp.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 0, 0));
 	wcEsp.lpfnWndProc = m_gui::WndProc;
 	wcEsp.hInstance = hInstance;
-	wcEsp.lpszClassName = "E5P Window";
+	wcEsp.lpszClassName = AY_OBFUSCATE("E5P Window");
 
 	RegisterClass(&wcEsp);
-	
+
 	windowEsp = CreateWindowEx
 	(
 		WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW,
-		"E5P Window",
-		"Hack",
+		AY_OBFUSCATE("E5P Window"),
+		AY_OBFUSCATE("Hack"),
 		WS_POPUP,
 		0,
 		0,
@@ -68,7 +68,7 @@ bool gui_esp::init_window_Esp()
 
 	if (!gui_esp::init_render())
 	{
-		MessageBox(0, "[GuiEngine ESP] init_render error", "ERROR", MB_OK | MB_ICONERROR);
+		MessageBox(0, AY_OBFUSCATE("[GuiEngine ESP] init_render error"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
 		cleanup_canvas();
 		UnregisterClass(wcEsp.lpszClassName, wcEsp.hInstance);
 		return 0;
@@ -90,8 +90,8 @@ bool gui_esp::init_render()
 
 	if (S_OK != D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &pFactory))
 	{
-		MessageBox(0, "D2D1CreateFactory", "ERROR", MB_OK | MB_ICONERROR);
-		std::cout << "D2D1CreateFactory error" << std::endl;
+		MessageBox(0, AY_OBFUSCATE("D2D1CreateFactory"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
+		std::cout << AY_OBFUSCATE("D2D1CreateFactory error") << std::endl;
 		return 0;
 	}
 	gui_esp::create_canvas();
@@ -118,12 +118,12 @@ void gui_esp::create_canvas()
 		&pRenderTarget
 	);
 	if (!pRenderTarget) {
-		MessageBox(0, "GuiEngine create_canvas ] !pRenderTarget", "ERROR", MB_OK | MB_ICONERROR);
-		std::cout << "cant create canvas" << std::endl;
+		MessageBox(0, AY_OBFUSCATE("GuiEngine create_canvas ] !pRenderTarget"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
+		std::cout << AY_OBFUSCATE("cant create canvas") << std::endl;
 	}
-		
 
-	
+
+
 	pRenderTarget->SetDpi(96, 96);
 	pRenderTarget->CreateSolidColorBrush(color_brush, &ColorBrush);
 }
@@ -132,8 +132,8 @@ void gui_esp::begin_draw_esp()
 {
 	if (!pRenderTarget)
 	{
-		std::cout << "Error pRenderTarget" << std::endl;
-		
+		std::cout << AY_OBFUSCATE("Error pRenderTarget") << std::endl;
+
 	}
 	pRenderTarget->BeginDraw();
 	pRenderTarget->Clear(clear_color_D2D);
@@ -248,7 +248,7 @@ void gui_esp::drawAll() {
 	ZeroMemory(&msg, sizeof(msg));
 	while (msg.message != WM_QUIT && globals::run_render)
 	{
-		
+
 
 
 		if (PeekMessage(&msg, windowEsp, 0U, 0U, PM_REMOVE))
@@ -292,7 +292,7 @@ void gui_esp::drawAll() {
 			for (size_t i = 0; i < 32; i++)
 			{
 
-				
+
 				DWORD currEnt = Driver::rpm<DWORD>(globals::client + offset::dwEntityList + (i * 0x10));
 				if (!currEnt)
 					continue;
@@ -338,7 +338,7 @@ void gui_esp::drawAll() {
 
 
 				std::string healthText = std::to_string(health);
-				healthText += "%";
+				healthText += AY_OBFUSCATE("%");
 				gui_esp::String(Vector2(Entity_x - 5, healthBarY), std::wstring(healthText.begin(), healthText.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
 
 				std::string name = p.name;
@@ -350,10 +350,10 @@ void gui_esp::drawAll() {
 				//
 				////draw head box
 				//gui_esp::rect(headScreen.x - 1, headScreen.y - 1, 2, 2, D2D1::ColorF(D2D1::ColorF::Green, 1.0f));
-				
-				
 
-				
+
+
+
 				//check if spotted by mask
 				if (Driver::rpm<std::int32_t>(currEnt + offset::m_bSpottedByMask)) {
 
@@ -370,15 +370,15 @@ void gui_esp::drawAll() {
 		else {
 			gui_esp::clear_window();
 		}
-		
+
 		Sleep(1);
 	}
-	
+
 	gui_esp::shutdown();
 
 
 
 
 
-	
+
 }
