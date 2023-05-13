@@ -14,6 +14,18 @@ public:
 		client.enable_server_certificate_verification(false);
 	}
 
+	bool isServerRunning() {
+		client.set_connection_timeout(3); // Set a 2-second timeout for the connection attempt
+
+		auto res = client.Get("/"); // Send a simple GET request to the server
+		if (res && res->status == 200) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	bool signup(std::string username, std::string password, std::string email, std::string hwid);
 	int login(std::string username, std::string password, std::string hwid);
 	bool testApi();

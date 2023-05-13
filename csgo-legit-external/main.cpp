@@ -1,24 +1,54 @@
 
 #define _CRT_SECURE_NO_WARNINGS
+#include "globals.h"
 #include "src/utils/vector.h"
 #include <atomic>
 #include <thread>
 #include <iostream>
 #include "src/hacks/hacks.h"
-#include "globals.h"
 #include "src/utils/driver.h"
 #include "src/utils/loader.h"
 #include "src/gui/gui_esp.h"
 #include "src/utils/obfuscate.h"
+#include <codecvt>
+#include <locale>
+
+
+
+
 
 int main(int argc, char* argv[])
 {
 	if (argc < 2) {
 		std::cout << AY_OBFUSCATE("Please run the loader.") << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
 	}
 
 	std::string userToken = argv[1];
+
+	if (!globals::api.isServerRunning()) {
+		std::cout << AY_OBFUSCATE("Connection Error.") << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		return 0;
+	}
+
+	HW_PROFILE_INFO hwProfileInfo;
+	if (GetCurrentHwProfile(&hwProfileInfo)) {
+		globals::hwid = hwProfileInfo.szHwProfileGuid;
+		std::cout << AY_OBFUSCATE("HWID: ") << globals::hwid << std::endl;
+	}
+	else {
+		std::cout << AY_OBFUSCATE("Failed to get HWID.") << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		return 0;
+	}
+
+	if (!globals::api.validateProduct(0)) {
+		std::cout << AY_OBFUSCATE("Failed to validate product.") << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		return 0;
+	}
 
 	loader();
 

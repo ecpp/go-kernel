@@ -1,9 +1,10 @@
+#include "../../globals.h"
 #include "hacks.h"
 #include <thread>
 #include <iostream>
 #include "../utils/vector.h"
 #include "../utils/driver.h"
-#include "../../globals.h"
+
 #include "../gui/gui_esp.h"
 #include "../gui/gui_menu.h"
 

@@ -1,9 +1,15 @@
-﻿  Generating code
-  Previous IPDB not found, fall back to full compilation.
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\utils\vector.h(25): warning C4172: returning address of local variable or temporary
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\utils\vector.h(20): warning C4172: returning address of local variable or temporary
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\utils\vector.h(35): warning C4172: returning address of local variable or temporary
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\utils\vector.h(62): warning C4172: returning address of local variable or temporary
-  All 4632 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+﻿  main.cpp
+  api.cpp
+  gui_esp.cpp
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,30): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,51): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,61): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,71): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+  gui_menu.cpp
+  hacks.cpp
+  Generating code
+  3237 of 8095 functions (40.0%) were compiled, the rest were copied from previous compilation.
+    157 functions were new in current compilation
+    294 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   csgo-legit-external.vcxproj -> C:\Users\ecpp\source\repos\go-kernel\x64\Release\csgo-legit-external.exe

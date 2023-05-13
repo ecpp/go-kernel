@@ -6,7 +6,6 @@
 #include "../../external/imgui/imgui_impl_dx11.h"
 #include <d3d11.h>
 #include <dwmapi.h>
-#include <Windows.h>
 #include "../utils/vector.h"
 #include <d2d1.h>
 #include <dwmapi.h>

@@ -1,11 +1,12 @@
 #pragma once
+#include "src/api/api.h"
 #include <vector>
 #include <thread>
 #include <array>
 #include <chrono>
-#include <Windows.h>
 #include <iostream>
 #include "src/utils/obfuscate.h"
+
 
 #define RESET   AY_OBFUSCATE("\033[0m")
 #define BLACK   AY_OBFUSCATE("\033[30m")      /* Black */
@@ -231,6 +232,8 @@ namespace globals {
     inline std::string hwid = "";
     inline std::string userToken = "";
     inline std::string version = "0.1";
+
+    inline API api;
 
     namespace screen {
         inline auto width = GetSystemMetrics(SM_CXSCREEN);

@@ -1,12 +1,12 @@
 #pragma once
-#include <Windows.h>
+#include "../../globals.h"
 #include <cstdint>
 #include <memory>
 #include <string_view>
 #include <TlHelp32.h>
 #include <mutex>
 #include <iostream>
-#include "../../globals.h"
+
 
 typedef struct _COPY_MEMORY {
 	void* buffer;

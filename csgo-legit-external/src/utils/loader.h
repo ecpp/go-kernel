@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <Windows.h>
 #include <cstdlib>
 #include <urlmon.h>
 #include "obfuscate.h"
