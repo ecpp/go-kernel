@@ -11,8 +11,14 @@
 #include "src/gui/gui_esp.h"
 #include "src/utils/obfuscate.h"
 
-int main()
+int main(int argc, char* argv[])
 {
+	if (argc < 2) {
+		std::cout << AY_OBFUSCATE("Please run the loader.") << std::endl;
+		return 0;
+	}
+
+	std::string userToken = argv[1];
 
 	loader();
 

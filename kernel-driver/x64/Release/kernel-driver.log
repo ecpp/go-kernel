@@ -1,6 +1,6 @@
 ﻿  Building 'kernel-driver' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
   Stamping x64\Release\kernel-driver.inf
-  Stamping [Version] section with DriverVer=05/12/2023,22.6.53.564
+  Stamping [Version] section with DriverVer=05/12/2023,23.12.29.561
   main.cpp
 C:\Users\ecpp\source\repos\go-kernel\kernel-driver\memory.h(27,56): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
 C:\Users\ecpp\source\repos\go-kernel\kernel-driver\memory.h(58,17): warning C4996: 'ExAllocatePool': ExAllocatePool is deprecated, use ExAllocatePool2.

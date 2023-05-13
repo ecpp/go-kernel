@@ -228,6 +228,10 @@ namespace globals {
 
     inline bool run_render = true;
 
+    inline std::string hwid = "";
+    inline std::string userToken = "";
+    inline std::string version = "0.1";
+
     namespace screen {
         inline auto width = GetSystemMetrics(SM_CXSCREEN);
         inline auto height = GetSystemMetrics(SM_CYSCREEN);
