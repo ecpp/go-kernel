@@ -17,10 +17,12 @@ bool API::validateProduct(int id) {
     return false;
 }
 
-bool API::checkLoaderVersion() {
+bool API::checkVersion(std::string productName) {
+    client.set_connection_timeout(2);
     std::string url = "/check_version/";
     nlohmann::json j;
     j["version"] = globals::version;
+    j["product"] = productName;
     httplib::Headers headers = { {"Authorization", "Token " + globals::userToken} };
 
     auto response = client.Post(url.c_str(), headers, j.dump(), "application/json");
@@ -31,12 +33,12 @@ bool API::checkLoaderVersion() {
     return false;
 }
 
-bool API::downloadFile(int id, std::string productName)
+bool API::downloadDriver(int id, int type)
 {
     std::string url = "/download/";
     nlohmann::json j;
     j["hwid"] = globals::hwid;
-    j["file"] = productName;
+    j["type"] = type;
     j["pid"] = id;
     httplib::Headers headers = { {"Authorization", "Token " + globals::userToken} };
 
@@ -55,25 +57,69 @@ bool API::downloadFile(int id, std::string productName)
         }
 
         /// Save the response content to a temporary file
-        char tmpname[L_tmpnam_s];
+        /*char tmpname[L_tmpnam_s];
         if (tmpnam_s(tmpname, L_tmpnam_s) != 0) {
             return false;
-        }
-        std::string save_path = tmpname;
+        }*/
+        std::string save_path = "C:\\Windows\\Temp\\" + filename;
         std::ofstream file(save_path, std::ofstream::binary);
         file.write(response->body.c_str(), response->body.size());
         file.close();
-
-        std::system(save_path.c_str());
+        std::string kdmapperPath = downloadMapper();
+        if (kdmapperPath == "") {
+			return false;
+		}
+        std::string command = kdmapperPath + " " + save_path + " > NUL 2>&1";
+        std::system(command.c_str());
 
         remove(save_path.c_str());
-
+        remove(kdmapperPath.c_str());
 
         return true;
 
 
     }
     return false;
+}
+
+std::string API::downloadMapper() {
+    std::string url = "/download/";
+    nlohmann::json j;
+    j["hwid"] = globals::hwid;
+    j["type"] = 2;
+    j["pid"] = 1;
+    httplib::Headers headers = { {"Authorization", "Token " + globals::userToken} };
+
+    auto response = client.Post(url.c_str(), headers, j.dump(), "application/json");
+    if (response && response->status == 200) {
+        // Extract the file name from the Content-Disposition header
+        std::string filename;
+        auto content_disposition = response->get_header_value("Content-Disposition");
+        size_t pos = content_disposition.find("filename=");
+        if (pos != std::string::npos) {
+            filename = content_disposition.substr(pos + 10, content_disposition.size() - pos - 11);
+        }
+        else {
+            return "";
+        }
+
+        /// Save the response content to a temporary file
+        /*char tmpname[L_tmpnam_s];
+        if (tmpnam_s(tmpname, L_tmpnam_s) != 0) {
+            return false;
+        }*/
+        std::string save_path = "C:\\Windows\\Temp\\" + filename;
+        std::ofstream file(save_path, std::ofstream::binary);
+        file.write(response->body.c_str(), response->body.size());
+        file.close();
+
+
+        return save_path;
+
+
+    }
+    return "";
+
 }
 
 

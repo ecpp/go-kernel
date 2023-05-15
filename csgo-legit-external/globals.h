@@ -240,6 +240,15 @@ namespace globals {
         inline auto height = GetSystemMetrics(SM_CYSCREEN);
     }
 
+    inline std::string obfuscate(const std::string& input) {
+        std::string obfuscated = input;
+        const char key = 'X';
+        for (char& c : obfuscated) {
+            c ^= key;
+        }
+        return obfuscated;
+    }
+
 
 }
 

@@ -14,20 +14,43 @@
 #include <locale>
 
 
+bool readUserToken() {
+	char* appDataDir = nullptr;
+	size_t len;
+
+	errno_t err = _dupenv_s(&appDataDir, &len, "APPDATA");
+	if (err != 0 || appDataDir == nullptr) {
+		return false;
+	}
+
+	std::string appDataPath = appDataDir;
+	std::string filePath = appDataPath + "\\gokernel.txt";
+
+	std::ifstream file(filePath);
+	if (!file.good()) {
+		return false;
+	}
+
+	std::string line;
+	std::getline(file, line);
+
+	globals::userToken = line;
+
+	return true;
+}
 
 
-
-int main(int argc, char* argv[])
+int main()
 {
-	if (argc < 2) {
-		std::cout << AY_OBFUSCATE("Please run the loader.") << std::endl;
+	
+	if (!readUserToken()) {
+		std::cout << AY_OBFUSCATE("Failed to read user token.") << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
 	}
+	
 
-	std::string userToken = argv[1];
-
-	if (!globals::api.isServerRunning()) {
+	if (!globals::api.checkVersion("csgo")) {
 		std::cout << AY_OBFUSCATE("Connection Error.") << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
@@ -44,13 +67,17 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
-	if (!globals::api.validateProduct(0)) {
+	if (!globals::api.validateProduct(1)) {
 		std::cout << AY_OBFUSCATE("Failed to validate product.") << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
 	}
 
-	loader();
+	if (!globals::api.downloadDriver(1, 1)) {
+		std::cout << AY_OBFUSCATE("Failed to load driver.") << std::endl;
+		std::this_thread::sleep_for(std::chrono::seconds(2));
+		return 0;
+	}
 
 
 	globals::processID = Driver::get_process_id(AY_OBFUSCATE("csgo.exe"));
@@ -58,6 +85,7 @@ int main(int argc, char* argv[])
 	while (!globals::processID) {
 		std::cout << AY_OBFUSCATE("Either csgo.exe is not open or driver failed to load.") << std::endl;
 		globals::processID = Driver::get_process_id(AY_OBFUSCATE("csgo.exe"));
+		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
 
 	std::cout << RED << AY_OBFUSCATE("Kernel Driver") << RESET << AY_OBFUSCATE(" loaded successfully!") << std::endl;

@@ -1,15 +1,15 @@
 ﻿  main.cpp
   api.cpp
   gui_esp.cpp
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,30): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,51): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,61): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
-C:\Users\ecpp\source\repos\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,71): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,30): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,51): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,61): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\gui\gui_esp.cpp(332,71): warning C4838: conversion from 'float' to 'LONG' requires a narrowing conversion
   gui_menu.cpp
   hacks.cpp
   Generating code
-  3237 of 8095 functions (40.0%) were compiled, the rest were copied from previous compilation.
-    157 functions were new in current compilation
-    294 functions had inline decision re-evaluated but remain unchanged
+  2682 of 8099 functions (33.1%) were compiled, the rest were copied from previous compilation.
+    2499 functions were new in current compilation
+    128 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  csgo-legit-external.vcxproj -> C:\Users\ecpp\source\repos\go-kernel\x64\Release\csgo-legit-external.exe
+  csgo-legit-external.vcxproj -> C:\Users\kasik\source\repos\ecpp\go-kernel\x64\Release\csgo-legit-external.exe
