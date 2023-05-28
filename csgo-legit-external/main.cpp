@@ -49,17 +49,20 @@ int main()
 		return 0;
 	}
 	
+	std::cout << AY_OBFUSCATE("Version check ......");
 
 	if (!globals::api.checkVersion("csgo")) {
-		std::cout << AY_OBFUSCATE("Connection Error.") << std::endl;
+		std::cout << RED << AY_OBFUSCATE("FAILED!") << RESET << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
 	}
 
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	std::cout << GREEN << AY_OBFUSCATE("OK") << RESET << std::endl;
+
 	HW_PROFILE_INFO hwProfileInfo;
 	if (GetCurrentHwProfile(&hwProfileInfo)) {
 		globals::hwid = hwProfileInfo.szHwProfileGuid;
-		std::cout << AY_OBFUSCATE("HWID: ") << globals::hwid << std::endl;
 	}
 	else {
 		std::cout << AY_OBFUSCATE("Failed to get HWID.") << std::endl;
@@ -67,18 +70,27 @@ int main()
 		return 0;
 	}
 
+	std::cout << AY_OBFUSCATE("License check ......");
+
 	if (!globals::api.validateProduct(1)) {
-		std::cout << AY_OBFUSCATE("Failed to validate product.") << std::endl;
+		std::cout << RED << AY_OBFUSCATE("FAILED!") << RESET << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
 	}
+
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	std::cout << GREEN << AY_OBFUSCATE("OK") << RESET << std::endl;
+	
+	std::cout << AY_OBFUSCATE("Driver check ......");
 
 	if (!globals::api.downloadDriver(1, 1)) {
-		std::cout << AY_OBFUSCATE("Failed to load driver.") << std::endl;
+		std::cout << RED << AY_OBFUSCATE("FAILED!") << RESET << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
 	}
 
+	std::this_thread::sleep_for(std::chrono::seconds(1));
+	std::cout << GREEN << AY_OBFUSCATE("OK") << RESET << std::endl;
 
 	globals::processID = Driver::get_process_id(AY_OBFUSCATE("csgo.exe"));
 
@@ -88,13 +100,10 @@ int main()
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
 
-	std::cout << RED << AY_OBFUSCATE("Kernel Driver") << RESET << AY_OBFUSCATE(" loaded successfully!") << std::endl;
+	std::cout << AY_OBFUSCATE("Kernel Driver ......") << GREEN << AY_OBFUSCATE("LOADED!") << RESET << std::endl;
 
 	globals::client = Driver::get_client(globals::processID);
 	globals::engine = Driver::get_engine(globals::processID);
-
-	std::cout << BLUE << AY_OBFUSCATE("ID (csgo.exe):") << GREEN << globals::processID << std::endl;
-
 
 	if (!globals::client || !globals::engine) {
 		std::cout << AY_OBFUSCATE("Failed to find client.dll or engine.dll") << std::endl;
@@ -102,8 +111,7 @@ int main()
 		return 0;
 	}
 
-	std::cout << BLUE << AY_OBFUSCATE("ID (client.dll):") << GREEN << globals::client << std::endl;
-	std::cout << BLUE << AY_OBFUSCATE("ID (engine.dll):") << GREEN << globals::engine << std::endl;
+	std::cout << AY_OBFUSCATE("G0-K3RN3L ......") << GREEN << AY_OBFUSCATE("STARTED!") << RESET << std::endl;
 
 
 
@@ -129,7 +137,7 @@ int main()
 			ExitProcess(0);
 			return 0;
 		}
-		std::this_thread::sleep_for(std::chrono::minutes(10));
+		std::this_thread::sleep_for(std::chrono::minutes(2));
 	}
 
 	return 0;

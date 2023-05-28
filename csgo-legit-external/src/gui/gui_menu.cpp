@@ -101,7 +101,7 @@ void gui_menu::initWindow()
 	(
 		WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW,
 		AY_OBFUSCATE("M3NU Window"),
-		AY_OBFUSCATE("Hack"),
+		AY_OBFUSCATE("G0-K3RN3L"),
 		WS_POPUP,
 		0,
 		0,
@@ -260,7 +260,7 @@ void gui_menu::initRender() {
 			return;
 		}
 	}
-	if (GetAsyncKeyState(VK_INSERT) & 0x8000)
+	if (GetAsyncKeyState(VK_INSERT) & 0x8000 || GetAsyncKeyState(VK_DELETE) & 0x8000)
 	{
 		globals::isMenu = !globals::isMenu;
 		if (globals::isMenu)
@@ -307,6 +307,7 @@ void gui_menu::initRender() {
 			if (ImGui::Button(AY_OBFUSCATE("Aimbot"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 0; }
 			if (ImGui::Button(AY_OBFUSCATE("Visuals"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 1; }
 			if (ImGui::Button(AY_OBFUSCATE("Other"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 2; }
+			if (ImGui::Button(AY_OBFUSCATE("Config"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 3; }
 
 			ImGui::EndChild();
 		}
@@ -338,8 +339,11 @@ void gui_menu::initRender() {
 				break;
 
 			case 1:
-				ImGui::Checkbox(AY_OBFUSCATE("ESP"), &globals::isEsp);
+				ImGui::Checkbox(AY_OBFUSCATE("BOX ESP"), &globals::isEsp);
 				ImGui::Spacing();
+				ImGui::Checkbox(AY_OBFUSCATE("NAME"), &globals::esp::isName);
+				ImGui::Spacing();
+				ImGui::Checkbox(AY_OBFUSCATE("HEALTH"), &globals::esp::isHealth);
 
 
 				break;
@@ -354,7 +358,23 @@ void gui_menu::initRender() {
 				ImGui::Checkbox(AY_OBFUSCATE("AUTO ACCEPT"), &globals::isAutoAccept);
 				break;
 
+			case 3:
+				if (ImGui::Button(AY_OBFUSCATE("LOAD LEGIT"), { ImGui::GetContentRegionAvail().x, 25 })) {
+					globals::isEsp = true;
+					globals::esp::isName = true;
+					globals::esp::isHealth = true;
+					globals::aimFov = 4;
+					globals::isAimAssit = true;
+					globals::legitAimSmooth = 0.14f;
+					//display loaded message
+					MessageBoxA(NULL, AY_OBFUSCATE("Legit config loaded"), AY_OBFUSCATE("G0-K3RN3L"), MB_OK | MB_ICONINFORMATION);
+				}
+				
+
+			
+				break;
 			}
+
 
 			ImGui::EndChild();
 		}

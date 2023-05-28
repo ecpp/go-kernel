@@ -240,6 +240,13 @@ namespace globals {
         inline auto height = GetSystemMetrics(SM_CYSCREEN);
     }
 
+    namespace esp {
+        inline bool isBox = false;
+        inline bool isName = false;
+        inline bool isHealth = false;
+        inline bool isWeapon = false;
+    }
+
     inline std::string obfuscate(const std::string& input) {
         std::string obfuscated = input;
         const char key = 'X';

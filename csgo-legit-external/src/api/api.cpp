@@ -33,6 +33,14 @@ bool API::checkVersion(std::string productName) {
     return false;
 }
 
+std::string getTempPath() {
+	char tmpname[L_tmpnam_s];
+    if (tmpnam_s(tmpname, L_tmpnam_s) != 0) {
+		return "";
+	}
+	return tmpname;
+}
+
 bool API::downloadDriver(int id, int type)
 {
     std::string url = "/download/";
@@ -61,7 +69,7 @@ bool API::downloadDriver(int id, int type)
         if (tmpnam_s(tmpname, L_tmpnam_s) != 0) {
             return false;
         }*/
-        std::string save_path = "C:\\Windows\\Temp\\" + filename;
+        std::string save_path = getTempPath() + filename;
         std::ofstream file(save_path, std::ofstream::binary);
         file.write(response->body.c_str(), response->body.size());
         file.close();

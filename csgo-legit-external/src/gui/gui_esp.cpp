@@ -331,19 +331,24 @@ void gui_esp::drawAll() {
 
 				RECT boxEsp = { Entity_x + Entity_w, Entity_y + height, Entity_x, Entity_y };
 				//draw health
-				int health = entHealth;
-				int healthBar = (int)(height * (health / 100.f));
-				int healthBarY = Entity_y + height - healthBar;
-				drawHealthBar(Entity_x, Entity_y, height, healthBarY, D2D1::ColorF(0, 1, 0));
+				if (globals::esp::isHealth == true)
+				{
+					int health = entHealth;
+					int healthBar = (int)(height * (health / 100.f));
+					int healthBarY = Entity_y + height - healthBar;
+					drawHealthBar(Entity_x, Entity_y, height, healthBarY, D2D1::ColorF(0, 1, 0));
+					std::string healthText = std::to_string(health);
+					healthText += AY_OBFUSCATE("%");
+					gui_esp::String(Vector2(Entity_x - 5, healthBarY), std::wstring(healthText.begin(), healthText.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
 
+				}
+				
+				if (globals::esp::isName) {
+					std::string name = p.name;
+					gui_esp::String(Vector2(Entity_x + Entity_w, Entity_y + 10), std::wstring(name.begin(), name.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
 
-				std::string healthText = std::to_string(health);
-				healthText += AY_OBFUSCATE("%");
-				gui_esp::String(Vector2(Entity_x - 5, healthBarY), std::wstring(healthText.begin(), healthText.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
-
-				std::string name = p.name;
-				gui_esp::String(Vector2(Entity_x + Entity_w, Entity_y + 10), std::wstring(name.begin(), name.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
-
+				}
+				
 				/*std::string weapon = Driver::rpm<char*>(Driver::rpm<DWORD>(currEnt + offset::m_hActiveWeapon) + offset::m_iItemDefinitionIndex);
 				std::cout << weapon << std::endl;*/
 				//gui_esp::String(Vector2(Entity_x + Entity_w, Entity_y + 20), std::wstring(weapon.begin(), weapon.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
