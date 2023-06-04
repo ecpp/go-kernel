@@ -366,6 +366,7 @@ void gui_menu::initRender() {
 					globals::aimFov = 4;
 					globals::isAimAssit = true;
 					globals::legitAimSmooth = 0.14f;
+					globals::aimKey = VK_LBUTTON;
 					//display loaded message
 					MessageBoxA(NULL, AY_OBFUSCATE("Legit config loaded"), AY_OBFUSCATE("G0-K3RN3L"), MB_OK | MB_ICONINFORMATION);
 				}

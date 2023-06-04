@@ -261,8 +261,11 @@ void gui_esp::drawAll() {
 		if (GetForegroundWindow() == m_gui::gameHWND || GetForegroundWindow() == gui_menu::windowMenu)
 		{
 			gui_esp::begin_draw_esp();
-			if (globals::isEsp == false)
+			if (globals::isEsp == false) {
+				//clear screen
+				gui_esp::clear_window();
 				continue;
+			}
 
 			//create empty circle
 			gui_esp::Circle({ float(globals::screen::width) / 2, float(globals::screen::height) / 2 }, D2D1::ColorF(D2D1::ColorF::Black), globals::aimFov * 7, 1.0f);

@@ -11,7 +11,7 @@
 #define RESET   AY_OBFUSCATE("\033[0m")
 #define BLACK   AY_OBFUSCATE("\033[30m")      /* Black */
 #define RED     AY_OBFUSCATE("\033[31m")      /* Red */
-#define GREEN   AY_OBFUSCATE("\033[32m")      /* Green */
+#define GREEN   AY_OBFUSCATE("\033[1;32m")      /* Green */
 #define YELLOW  AY_OBFUSCATE("\033[33m")      /* Yellow */
 #define BLUE    AY_OBFUSCATE("\033[34m")      /* Blue */
 #define MAGENTA AY_OBFUSCATE("\033[35m")      /* Magenta */
@@ -194,7 +194,7 @@ namespace globals {
     inline bool isRadar = false;
 
     inline bool isAimAssit = false;
-    inline auto aimAssitKey = 0x02;
+    inline auto aimAssitKey = 0x01;
 
     inline bool isNoRecoil = false;
 
