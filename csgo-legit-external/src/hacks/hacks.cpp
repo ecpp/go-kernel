@@ -35,6 +35,22 @@ void hax::readGlobals() noexcept
 	
 }
 
+void hax::checkGameWindow() noexcept
+{
+	while (globals::runhax) {
+		auto hwnd = FindWindow(0, _T(globals::windowName));
+		if (hwnd == NULL) {
+			std::cout << "Game window not found..." << std::endl;
+			std::cout << "Shutting down..." << std::endl;
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+			//close everything
+			globals::runhax = false;
+			ExitProcess(0);	
+		}
+		std::this_thread::sleep_for(std::chrono::seconds(30));
+	}
+}
+
 void hax::bunny() noexcept
 {
 	while (globals::runhax)

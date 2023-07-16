@@ -353,4 +353,8 @@ namespace memory {
 		ObDereferenceObject(target_process);
 		return status;
 	}
+
+	//signature scanning
+
+	
 }

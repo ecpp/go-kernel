@@ -115,7 +115,7 @@ int main()
 	std::cout << "G0-K3RN3L ......" << BOLDGREEN << "STARTED!" << RESET << std::endl;
 
 
-
+	std::thread(hax::checkGameWindow).detach();
 	std::thread(gui_menu::startMenu).detach();
 	std::thread(hax::readGlobals).detach();
 	std::thread(hax::bunny).detach();

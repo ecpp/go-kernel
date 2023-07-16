@@ -72,7 +72,7 @@ void gui_menu::initWindow()
 {
 
 
-	m_gui::gameHWND = FindWindow(0, _T(AY_OBFUSCATE("Counter-Strike: Global Offensive - Direct3D 9")));
+	m_gui::gameHWND = FindWindow(0, _T(globals::windowName));
 	if (m_gui::gameHWND == NULL)
 	{
 		MessageBox(0, AY_OBFUSCATE("[GuiEngine MENU] Game not found"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
@@ -324,7 +324,7 @@ void gui_menu::initRender() {
 				//create new column
 				ImGui::Columns(2, nullptr, false);
 				//create slider for fov
-				ImGui::SliderFloat(AY_OBFUSCATE("FOV"), &globals::aimFov, 0, 100);
+				/*ImGui::SliderFloat(AY_OBFUSCATE("FOV"), &globals::aimFov, 0, 100);
 				ImGui::Checkbox(AY_OBFUSCATE("AIM"), &globals::isAimAssit);
 				ImGui::Spacing();
 				ImGui::SliderFloat(AY_OBFUSCATE("SMOOTH"), &globals::legitAimSmooth, 0.1f, 1.f);
@@ -335,7 +335,11 @@ void gui_menu::initRender() {
 				ImGui::NextColumn();
 				trigger_hotkey.render();
 				ImGui::NextColumn();
-				ImGui::Checkbox(AY_OBFUSCATE("NORECOIL"), &globals::isNoRecoil);
+				ImGui::Checkbox(AY_OBFUSCATE("NORECOIL"), &globals::isNoRecoil);*/
+				ImGui::Text(AY_OBFUSCATE("Aimbot is currently"));
+				ImGui::Text(AY_OBFUSCATE("Disabled."));				
+				ImGui::Text(AY_OBFUSCATE("Please wait for"));
+				ImGui::Text(AY_OBFUSCATE("the next update."));
 				break;
 
 			case 1:
@@ -363,8 +367,8 @@ void gui_menu::initRender() {
 					globals::isEsp = true;
 					globals::esp::isName = true;
 					globals::esp::isHealth = true;
-					globals::aimFov = 4;
-					globals::isAimAssit = true;
+					globals::aimFov = 0;
+					globals::isAimAssit = false;
 					globals::legitAimSmooth = 0.14f;
 					globals::aimKey = VK_LBUTTON;
 					//display loaded message

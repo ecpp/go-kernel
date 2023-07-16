@@ -11,4 +11,5 @@ namespace hax {
 	void noFlash() noexcept;
 	void skinChanger() noexcept;
 	void autoAccept() noexcept;
+	void checkGameWindow() noexcept;
 }
