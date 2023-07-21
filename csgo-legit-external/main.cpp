@@ -10,6 +10,7 @@
 #include "src/utils/loader.h"
 #include "src/gui/gui_esp.h"
 #include "src/utils/obfuscate.h"
+#include "src/utils/nondrivermem.h"
 #include <codecvt>
 #include <locale>
 
@@ -111,6 +112,17 @@ int main()
 		std::this_thread::sleep_for(std::chrono::seconds(5));
 		return 0;
 	}
+
+	//Driver::get_engine_size(globals::processID);
+	HANDLE h = nonDriverMem::get_process_handle();
+	std::cout << "Process Handle ......" << BOLDGREEN << std::hex << h << RESET << std::endl;
+
+	std::cout << "Engine Size ........" << BOLDGREEN << std::hex << globals::enginesize << RESET << std::endl;
+	auto engineBytes = new BYTE[64950800+ 1];
+	memset(engineBytes, 0, 64950800 + 1);
+	DWORD dwClientState = Driver::rpm<DWORD>(globals::engine + nonDriverMem::SpyPatternScan(engineBytes, 64950800, AY_OBFUSCATE("A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0")) + 0x1) - globals::engine;
+	std::cout << "ClientState ........." << BOLDGREEN << std::hex << dwClientState << RESET << std::endl;
+
 
 	std::cout << "G0-K3RN3L ......" << BOLDGREEN << "STARTED!" << RESET << std::endl;
 

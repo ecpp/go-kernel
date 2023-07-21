@@ -20,7 +20,7 @@ typedef struct _COPY_MEMORY {
 	bool		write;
 	bool		get_client;
 	bool		get_engine;
-	bool		esp_status;
+	bool		get_engine_size;
 	const char* module_name;
 	const char* process_name;
 }COPY_MEMORY;
@@ -65,6 +65,15 @@ namespace Driver
 		return (uintptr_t)m.buffer;
 	}
 
+	static uintptr_t get_engine_size(HANDLE pID)
+	{
+		COPY_MEMORY m{};
+		m.get_engine_size = true;
+		m.pid = pID;
+		call_hook(&m);
+		return (uintptr_t)m.buffer;
+	}
+
 	static uintptr_t GetModuleBase(HANDLE pID, const char* modName)
 	{
 		COPY_MEMORY m{};
@@ -104,9 +113,4 @@ namespace Driver
 		call_hook(&m);
 	}
 
-	static bool setEsp(bool espStatus) {
-		COPY_MEMORY m{};
-		m.esp_status = true;
-		call_hook(&m);
-	}
 };

@@ -319,7 +319,7 @@ void hax::autoAccept() noexcept {
 		}
 		auto localHealth = Driver::rpm<std::uint32_t>(globals::localPlayer + offset::m_iHealth);
 		
-		if (localHealth > 0) {
+		if (localHealth >= 0 && localHealth <= 100) {
 			globals::isAutoAccept = false;
 		}
 		else {

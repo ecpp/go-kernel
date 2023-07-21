@@ -36,5 +36,6 @@
     <ClInclude Include="src\utils\json.hpp" />
     <ClInclude Include="src\utils\httplib.h" />
     <ClInclude Include="src\api\api.h" />
+    <ClInclude Include="src\utils\nondrivermem.h" />
   </ItemGroup>
 </Project>

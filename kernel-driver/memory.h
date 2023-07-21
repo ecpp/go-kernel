@@ -13,6 +13,7 @@ typedef struct _COPY_MEMORY {
 	bool		write;
 	bool		get_client;
 	bool		get_engine;
+	bool		get_engine_size;
 	const char* module_name;
 	const char* process_name;
 }COPY_MEMORY;
@@ -83,15 +84,14 @@ namespace memory {
 
 	}
 
-	ULONG GetModuleBasex86(PEPROCESS proc, UNICODE_STRING module_name) {
-		PPEB32 pPeb = (PPEB32)PsGetProcessWow64Process(proc);// get Process PEB for the x86 part, function is unexported and undoc
+	ULONG GetModuleBasex86(PEPROCESS proc, UNICODE_STRING module_name, BOOL get_size) {
+		PPEB32 pPeb = (PPEB32)PsGetProcessWow64Process(proc);
 
 		if (!pPeb) {
 			return 0; // failed
 		}
 
 		KAPC_STATE state;
-
 		KeStackAttachProcess(proc, &state);
 
 		PPEB_LDR_DATA32 pLdr = (PPEB_LDR_DATA32)pPeb->Ldr;
@@ -103,24 +103,45 @@ namespace memory {
 
 		UNICODE_STRING name;
 
-		// loop the linked list
 		for (PLIST_ENTRY32 list = (PLIST_ENTRY32)pLdr->InLoadOrderModuleList.Flink;
 			list != &pLdr->InLoadOrderModuleList; list = (PLIST_ENTRY32)list->Flink) {
 			PLDR_DATA_TABLE_ENTRY32 pEntry =
 				CONTAINING_RECORD(list, LDR_DATA_TABLE_ENTRY32, InLoadOrderLinks);
-			// since the PEB is x86, the DLL is x86, and so the base address is in x86 (4 byte as compared to 8 byte)
-			// and the UNICODE STRING is in 32 bit(UNICODE_STRING32), and because there is no viable conversion
-			// we are just going to force everything in.
-			// believe me it works.
+
 			UNICODE_STRING DLLname;
 			DLLname.Length = pEntry->BaseDllName.Length;
 			DLLname.MaximumLength = pEntry->BaseDllName.MaximumLength;
 			DLLname.Buffer = (PWCH)pEntry->BaseDllName.Buffer;
 
-			if (RtlCompareUnicodeString(&DLLname, &module_name, TRUE) ==
-				0) {
+			if (RtlCompareUnicodeString(&DLLname, &module_name, TRUE) == 0) {
 				ULONG baseAddr = pEntry->DllBase;
 				KeUnstackDetachProcess(&state);
+
+				if (get_size) {
+					HANDLE fileHandle;
+					IO_STATUS_BLOCK ioStatusBlock;
+					OBJECT_ATTRIBUTES objectAttributes;
+					UNICODE_STRING filePath;
+
+					filePath.Length = pEntry->FullDllName.Length;
+					filePath.MaximumLength = pEntry->FullDllName.MaximumLength;
+					filePath.Buffer = (PWCH)pEntry->FullDllName.Buffer;
+
+					InitializeObjectAttributes(&objectAttributes, &filePath, OBJ_CASE_INSENSITIVE, NULL, NULL);
+
+					NTSTATUS status = ZwOpenFile(&fileHandle, FILE_READ_ATTRIBUTES, &objectAttributes, &ioStatusBlock, FILE_SHARE_READ, FILE_NON_DIRECTORY_FILE);
+					if (NT_SUCCESS(status)) {
+						FILE_STANDARD_INFORMATION fileInfo;
+						status = ZwQueryInformationFile(fileHandle, &ioStatusBlock, &fileInfo, sizeof(fileInfo), FileStandardInformation);
+						if (NT_SUCCESS(status)) {
+							ZwClose(fileHandle);
+							return (ULONG)fileInfo.EndOfFile.QuadPart;
+						}
+						ZwClose(fileHandle);
+					}
+					return 0; // failed to retrieve module size
+				}
+
 				return baseAddr;
 			}
 		}
@@ -135,45 +156,6 @@ namespace memory {
 	ULONG64 get_module_base_x64(PEPROCESS proc) {
 		return (ULONG64)PsGetProcessSectionBaseAddress(proc);
 	}
-
-	//DWORD64 GetModuleBasex64(PEPROCESS proc, UNICODE_STRING module_name)
-	//{
-	//	DbgPrint("got module: %s", module_name);
-	//	KAPC_STATE state;
-	//	KeStackAttachProcess(proc, &state);
-
-	//	PPEB pPeb = (PPEB)PsGetProcessPeb(proc);
-	//	if (!pPeb)
-	//	{
-	//		return 0;
-	//	}
-	//	PPEB_LDR_DATA pLdr = (PPEB_LDR_DATA)pPeb->Ldr;
-
-	//	if (!pLdr)
-	//	{
-	//		KeUnstackDetachProcess(&state);
-	//		return 1;
-	//	}
-
-	//	UNICODE_STRING name;
-
-	//	for (PLIST_ENTRY list = (PLIST_ENTRY)pLdr->ModuleListLoadOrder.Flink;
-	//		list != &pLdr->ModuleListLoadOrder; list = (PLIST_ENTRY)list->Flink)
-	//	{
-	//		PLDR_DATA_TABLE_ENTRY pEntry =
-	//			CONTAINING_RECORD(list, LDR_DATA_TABLE_ENTRY, InLoadOrderModuleList);
-	//		DbgPrint("Checking dll: %wZ", pEntry->BaseDllName);
-	//		if (RtlCompareUnicodeString(&pEntry->BaseDllName, &module_name, TRUE) ==
-	//			0) {
-	//			ULONG64 baseAddr = (ULONG64)pEntry->DllBase;
-	//			KeUnstackDetachProcess(&state);
-	//			return baseAddr;
-	//		}
-	//	}
-	//	KeUnstackDetachProcess(&state);
-
-	//	return 3; // failed
-	//}
 
 	HANDLE get_process_id(const char* process_name) {
 		ULONG buffer_size = 0;
@@ -353,8 +335,4 @@ namespace memory {
 		ObDereferenceObject(target_process);
 		return status;
 	}
-
-	//signature scanning
-
-	
 }

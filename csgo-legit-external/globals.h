@@ -1,4 +1,5 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include "src/api/api.h"
 #include <vector>
 #include <thread>
@@ -6,7 +7,6 @@
 #include <chrono>
 #include <iostream>
 #include "src/utils/obfuscate.h"
-
 
 #define RESET   AY_OBFUSCATE("\033[0m")
 #define BLACK   AY_OBFUSCATE("\033[30m")      /* Black */
@@ -28,6 +28,8 @@
 
 namespace offset
 {
+    //DWORD dwClientState = rvm<DWORD>(engine_dll + SpyPatternScan(engineBytes, engine_dll_size, AY_OBFUSCATE("A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0")) + 0x1) - engine_dll;
+
     constexpr ::std::ptrdiff_t cs_gamerules_data = 0x0;
     constexpr ::std::ptrdiff_t m_ArmorValue = 0x117CC;
     constexpr ::std::ptrdiff_t m_Collision = 0x320;
@@ -216,6 +218,7 @@ namespace globals {
     inline HANDLE processID = NULL;
     inline std::uintptr_t client = 0;
     inline std::uintptr_t engine = 0;
+    inline DWORD enginesize = 0;
     inline std::uintptr_t serverbrowser = 0;
 
     inline std::uintptr_t localPlayer = 0;

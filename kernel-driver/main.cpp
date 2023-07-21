@@ -25,7 +25,7 @@ NTSTATUS hook_handler(PVOID called_param)
 		if (NT_SUCCESS(PsLookupProcessByProcessId(m->pid, &process))) {
 			UNICODE_STRING DLLName;
 			RtlInitUnicodeString(&DLLName, L"client.dll");
-			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName);
+			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, false);
 			m->buffer = (void*)BaseAddr;
 		}
 	}
@@ -34,7 +34,16 @@ NTSTATUS hook_handler(PVOID called_param)
 		if (NT_SUCCESS(PsLookupProcessByProcessId(m->pid, &process))) {
 			UNICODE_STRING DLLName;
 			RtlInitUnicodeString(&DLLName, L"engine.dll");
-			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName);
+			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, false);
+			m->buffer = (void*)BaseAddr;
+		}
+	}
+	else if (m->get_engine_size) {
+		PEPROCESS process;
+		if (NT_SUCCESS(PsLookupProcessByProcessId(m->pid, &process))) {
+			UNICODE_STRING DLLName;
+			RtlInitUnicodeString(&DLLName, L"engine.dll");
+			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, true);
 			m->buffer = (void*)BaseAddr;
 		}
 	}
@@ -49,20 +58,13 @@ NTSTATUS hook_handler(PVOID called_param)
 	return STATUS_SUCCESS;
 }
 
-extern "C" void DriverUnload(PDRIVER_OBJECT driver_object)
-{
-	UNREFERENCED_PARAMETER(driver_object);
-	DbgPrintEx(0, 0, "GoKernel: Unloaded.\n");
-}
-
 extern "C" NTSTATUS DriverEntry(PDRIVER_OBJECT driver_object, PUNICODE_STRING registry_path)
 {
 	UNREFERENCED_PARAMETER(driver_object);
 	UNREFERENCED_PARAMETER(registry_path);
-	driver_object->DriverUnload = DriverUnload;
-	DbgPrintEx(0, 0, "GoKernel: Loaded.\n");
+	DbgPrintEx(0, 0, "GoKernel: Loaded!\n");
 	if (memory::call_kernel_function(&hook_handler)) {
-		DbgPrintEx(0, 0, "GoKernel: function hooked - NtSetCompositionSurfaceIndependentFlipInfo");
+		DbgPrintEx(0, 0, "GoKernel: Driver Ready!\n");
 	}
 	else {
 		DbgPrintEx(0, 0, "GoKernel: failed to hook function.\n");

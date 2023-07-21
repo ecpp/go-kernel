@@ -93,8 +93,8 @@
       <WarningLevel>Level3</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -173,6 +173,7 @@
     <ClInclude Include="src\utils\httplib.h" />
     <ClInclude Include="src\utils\json.hpp" />
     <ClInclude Include="src\utils\loader.h" />
+    <ClInclude Include="src\utils\nondrivermem.h" />
     <ClInclude Include="src\utils\obfuscate.h" />
     <ClInclude Include="src\utils\vector.h" />
   </ItemGroup>
