@@ -1,51 +1,54 @@
 ﻿  main.cpp
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(87,17): warning C4311: 'type cast': pointer truncation from 'void *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(92,8): warning C4311: 'type cast': pointer truncation from 'LPVOID' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(96,31): warning C4311: 'type cast': pointer truncation from 'void *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(96,49): warning C4311: 'type cast': pointer truncation from 'LPVOID' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(102,13): warning C4311: '<function-style-cast>': pointer truncation from 'void *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(146,61): warning C4311: 'type cast': pointer truncation from 'BYTE *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(160,31): warning C4312: 'type cast': conversion from 'DWORD' to 'LPVOID' of greater size
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(182,65): warning C4311: 'type cast': pointer truncation from 'BYTE *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(260,30): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvTable *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(266,20): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvTable *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(271,35): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvTable *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(271,11): warning C4312: 'type cast': conversion from 'dataType' to 'nonDriverMem::CRecvProp *' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(90,24): warning C4312: 'type cast': conversion from 'ULONG' to 'LPCVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(97,49): warning C4312: '<function-style-cast>': conversion from 'DWORD' to 'LPCVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(124,17): warning C4311: 'type cast': pointer truncation from 'void *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(129,8): warning C4311: 'type cast': pointer truncation from 'LPVOID' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(133,31): warning C4311: 'type cast': pointer truncation from 'void *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(133,49): warning C4311: 'type cast': pointer truncation from 'LPVOID' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(139,13): warning C4311: '<function-style-cast>': pointer truncation from 'void *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(183,61): warning C4311: 'type cast': pointer truncation from 'BYTE *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(197,31): warning C4312: 'type cast': conversion from 'DWORD' to 'LPVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(219,65): warning C4311: 'type cast': pointer truncation from 'BYTE *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(282,18): warning C4311: 'type cast': pointer truncation from 'BYTE *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(300,30): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvTable *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(306,20): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvTable *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(311,35): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvTable *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(311,11): warning C4312: 'type cast': conversion from 'dataType' to 'nonDriverMem::CRecvProp *' of greater size
           with
           [
               dataType=DWORD
           ]
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(281,30): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvProp *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(287,20): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvProp *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(292,28): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvProp *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(302,30): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::ClientClass *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(308,29): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::ClientClass *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(313,28): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::ClientClass *' to 'DWORD'
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(28,30): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(92,3): message : see reference to function template instantiation 'void nonDriverMem::wvmb<BYTE>(DWORD,ULONG,dataType *)' being compiled
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(321,30): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvProp *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(327,20): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvProp *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(332,28): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::CRecvProp *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(342,30): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::ClientClass *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(348,29): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::ClientClass *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(353,28): warning C4311: 'type cast': pointer truncation from 'nonDriverMem::ClientClass *' to 'DWORD'
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(30,30): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(129,3): message : see reference to function template instantiation 'void nonDriverMem::wvmb<BYTE>(DWORD,ULONG,dataType *)' being compiled
           with
           [
               dataType=BYTE
           ]
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(29,8): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(31,30): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(59,33): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(260,19): message : see reference to function template instantiation 'dataType nonDriverMem::rvm<DWORD>(DWORD)' being compiled
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(31,8): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(33,30): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(61,33): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(300,19): message : see reference to function template instantiation 'dataType nonDriverMem::rvm<DWORD>(DWORD)' being compiled
           with
           [
               dataType=DWORD
           ]
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(67,30): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(260,4): message : see reference to function template instantiation 'void nonDriverMem::rvm<char[128]>(DWORD,dataType (*))' being compiled
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(69,30): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(300,4): message : see reference to function template instantiation 'void nonDriverMem::rvm<char[128]>(DWORD,dataType (*))' being compiled
           with
           [
               dataType=char [128]
           ]
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(68,47): warning C4312: '<function-style-cast>': conversion from 'DWORD' to 'PVOID' of greater size
-C:\Users\Eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(69,30): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(70,47): warning C4312: '<function-style-cast>': conversion from 'DWORD' to 'PVOID' of greater size
+C:\Users\kasik\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\nondrivermem.h(71,30): warning C4312: 'type cast': conversion from 'DWORD' to 'PVOID' of greater size
   Generating code
-  2 of 7986 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 7972 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    26 functions had inline decision re-evaluated but remain unchanged
+    29 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  csgo-legit-external.vcxproj -> C:\Users\Eren\source\repos\ecpp\go-kernel\x64\Release\csgo-legit-external.exe
+  csgo-legit-external.vcxproj -> C:\Users\kasik\source\repos\ecpp\go-kernel\x64\Release\csgo-legit-external.exe

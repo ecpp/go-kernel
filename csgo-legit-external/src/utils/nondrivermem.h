@@ -12,7 +12,9 @@
 #include <Psapi.h>
 
 #define NT_SUCCESS(x) ((x) >= 0)
-
+#define in_range(x, a, b) (x >= a && x <= b)
+#define get_bits(x) (in_range(x, '0', '9') ? (x - '0') : ((x & (~0x20)) - 'A' + 0xa))
+#define get_byte(x) (get_bits(x[0]) << 4 | get_bits(x[1]))
 namespace nonDriverMem {
 	typedef NTSTATUS(NTAPI* _NtWriteVirtualMemory)(HANDLE ProcessHandle, PVOID BaseAddress, LPCVOID Buffer, ULONG NumberOfBytesToWrite, PULONG NumberOfBytesWritten);
 	_NtWriteVirtualMemory NtWriteVirtualMemory = (_NtWriteVirtualMemory)GetProcAddress(GetModuleHandleA("ntdll.dll"), "NtWriteVirtualMemory");
@@ -67,6 +69,41 @@ namespace nonDriverMem {
 		VirtualProtectEx(hProcess, (PVOID)addressToRead, sizeof(dataType), PAGE_EXECUTE_READWRITE, &oldProtect);
 		status = NtReadVirtualMemory(hProcess, PVOID(addressToRead), valToRead, sizeof(dataType), 0);
 		VirtualProtectEx(hProcess, (PVOID)addressToRead, sizeof(dataType), oldProtect, NULL);
+	}
+
+	bool compare_memory(const byte* data, const char* pattern)
+	{
+		for (; *pattern; *pattern != ' ' ? ++data : data, ++pattern)
+		{
+			if (*pattern == ' ' || *pattern == '?') continue;
+			if (*data != get_byte(pattern)) return false;
+			++pattern;
+		}
+		return true;
+	}
+
+	DWORD pattern_scan(HANDLE h, ULONG base, ULONG size,const char* pattern, int offset, int extra, bool relative, bool subtract)
+	{
+		DWORD address = 0;
+
+		byte* data = new byte[size];
+		ReadProcessMemory(h, (LPCVOID)base, data, size, NULL);
+
+		for (DWORD i = 0x1000; i < size; i++)
+		{
+			if (compare_memory((const byte*)(data + i), pattern))
+			{
+				address = base + i + offset;
+				if (relative) { ReadProcessMemory(h, LPCVOID(address), &address, sizeof(DWORD), NULL); }
+				if (subtract) { address -= base; }
+				address += extra;
+				std::cout << "Found pattern at: " << std::hex << address << std::endl;
+				break;
+			}
+		}
+
+		delete[] data;
+		return address;
 	}
 
 	PVOID SpyInjectAndJump(void* from, void* to, int nops)
@@ -217,7 +254,7 @@ namespace nonDriverMem {
 		MODULEENTRY32 me32;
 
 		// Take a snapshot of all modules in the specified process.
-		hModuleSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE, pid);
+		hModuleSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE32 | TH32CS_SNAPMODULE, pid);
 		if (hModuleSnap == INVALID_HANDLE_VALUE)
 		{
 			std::cout << "CreateToolhelp32Snapshot failed" << std::endl;
@@ -240,10 +277,13 @@ namespace nonDriverMem {
 		// and display information about each module
 		do
 		{
-			std::cout << "Module name: " << me32.szModule << std::endl;
-			if (_tcsstr(me32.szModule, _T("engine.dll")) != NULL) {
-				std::cout << "engine.dll base: " << std::hex << me32.modBaseAddr << ", its size " << std::hex << me32.modBaseSize << std::endl;
+			//check if name is engine.dll
+			if (strcmp(me32.szModule, "engine.dll") == 0) {
+				engine_dll = (DWORD)me32.modBaseAddr;
+				globals::enginesize = me32.modBaseSize;
+				std::cout << "engine.dll found at 0x" << std::hex << engine_dll << std::endl;
 			}
+			
 		} while (Module32Next(hModuleSnap, &me32));
 
 		CloseHandle(hModuleSnap);
