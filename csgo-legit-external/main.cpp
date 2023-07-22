@@ -59,7 +59,6 @@ int main()
 		return 0;
 	}
 
-	std::this_thread::sleep_for(std::chrono::seconds(1));
 	std::cout << BOLDGREEN << "OK" << RESET << std::endl;
 
 	HW_PROFILE_INFO hwProfileInfo;
@@ -80,7 +79,6 @@ int main()
 		return 0;
 	}
 
-	std::this_thread::sleep_for(std::chrono::seconds(1));
 	std::cout << BOLDGREEN << "OK" << RESET << std::endl;
 	
 	std::cout << "Driver check ......";
@@ -91,7 +89,6 @@ int main()
 		return 0;
 	}
 
-	std::this_thread::sleep_for(std::chrono::seconds(1));
 	std::cout << BOLDGREEN << "OK" << RESET << std::endl;
 
 	globals::processID = Driver::get_process_id(AY_OBFUSCATE("csgo.exe"));
@@ -115,13 +112,11 @@ int main()
 
 	//Driver::get_engine_size(globals::processID);
 	HANDLE h = nonDriverMem::get_process_handle();
-	std::cout << "Process Handle ......" << BOLDGREEN << std::hex << h << RESET << std::endl;
 
-	std::cout << "Engine Size ........" << BOLDGREEN << std::hex << globals::enginesize << RESET << std::endl;
-	auto engineBytes = new BYTE[globals::enginesize + 1];
-	memset(engineBytes, 0, globals::enginesize + 1);
-	DWORD dwClientState = nonDriverMem::pattern_scan(h, globals::engine, globals::enginesize, "A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0", 1, 0, true, true);
-	std::cout << "ClientState ........." << BOLDGREEN << dwClientState- globals::engine << RESET << std::endl;
+	auto engineBytes = new BYTE[globals::enginesize + 1]; memset(engineBytes, 0, globals::enginesize + 1);
+	DWORD dwClientState = nonDriverMem::patternScan(globals::engine, globals::enginesize, "A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0", 1, 0, true, true);
+	std::cout << "ClientState ........." << BOLDGREEN << dwClientState << RESET << std::endl;
+	std::cout << "Old ClientState ...." << BOLDGREEN << std::hex << offset::dwClientState << RESET << std::endl;
 
 	std::cout << "G0-K3RN3L ......" << BOLDGREEN << "STARTED!" << RESET << std::endl;
 

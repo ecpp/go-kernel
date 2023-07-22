@@ -102,6 +102,20 @@ namespace Driver
 	}
 
 	template<typename type>
+	void rpm_pattern(uint32_t readAddress, type* buffer, size_t size)
+	{
+		COPY_MEMORY m{};
+		m.read = true;
+		m.pid = globals::processID;
+		m.address = readAddress;
+		m.buffer = buffer;
+		m.size = size * sizeof(type);
+
+		call_hook(&m);
+	}
+
+
+	template<typename type>
 	void wpm(UINT_PTR writeAddress, type value)
 	{
 		COPY_MEMORY m{};
