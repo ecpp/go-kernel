@@ -1,7 +1,7 @@
 ﻿  main.cpp
   Generating code
-  1014 of 7956 functions (12.7%) were compiled, the rest were copied from previous compilation.
-    54 functions were new in current compilation
-    271 functions had inline decision re-evaluated but remain unchanged
+  1019 of 7960 functions (12.8%) were compiled, the rest were copied from previous compilation.
+    63 functions were new in current compilation
+    30 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  csgo-legit-external.vcxproj -> C:\Users\Eren\Source\Repos\ecpp\go-kernel\x64\Release\csgo-legit-external.exe
+  csgo-legit-external.vcxproj -> C:\Users\kasik\source\repos\ecpp\go-kernel\x64\Release\csgo-legit-external.exe

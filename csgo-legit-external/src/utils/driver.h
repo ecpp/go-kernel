@@ -65,13 +65,13 @@ namespace Driver
 		return (uintptr_t)m.buffer;
 	}
 
-	static uintptr_t get_engine_size(HANDLE pID)
+	static ULONG get_engine_size(HANDLE pID)
 	{
 		COPY_MEMORY m{};
 		m.get_engine_size = true;
 		m.pid = pID;
 		call_hook(&m);
-		return (uintptr_t)m.buffer;
+		return (ULONG)m.size;
 	}
 
 	static uintptr_t GetModuleBase(HANDLE pID, const char* modName)

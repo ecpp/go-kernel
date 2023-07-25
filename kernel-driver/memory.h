@@ -84,6 +84,48 @@ namespace memory {
 
 	}
 
+	//ULONG GetModuleBasex86(PEPROCESS proc, UNICODE_STRING module_name, BOOL get_size) {
+	//	PPEB32 pPeb = (PPEB32)PsGetProcessWow64Process(proc);
+
+	//	if (!pPeb) {
+	//		return 0; // failed
+	//	}
+
+	//	KAPC_STATE state;
+	//	KeStackAttachProcess(proc, &state);
+
+	//	PPEB_LDR_DATA32 pLdr = (PPEB_LDR_DATA32)pPeb->Ldr;
+
+	//	if (!pLdr) {
+	//		KeUnstackDetachProcess(&state);
+	//		return 0; // failed
+	//	}
+
+	//	UNICODE_STRING name;
+
+	//	for (PLIST_ENTRY32 list = (PLIST_ENTRY32)pLdr->InLoadOrderModuleList.Flink;
+	//		list != &pLdr->InLoadOrderModuleList; list = (PLIST_ENTRY32)list->Flink) {
+	//		PLDR_DATA_TABLE_ENTRY32 pEntry =
+	//			CONTAINING_RECORD(list, LDR_DATA_TABLE_ENTRY32, InLoadOrderLinks);
+
+	//		UNICODE_STRING DLLname;
+	//		DLLname.Length = pEntry->BaseDllName.Length;
+	//		DLLname.MaximumLength = pEntry->BaseDllName.MaximumLength;
+	//		DLLname.Buffer = (PWCH)pEntry->BaseDllName.Buffer;
+
+	//		if (RtlCompareUnicodeString(&DLLname, &module_name, TRUE) == 0) {
+	//			ULONG baseAddr = pEntry->DllBase;
+	//			KeUnstackDetachProcess(&state);
+
+	//			return baseAddr;
+	//		}
+	//	}
+
+	//	KeUnstackDetachProcess(&state);
+
+	//	return 0; // failed
+	//}
+
 	ULONG GetModuleBasex86(PEPROCESS proc, UNICODE_STRING module_name, BOOL get_size) {
 		PPEB32 pPeb = (PPEB32)PsGetProcessWow64Process(proc);
 
@@ -115,34 +157,16 @@ namespace memory {
 
 			if (RtlCompareUnicodeString(&DLLname, &module_name, TRUE) == 0) {
 				ULONG baseAddr = pEntry->DllBase;
+				ULONG moduleSize = pEntry->SizeOfImage; // get the size of the module
+
 				KeUnstackDetachProcess(&state);
 
 				if (get_size) {
-					HANDLE fileHandle;
-					IO_STATUS_BLOCK ioStatusBlock;
-					OBJECT_ATTRIBUTES objectAttributes;
-					UNICODE_STRING filePath;
-
-					filePath.Length = pEntry->FullDllName.Length;
-					filePath.MaximumLength = pEntry->FullDllName.MaximumLength;
-					filePath.Buffer = (PWCH)pEntry->FullDllName.Buffer;
-
-					InitializeObjectAttributes(&objectAttributes, &filePath, OBJ_CASE_INSENSITIVE, NULL, NULL);
-
-					NTSTATUS status = ZwOpenFile(&fileHandle, FILE_READ_ATTRIBUTES, &objectAttributes, &ioStatusBlock, FILE_SHARE_READ, FILE_NON_DIRECTORY_FILE);
-					if (NT_SUCCESS(status)) {
-						FILE_STANDARD_INFORMATION fileInfo;
-						status = ZwQueryInformationFile(fileHandle, &ioStatusBlock, &fileInfo, sizeof(fileInfo), FileStandardInformation);
-						if (NT_SUCCESS(status)) {
-							ZwClose(fileHandle);
-							return (ULONG)fileInfo.EndOfFile.QuadPart;
-						}
-						ZwClose(fileHandle);
-					}
-					return 0; // failed to retrieve module size
+					return moduleSize; // return the size of the module if get_size is TRUE
 				}
-
-				return baseAddr;
+				else {
+					return baseAddr; // return the base address otherwise
+				}
 			}
 		}
 

@@ -44,7 +44,7 @@ NTSTATUS hook_handler(PVOID called_param)
 			UNICODE_STRING DLLName;
 			RtlInitUnicodeString(&DLLName, L"engine.dll");
 			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, true);
-			m->buffer = (void*)BaseAddr;
+			m->size = BaseAddr;
 		}
 	}
 	else if (m->read) {

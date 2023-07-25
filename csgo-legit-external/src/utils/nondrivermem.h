@@ -49,66 +49,6 @@ namespace nonDriverMem {
 		delete[] data;
 		return address;
 	}
-	
-	HANDLE get_process_handle()
-	{
-		HANDLE h = 0;
-		DWORD pid = 0;
-		HWND hWnd = FindWindow(0, _T(globals::windowName));
-		if (hWnd == 0) {
-			std::cout << "get_process_handle: FindWindow failed" << std::endl;
-			return h;
-		}
-		else {
-			std::cout << "get_process_handle: Found window" << std::endl;
-		}
-		GetWindowThreadProcessId(hWnd, &pid);
-		h = OpenProcess(PROCESS_ALL_ACCESS, 0, pid);
-		if (h == 0) {
-			std::cout << "get_process_handle: OpenProcess failed" << std::endl;
-			return h;
-		}
-		else {
-			std::cout << "get_process_handle: Got handle" << std::endl;
-		}
-
-		HANDLE hModuleSnap = INVALID_HANDLE_VALUE;
-		MODULEENTRY32 me32;
-
-		// Take a snapshot of all modules in the specified process.
-		hModuleSnap = CreateToolhelp32Snapshot(TH32CS_SNAPMODULE32 | TH32CS_SNAPMODULE, pid);
-		if (hModuleSnap == INVALID_HANDLE_VALUE)
-		{
-			std::cout << "CreateToolhelp32Snapshot failed" << std::endl;
-			return h;
-		}
-
-		// Set the size of the structure before using it.
-		me32.dwSize = sizeof(MODULEENTRY32);
-
-		// Retrieve information about the first module,
-		// and exit if unsuccessful
-		if (!Module32First(hModuleSnap, &me32))
-		{
-			std::cout << "Module32First failed" << std::endl;  // show cause of failure
-			CloseHandle(hModuleSnap);     // clean the snapshot object
-			return h;
-		}
-
-		// Now walk the module list of the process,
-		// and display information about each module
-		do
-		{
-			//check if name is engine.dll
-			if (strcmp(me32.szModule, "engine.dll") == 0) {
-				globals::enginesize = me32.modBaseSize;
-			}
-			
-		} while (Module32Next(hModuleSnap, &me32));
-
-		CloseHandle(hModuleSnap);
-		return h;
-	}
 
 	
 }
