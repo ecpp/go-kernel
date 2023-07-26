@@ -348,12 +348,16 @@ void gui_menu::initRender() {
 				ImGui::Checkbox(AY_OBFUSCATE("NAME"), &globals::esp::isName);
 				ImGui::Spacing();
 				ImGui::Checkbox(AY_OBFUSCATE("HEALTH"), &globals::esp::isHealth);
+				ImGui::Spacing();
+				ImGui::Checkbox(AY_OBFUSCATE("PLAYER WEAPON"), &globals::esp::playerWeapon);
 
 
 				break;
 
 			case 2:
 				ImGui::Checkbox(AY_OBFUSCATE("RADAR"), &globals::isRadar);
+				ImGui::Spacing();
+				ImGui::Checkbox(AY_OBFUSCATE("RECOIL CROSSHAIR"), &globals::isRecoilCross);
 				ImGui::Spacing();
 				ImGui::Checkbox(AY_OBFUSCATE("BUNNY"), &globals::isBunny);
 				ImGui::Spacing();

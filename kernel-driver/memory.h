@@ -14,6 +14,7 @@ typedef struct _COPY_MEMORY {
 	bool		get_client;
 	bool		get_engine;
 	bool		get_engine_size;
+	bool		get_client_size;
 	const char* module_name;
 	const char* process_name;
 }COPY_MEMORY;

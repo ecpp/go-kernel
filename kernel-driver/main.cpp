@@ -47,6 +47,15 @@ NTSTATUS hook_handler(PVOID called_param)
 			m->size = BaseAddr;
 		}
 	}
+	else if (m->get_client_size) {
+		PEPROCESS process;
+		if (NT_SUCCESS(PsLookupProcessByProcessId(m->pid, &process))) {
+			UNICODE_STRING DLLName;
+			RtlInitUnicodeString(&DLLName, L"client.dll");
+			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, true);
+			m->size = BaseAddr;
+		}
+	}
 	else if (m->read) {
 		//m->buffer = (void*)memory::read2(m->pid, (PVOID)m->address, m->buffer, m->size);
 		memory::read_kernel_memory(m->pid, (PVOID)m->address, m->buffer, m->size);

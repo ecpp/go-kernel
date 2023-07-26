@@ -58,6 +58,7 @@ namespace gui_esp {
 	void rect(float x, float y, float h, float w, const D2D1::ColorF& Clr, float Thick = 1.5f);
 	void fill_rect(float x, float y, float w, float h, const D2D1::ColorF& Clr);
 	void Line(const Vector2& Start, const Vector2& End, const D2D1::ColorF& Clr, float Thick = 1.5f);
+	void MovingCross(const Vector2& Start, const Vector2& End, const D2D1::ColorF& Clr, float Thick = 1.5f);
 	void Circle(const Vector2& Start, const D2D1::ColorF& Clr, float Rad, float Thick = 1.5f);
 	void CenterString(const Vector2& pos, const wchar_t* Str, const D2D1::ColorF& Clr = D2D1::ColorF(D2D1::ColorF::White), bool big = false);
 	void String(const Vector2& pos, const wchar_t* Str, const D2D1::ColorF& Clr = D2D1::ColorF(D2D1::ColorF::White), bool big = false);

@@ -21,6 +21,7 @@ typedef struct _COPY_MEMORY {
 	bool		get_client;
 	bool		get_engine;
 	bool		get_engine_size;
+	bool		get_client_size;
 	const char* module_name;
 	const char* process_name;
 }COPY_MEMORY;
@@ -69,6 +70,15 @@ namespace Driver
 	{
 		COPY_MEMORY m{};
 		m.get_engine_size = true;
+		m.pid = pID;
+		call_hook(&m);
+		return (ULONG)m.size;
+	}
+
+	static ULONG get_client_size(HANDLE pID)
+	{
+		COPY_MEMORY m{};
+		m.get_client_size = true;
 		m.pid = pID;
 		call_hook(&m);
 		return (ULONG)m.size;

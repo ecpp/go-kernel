@@ -28,8 +28,7 @@
 
 namespace offset
 {
-    //DWORD dwClientState = rvm<DWORD>(engine_dll + SpyPatternScan(engineBytes, engine_dll_size, AY_OBFUSCATE("A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0")) + 0x1) - engine_dll;
-
+  
     constexpr ::std::ptrdiff_t cs_gamerules_data = 0x0;
     constexpr ::std::ptrdiff_t m_ArmorValue = 0x117CC;
     constexpr ::std::ptrdiff_t m_Collision = 0x320;
@@ -124,64 +123,16 @@ namespace offset
     constexpr ::std::ptrdiff_t m_vecViewOffset = 0x108;
     constexpr ::std::ptrdiff_t m_viewPunchAngle = 0x3030;
     constexpr ::std::ptrdiff_t m_zoomLevel = 0x33E0;
-    constexpr ::std::ptrdiff_t anim_overlays = 0x2990;
-    constexpr ::std::ptrdiff_t clientstate_choked_commands = 0x4D30;
-    constexpr ::std::ptrdiff_t clientstate_delta_ticks = 0x174;
-    constexpr ::std::ptrdiff_t clientstate_last_outgoing_command = 0x4D2C;
-    constexpr ::std::ptrdiff_t clientstate_net_channel = 0x9C;
-    constexpr ::std::ptrdiff_t convar_name_hash_table = 0x301A0;
-    constexpr ::std::ptrdiff_t dwClientState = 0x59F19C;
-    constexpr ::std::ptrdiff_t dwClientState_GetLocalPlayer = 0x180;
-    constexpr ::std::ptrdiff_t dwClientState_IsHLTV = 0x4D48;
-    constexpr ::std::ptrdiff_t dwClientState_Map = 0x28C;
-    constexpr ::std::ptrdiff_t dwClientState_MapDirectory = 0x188;
-    constexpr ::std::ptrdiff_t dwClientState_MaxPlayer = 0x388;
-    constexpr ::std::ptrdiff_t dwClientState_PlayerInfo = 0x52C0;
-    constexpr ::std::ptrdiff_t dwClientState_State = 0x108;
-    constexpr ::std::ptrdiff_t dwClientState_ViewAngles = 0x4D90;
-    constexpr ::std::ptrdiff_t dwEntityList = 0x4DFFF7C;
-    constexpr ::std::ptrdiff_t dwForceAttack = 0x322DDE8;
-    constexpr ::std::ptrdiff_t dwForceAttack2 = 0x322DDF4;
-    constexpr ::std::ptrdiff_t dwForceBackward = 0x322DE30;
-    constexpr ::std::ptrdiff_t dwForceForward = 0x322DE24;
-    constexpr ::std::ptrdiff_t dwForceJump = 0x52BBCD8;
-    constexpr ::std::ptrdiff_t dwForceLeft = 0x322DDA0;
-    constexpr ::std::ptrdiff_t dwForceRight = 0x322DDAC;
-    constexpr ::std::ptrdiff_t dwGameDir = 0x63AD80;
-    constexpr ::std::ptrdiff_t dwGameRulesProxy = 0x532F4E4;
-    constexpr ::std::ptrdiff_t dwGetAllClasses = 0xE0BF94;
-    constexpr ::std::ptrdiff_t dwGlobalVars = 0x59EE60;
-    constexpr ::std::ptrdiff_t dwGlowObjectManager = 0x535AA08;
-    constexpr ::std::ptrdiff_t dwInput = 0x525D550;
-    constexpr ::std::ptrdiff_t dwInterfaceLinkList = 0x99B4A4;
-    constexpr ::std::ptrdiff_t dwLocalPlayer = 0xDEA98C;
-    constexpr ::std::ptrdiff_t dwMouseEnable = 0x52391B0;
-    constexpr ::std::ptrdiff_t dwMouseEnablePtr = 0x5239180;
-    constexpr ::std::ptrdiff_t dwPlayerResource = 0x322C120;
-    constexpr ::std::ptrdiff_t dwRadarBase = 0x5236A54;
-    constexpr ::std::ptrdiff_t dwSensitivity = 0xDEEBA8;
-    constexpr ::std::ptrdiff_t dwSensitivityPtr = 0xDEEBA8;
-    constexpr ::std::ptrdiff_t dwSetClanTag = 0x8DA80;
-    constexpr ::std::ptrdiff_t dwViewMatrix = 0x4DF0DC4;
-    constexpr ::std::ptrdiff_t dwWeaponTable = 0x525E62C;
-    constexpr ::std::ptrdiff_t dwWeaponTableIndex = 0x326C;
-    constexpr ::std::ptrdiff_t dwYawPtr = 0xDEE938;
-    constexpr ::std::ptrdiff_t dwZoomSensitivityRatioPtr = 0xDF43A8;
-    constexpr ::std::ptrdiff_t dwbSendPackets = 0xDD2B2;
-    constexpr ::std::ptrdiff_t dwppDirect3DDevice9 = 0xA62C0;
-    constexpr ::std::ptrdiff_t find_hud_element = 0x317902D0;
-    constexpr ::std::ptrdiff_t force_update_spectator_glow = 0x3D997A;
-    constexpr ::std::ptrdiff_t interface_engine_cvar = 0x3FA9C;
-    constexpr ::std::ptrdiff_t is_c4_owner = 0x3E71A0;
     constexpr ::std::ptrdiff_t m_bDormant = 0xED;
     constexpr ::std::ptrdiff_t m_bIsLocalPlayer = 0x3628;
     constexpr ::std::ptrdiff_t m_flSpawnTime = 0x103C0;
     constexpr ::std::ptrdiff_t m_pStudioHdr = 0x2950;
     constexpr ::std::ptrdiff_t m_pitchClassPtr = 0x52390A8;
     constexpr ::std::ptrdiff_t m_yawClassPtr = 0xDEE938;
-    constexpr ::std::ptrdiff_t model_ambient_min = 0x5A1194;
-    constexpr ::std::ptrdiff_t set_abs_angles = 0x1E7A10;
-    constexpr ::std::ptrdiff_t set_abs_origin = 0x1E7850;
+    inline ptrdiff_t dwClientState, dwLocalPlayer, dwClientState_PlayerInfo,
+        dwClientState_GetLocalPlayer, dwClientState_MapDirectory,
+        dwClientState_MaxPlayer, dwViewMatrix, dwEntityList, 
+        dwGameDir, dwClientState_Map, dwForceJump, dwClientState_ViewAngles;
 
 }
 
@@ -207,9 +158,11 @@ namespace globals {
     inline bool isEsp = false;
 
 
+
     inline bool isFlash = false;
     inline bool isMenu = false;
     inline bool isAutoAccept = false;
+    inline bool isRecoilCross = false;
 
     inline bool runhax = true;
     inline auto legitAimSmooth = 0.1f;
@@ -219,6 +172,7 @@ namespace globals {
     inline std::uintptr_t client = 0;
     inline std::uintptr_t engine = 0;
     inline DWORD enginesize = 0;
+    inline DWORD clientsize = 0;
     inline std::uintptr_t serverbrowser = 0;
 
     inline std::uintptr_t localPlayer = 0;
@@ -249,6 +203,7 @@ namespace globals {
         inline bool isName = false;
         inline bool isHealth = false;
         inline bool isWeapon = false;
+        inline bool playerWeapon = false;
     }
 
     inline std::string obfuscate(const std::string& input) {
@@ -262,6 +217,79 @@ namespace globals {
 
 
 }
+
+namespace weapons {
+
+    static const std::unordered_map<short, std::string> weaponDictionary = {
+    { 1, "Desert Eagle" },
+    { 2, "Dual Berettas" },
+    { 3, "Five-SeveN" },
+    { 4, "Glock-18" },
+    { 7, "AK-47" },
+    { 8, "AUG" },
+    { 9, "AWP" },
+    { 10, "FAMAS" },
+    { 11, "G3SG1" },
+    { 13, "Galil AR" },
+    { 14, "M249" },
+    { 16, "M4A4" },
+    { 17, "MAC-10" },
+    { 19, "P90" },
+    { 23, "MP5-SD" },
+    { 24, "UMP-45" },
+    { 25, "XM1014" },
+    { 26, "PP-Bizon" },
+    { 27, "MAG-7" },
+    { 28, "Negev" },
+    { 29, "Sawed-Off" },
+    { 30, "Tec-9" },
+    { 32, "P2000" },
+    { 33, "MP7" },
+    { 34, "MP9" },
+    { 35, "Nova" },
+    { 36, "P250" },
+    { 38, "SCAR-20" },
+    { 39, "SG 553" },
+    { 40, "SSG 08" },
+    { 41, "Knife" },
+    { 42, "Flashbang" },
+    { 43, "HE Grenade" },
+    { 44, "Smoke Grenade" },
+    { 45, "Molotov" },
+    { 46, "Decoy Grenade" },
+    { 47, "Incendiary Grenade" },
+    { 48, "C4 Explosive" },
+    { 49, "Knife" },
+    { 59, "Knife" },
+    { 60, "M4A1-S" },
+    { 61, "USP-S" },
+    { 63, "CZ75-Auto" },
+    { 64, "R8 Revolver" },
+    { 500, "Bayonet" },
+    { 505, "Flip Knife" },
+    { 506, "Gut Knife" },
+    { 507, "Karambit" },
+    { 508, "M9 Bayonet" },
+    { 509, "Huntsman Knife" },
+    { 512, "Falchion Knife" },
+    { 514, "Bowie Knife" },
+    { 515, "Butterfly Knife" },
+    { 516, "Shadow Daggers" },
+    { 519, "Ursus Knife" },
+    { 520, "Navaja Knife" },
+    { 522, "Stiletto Knife" },
+    { 523, "Talon Knife" },
+    { 525, "Skeleton Knife" }
+    };
+
+    inline std::string getWeaponName(int id) {
+        if (weaponDictionary.find(id) != weaponDictionary.end()) {
+            return weaponDictionary.at(id);
+        }
+        return "Unknown";
+    }
+}
+
 
 static const char* KeyNames[] = {
     AY_OBFUSCATE("OFF"),

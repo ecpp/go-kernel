@@ -50,6 +50,10 @@ namespace nonDriverMem {
 		return address;
 	}
 
+	ptrdiff_t convertToPtr(ULONG value)
+	{
+		return static_cast<ptrdiff_t>(value);
+	}
 	
 }
 

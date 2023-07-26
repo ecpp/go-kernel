@@ -89,6 +89,8 @@ int main()
 		return 0;
 	}
 
+	std::this_thread::sleep_for(std::chrono::seconds(2));
+
 	std::cout << BOLDGREEN << "OK" << RESET << std::endl;
 
 	globals::processID = Driver::get_process_id(AY_OBFUSCATE("csgo.exe"));
@@ -103,6 +105,8 @@ int main()
 
 	globals::client = Driver::get_client(globals::processID);
 	globals::engine = Driver::get_engine(globals::processID);
+	globals::enginesize = Driver::get_engine_size(globals::processID);
+	globals::clientsize	= Driver::get_client_size(globals::processID);
 
 	if (!globals::client || !globals::engine) {
 		std::cout << "Failed to find client.dll or engine.dll" << std::endl;
@@ -110,15 +114,23 @@ int main()
 		return 0;
 	}
 
-	globals::enginesize = Driver::get_engine_size(globals::processID);
+	
 
-	auto engineBytes = new BYTE[globals::enginesize + 1]; memset(engineBytes, 0, globals::enginesize + 1);
-	DWORD dwClientState = nonDriverMem::patternScan(globals::engine, globals::enginesize, "A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0", 1, 0, true, true);
-	std::cout << "ClientState ........." << BOLDGREEN << std::hex << dwClientState << RESET << std::endl;
-	std::cout << "Old ClientState ...." << BOLDGREEN << std::hex << offset::dwClientState << RESET << std::endl;
+	std::cout << "Updating offsets ......";
+	offset::dwClientState = nonDriverMem::patternScan(globals::engine, globals::enginesize, "A1 ? ? ? ? 33 D2 6A 00 6A 00 33 C9 89 B0", 1, 0, true, true);
+	offset::dwLocalPlayer = nonDriverMem::patternScan(globals::client, globals::clientsize, "8D 34 85 ? ? ? ? 89 15 ? ? ? ? 8B 41 08 8B 48 04 83 F9 FF", 3, 4, true, true);
+	offset::dwClientState_PlayerInfo = nonDriverMem::patternScan(globals::engine, globals::enginesize, "8B 89 ? ? ? ? 85 C9 0F 84 ? ? ? ? 8B 01", 2, 0, true, false);
+	offset::dwClientState_GetLocalPlayer = nonDriverMem::patternScan(globals::engine, globals::enginesize, "8B 80 ? ? ? ? 40 C3", 2, 0, true, false);
+	offset::dwViewMatrix = nonDriverMem::patternScan(globals::client, globals::clientsize, "0F 10 05 ? ? ? ? 8D 85 ? ? ? ? B9", 3, 176, true, true);
+	offset::dwEntityList = nonDriverMem::patternScan(globals::client, globals::clientsize, "BB ? ? ? ? 83 FF 01 0F 8C ? ? ? ? 3B F8", 1, 0, true, true);
+	offset::dwClientState_MapDirectory = nonDriverMem::patternScan(globals::engine, globals::enginesize, "B8 ? ? ? ? C3 05 ? ? ? ? C3", 7, 0, true, false);
+	offset::dwGameDir = nonDriverMem::patternScan(globals::engine, globals::enginesize, "68 ? ? ? ? 8D 85 ? ? ? ? 50 68 ? ? ? ? 68", 1, 0, true, true);
+	offset::dwClientState_Map = nonDriverMem::patternScan(globals::engine, globals::enginesize, "05 ? ? ? ? C3 CC CC CC CC CC CC CC A1", 1, 0, true, false);
+	offset::dwForceJump = nonDriverMem::patternScan(globals::client, globals::clientsize, "8B 0D ? ? ? ? 8B D6 8B C1 83 CA 02", 2, 0, true, true);
+	offset::dwClientState_ViewAngles = nonDriverMem::patternScan(globals::engine, globals::enginesize, "F3 0F 11 86 ? ? ? ? F3 0F 10 44 24 ? F3 0F 11 86", 4, 0, true, false);
+	std::cout << BOLDGREEN << "OK" << RESET << std::endl;
 
 	std::cout << "G0-K3RN3L ......" << BOLDGREEN << "STARTED!" << RESET << std::endl;
-
 
 	std::thread(hax::checkGameWindow).detach();
 	std::thread(gui_menu::startMenu).detach();
