@@ -108,7 +108,12 @@ void hax::legitAim() noexcept
 	while (globals::runhax)
 	{
 		if (globals::isAimAssit) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(1));
+			//create random waiting time
+			std::random_device rd;
+			std::mt19937 gen(rd());
+			std::uniform_int_distribution<> distr(1, 50);
+			int random = distr(gen);
+			std::this_thread::sleep_for(std::chrono::milliseconds(random));
 
 			// aimbot key
 			if (!GetAsyncKeyState(globals::aimAssitKey))
@@ -188,11 +193,17 @@ void hax::legitAim() noexcept
 				// calculate delta angle
 				const auto deltaAngle = targetAngle - viewAngles;
 
-				// calculate new angle
-				const auto newAngle = viewAngles + deltaAngle * globals::legitAimSmooth;
+				//random float between 0.5 and 1
+				std::random_device rd;
+				std::mt19937 gen(rd());
+				std::uniform_real_distribution<> distr(0.7, 1.2);
+				float randomSmooth = distr(gen);
 
-				// write new angle
-				Driver::wpm<Vector3>(clientState + offset::dwClientState_ViewAngles, newAngle);
+				// calculate new angle
+				const auto newAngle = viewAngles + deltaAngle * globals::legitAimSmooth * randomSmooth;
+
+				if (random > 20)
+					Driver::wpm<Vector3>(clientState + offset::dwClientState_ViewAngles, newAngle);
 			}
 		}
 		else {
@@ -318,8 +329,7 @@ void hax::autoAccept() noexcept {
 			continue;
 		}
 		auto localHealth = Driver::rpm<std::uint32_t>(globals::localPlayer + offset::m_iHealth);
-		
-		if (localHealth >= 0 && localHealth <= 100) {
+		if (localHealth == 100) {
 			globals::isAutoAccept = false;
 		}
 		else {
