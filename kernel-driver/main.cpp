@@ -25,7 +25,7 @@ NTSTATUS hook_handler(PVOID called_param)
 		if (NT_SUCCESS(PsLookupProcessByProcessId(m->pid, &process))) {
 			UNICODE_STRING DLLName;
 			RtlInitUnicodeString(&DLLName, L"client.dll");
-			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, false);
+			ULONG64 BaseAddr = memory::GetModuleBasex64(process, DLLName, false);
 			m->buffer = (void*)BaseAddr;
 		}
 	}
@@ -34,7 +34,7 @@ NTSTATUS hook_handler(PVOID called_param)
 		if (NT_SUCCESS(PsLookupProcessByProcessId(m->pid, &process))) {
 			UNICODE_STRING DLLName;
 			RtlInitUnicodeString(&DLLName, L"engine.dll");
-			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, false);
+			ULONG64 BaseAddr = memory::GetModuleBasex64(process, DLLName, false);
 			m->buffer = (void*)BaseAddr;
 		}
 	}
@@ -43,7 +43,7 @@ NTSTATUS hook_handler(PVOID called_param)
 		if (NT_SUCCESS(PsLookupProcessByProcessId(m->pid, &process))) {
 			UNICODE_STRING DLLName;
 			RtlInitUnicodeString(&DLLName, L"engine.dll");
-			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, true);
+			ULONG64 BaseAddr = memory::GetModuleBasex64(process, DLLName, true);
 			m->size = BaseAddr;
 		}
 	}
@@ -52,7 +52,7 @@ NTSTATUS hook_handler(PVOID called_param)
 		if (NT_SUCCESS(PsLookupProcessByProcessId(m->pid, &process))) {
 			UNICODE_STRING DLLName;
 			RtlInitUnicodeString(&DLLName, L"client.dll");
-			ULONG BaseAddr = memory::GetModuleBasex86(process, DLLName, true);
+			ULONG64 BaseAddr = memory::GetModuleBasex64(process, DLLName, true);
 			m->size = BaseAddr;
 		}
 	}

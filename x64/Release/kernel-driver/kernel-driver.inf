@@ -8,7 +8,7 @@ Class=System ; TODO: specify appropriate Class
 ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
 Provider=%ManufacturerName%
 CatalogFile=kernel-driver.cat
-DriverVer = 07/25/2023,14.17.57.686
+DriverVer = 10/01/2023,12.34.39.349
 PnpLockdown=1
 
 [DestinationDirs]
@@ -78,4 +78,3 @@ ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacture
 DiskName = "kernel-driver Installation Disk"
 kernel-driver.DeviceDesc = "kernel-driver Device"
 kernel-driver.SVCDESC = "kernel-driver Service"
-

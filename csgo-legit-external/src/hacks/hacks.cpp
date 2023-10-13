@@ -22,7 +22,7 @@ void hax::readGlobals() noexcept
 	while (globals::runhax) {
 		
 
-		globals::localPlayer = Driver::rpm<std::uint32_t>(globals::client + offset::dwLocalPlayer);
+		globals::localPlayer = Driver::rpm<std::uint32_t>(globals::client + offset::dwLocalPlayerPawn);
 		globals::localTeam = Driver::rpm<std::int32_t>(globals::localPlayer + offset::m_iTeamNum);
 		globals::localPlayerFlags = Driver::rpm<std::uint32_t>(globals::localPlayer + offset::m_fFlags);
 		globals::clientState = Driver::rpm<std::uint32_t>(globals::engine + offset::dwClientState);
@@ -120,7 +120,7 @@ void hax::legitAim() noexcept
 				continue;
 
 			// get local player
-			const auto localPlayer = Driver::rpm<std::uint32_t>(globals::client + offset::dwLocalPlayer);
+			const auto localPlayer = Driver::rpm<std::uint32_t>(globals::client + offset::dwLocalPlayerPawn);
 			const auto localTeam = Driver::rpm<std::int32_t>(localPlayer + offset::m_iTeamNum);
 			const auto localPlayerFlags = Driver::rpm<std::uint32_t>(localPlayer + offset::m_fFlags);
 
@@ -220,7 +220,7 @@ void hax::noRecoil() noexcept
 		if (globals::isNoRecoil) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-			const auto localPlayer = Driver::rpm<std::uint32_t>(globals::client + offset::dwLocalPlayer);
+			const auto localPlayer = Driver::rpm<std::uint32_t>(globals::client + offset::dwLocalPlayerPawn);
 			const auto localTeam = Driver::rpm<std::int32_t>(localPlayer + offset::m_iTeamNum);
 			const auto localPlayerFlags = Driver::rpm<std::uint32_t>(localPlayer + offset::m_fFlags);
 			const auto clientState = Driver::rpm<std::uint32_t>(globals::engine + offset::dwClientState);
@@ -267,7 +267,7 @@ void hax::trigger() noexcept{
 			if (!GetAsyncKeyState(globals::triggerKey))
 				continue;
 
-			ULONG my_player = Driver::rpm<ULONG>(globals::client + offset::dwLocalPlayer);
+			ULONG my_player = Driver::rpm<ULONG>(globals::client + offset::dwLocalPlayerPawn);
 			if (my_player <= 0) { continue; }
 
 			ULONG my_team = Driver::rpm<ULONG>(my_player + offset::m_iTeamNum);
@@ -304,7 +304,7 @@ void hax::noFlash() noexcept {
 	while (globals::runhax) {
 		if (globals::isFlash == true) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(10));
-			ULONG localPlayer = Driver::rpm<ULONG>(globals::client + offset::dwLocalPlayer);
+			ULONG localPlayer = Driver::rpm<ULONG>(globals::client + offset::dwLocalPlayerPawn);
 			if (localPlayer <= 0) { continue; }
 			if (Driver::rpm<float>(localPlayer + offset::m_flFlashDuration) > 0.f) {
 				Driver::wpm<float>(localPlayer + offset::m_flFlashDuration, 0.f);

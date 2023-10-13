@@ -20,7 +20,7 @@
 #define BOLDBLACK   AY_OBFUSCATE("\033[1m\033[30m")      /* Bold Black */
 #define BOLDRED     AY_OBFUSCATE("\033[1m\033[31m")      /* Bold Red */
 #define BOLDGREEN   AY_OBFUSCATE("\033[1m\033[32m")      /* Bold Green */
-#define BOLDYELLOW  AY_OBFUSCATE("\033[1m\033[33m")      /* Bold Yellow */
+#define BOLDYELLOW  AY_OBFUSCATE("\033[1m\033[33m")      /* Bold Yellow */F
 #define BOLDBLUE    AY_OBFUSCATE("\033[1m\033[34m")      /* Bold Blue */
 #define BOLDMAGENTA AY_OBFUSCATE("\033[1m\033[35m")      /* Bold Magenta */
 #define BOLDCYAN    AY_OBFUSCATE("\033[1m\033[36m")      /* Bold Cyan */
@@ -97,14 +97,12 @@ namespace offset
     constexpr ::std::ptrdiff_t m_iFOV = 0x31F4;
     constexpr ::std::ptrdiff_t m_iFOVStart = 0x31F8;
     constexpr ::std::ptrdiff_t m_iGlowIndex = 0x10488;
-    constexpr ::std::ptrdiff_t m_iHealth = 0x100;
     constexpr ::std::ptrdiff_t m_iItemDefinitionIndex = 0x2FBA;
     constexpr ::std::ptrdiff_t m_iItemIDHigh = 0x2FD0;
     constexpr ::std::ptrdiff_t m_iMostRecentModelBoneCounter = 0x2690;
     constexpr ::std::ptrdiff_t m_iObserverMode = 0x3388;
     constexpr ::std::ptrdiff_t m_iShotsFired = 0x103E0;
     constexpr ::std::ptrdiff_t m_iState = 0x3268;
-    constexpr ::std::ptrdiff_t m_iTeamNum = 0xF4;
     constexpr ::std::ptrdiff_t m_lifeState = 0x25F;
     constexpr ::std::ptrdiff_t m_nBombSite = 0x2994;
     constexpr ::std::ptrdiff_t m_nFallbackPaintKit = 0x31D8;
@@ -118,7 +116,6 @@ namespace offset
     constexpr ::std::ptrdiff_t m_szCustomName = 0x304C;
     constexpr ::std::ptrdiff_t m_szLastPlaceName = 0x35C4;
     constexpr ::std::ptrdiff_t m_thirdPersonViewAngles = 0x31E8;
-    constexpr ::std::ptrdiff_t m_vecOrigin = 0x138;
     constexpr ::std::ptrdiff_t m_vecVelocity = 0x114;
     constexpr ::std::ptrdiff_t m_vecViewOffset = 0x108;
     constexpr ::std::ptrdiff_t m_viewPunchAngle = 0x3030;
@@ -129,15 +126,37 @@ namespace offset
     constexpr ::std::ptrdiff_t m_pStudioHdr = 0x2950;
     constexpr ::std::ptrdiff_t m_pitchClassPtr = 0x52390A8;
     constexpr ::std::ptrdiff_t m_yawClassPtr = 0xDEE938;
-    inline ptrdiff_t dwClientState, dwLocalPlayer, dwClientState_PlayerInfo,
+    inline ptrdiff_t dwClientState, dwClientState_PlayerInfo,
         dwClientState_GetLocalPlayer, dwClientState_MapDirectory,
-        dwClientState_MaxPlayer, dwViewMatrix, dwEntityList, 
+        dwClientState_MaxPlayer,
         dwGameDir, dwClientState_Map, dwForceJump, dwClientState_ViewAngles;
+
+    inline std::ptrdiff_t dwLocalPlayerPawn = 25669576;
+    inline std::ptrdiff_t dwLocalPlayerController = 25019624;
+    inline std::ptrdiff_t dwEntityList = 24697944;
+    inline std::ptrdiff_t dwViewMatrix = 25672368;
+
+    inline std::ptrdiff_t m_iHealth = 812;
+    inline std::ptrdiff_t dwPlayerPawn = 1980;
+    inline std::ptrdiff_t dwSanitizedName = 1824;
+    inline std::ptrdiff_t m_iTeamNum = 959;
+    inline std::ptrdiff_t m_vecOrigin = 4628;
+    inline std::ptrdiff_t m_bPawnIsAlive = 1988;
+
+    namespace Signatures
+    {
+        const std::string EntityList = "48 8B 0D ?? ?? ?? ?? 48 89 7C 24 ?? 8B FA C1";
+        const std::string LocalPlayerController = "48 8B 05 ?? ?? ?? ?? 48 85 C0 74 4F";
+        const std::string ViewAngles = "48 8B 0D ?? ?? ?? ?? 48 8B 01 48 FF 60 30";
+        const std::string ViewMatrix = "48 8D 0D ?? ?? ?? ?? 48 C1 E0 06";
+        const std::string LocalPlayerPawn = "48 8D 05 ?? ?? ?? ?? C3 CC CC CC CC CC CC CC CC 48 83 EC ?? 8B 0D";
+        const std::string ForceJump = "48 8B 05 ?? ?? ?? ?? 48 8D 1D ?? ?? ?? ?? 48 89 45";
+    }
 
 }
 
 namespace globals {
-    inline auto windowName = AY_OBFUSCATE("Counter-Strike: Global Offensive - Direct3D 9");
+    inline auto windowName = AY_OBFUSCATE("Counter-Strike 2");
 
     inline bool isAim = false;
     inline auto aimKey = 0x01;
@@ -171,14 +190,14 @@ namespace globals {
     inline HANDLE processID = NULL;
     inline std::uintptr_t client = 0;
     inline std::uintptr_t engine = 0;
-    inline DWORD enginesize = 0;
-    inline DWORD clientsize = 0;
     inline std::uintptr_t serverbrowser = 0;
+    inline std::uintptr_t enginesize = 0;
+    inline std::uintptr_t clientsize = 0;
 
     inline std::uintptr_t localPlayer = 0;
-    inline std::int32_t localTeam = 0;
+    inline std::uintptr_t localTeam = 0;
     inline std::uintptr_t localPlayerFlags = 0;
-    inline std::int32_t clientState = 0;
+    inline std::uintptr_t clientState = 0;
 
     inline std::array<char, 0x80> mapDirectory = { 0 };
     inline std::array<char, 0x120> mapName = { 0 };

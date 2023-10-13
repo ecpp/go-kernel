@@ -66,6 +66,7 @@ namespace Driver
 		return (uintptr_t)m.buffer;
 	}
 
+
 	static ULONG get_engine_size(HANDLE pID)
 	{
 		COPY_MEMORY m{};
@@ -96,7 +97,7 @@ namespace Driver
 	}
 
 	template<typename type>
-	type rpm(uint32_t readAddress)
+	type rpm(uintptr_t readAddress)
 	{
 		type buffer{};
 
@@ -112,7 +113,7 @@ namespace Driver
 	}
 
 	template<typename type>
-	void rpm_pattern(uint32_t readAddress, type* buffer, size_t size)
+	void rpm_pattern(uintptr_t readAddress, type* buffer, size_t size)
 	{
 		COPY_MEMORY m{};
 		m.read = true;

@@ -1,13 +1,13 @@
 ﻿  Building 'kernel-driver' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
   Stamping x64\Release\kernel-driver.inf
-  Stamping [Version] section with DriverVer=07/25/2023,14.17.57.686
+  Stamping [Version] section with DriverVer=10/01/2023,12.34.39.349
   main.cpp
-C:\Users\Eren\source\repos\ecpp\go-kernel\kernel-driver\memory.h(29,56): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
-C:\Users\Eren\source\repos\ecpp\go-kernel\kernel-driver\memory.h(60,17): warning C4996: 'ExAllocatePool': ExAllocatePool is deprecated, use ExAllocatePool2.
-C:\Users\Eren\source\repos\ecpp\go-kernel\kernel-driver\memory.h(55,33): warning C4100: 'proc': unreferenced formal parameter
-C:\Users\Eren\source\repos\ecpp\go-kernel\kernel-driver\memory.h(147,18): warning C4101: 'name': unreferenced local variable
-C:\Users\Eren\source\repos\ecpp\go-kernel\kernel-driver\memory.h(189,17): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
-C:\Users\Eren\source\repos\ecpp\go-kernel\kernel-driver\memory.h(233,37): warning C4267: 'argument': conversion from 'size_t' to 'ULONG', possible loss of data
-C:\Users\Eren\source\repos\ecpp\go-kernel\kernel-driver\memory.h(219): warning C4715: 'memory::get_process_id': not all control paths return a value
-  kernel-driver.vcxproj -> C:\Users\Eren\Source\Repos\ecpp\go-kernel\x64\Release\kernel-driver.sys
+C:\Users\kasik\source\repos\ecpp\go-kernel\kernel-driver\memory.h(30,56): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
+C:\Users\kasik\source\repos\ecpp\go-kernel\kernel-driver\memory.h(61,17): warning C4996: 'ExAllocatePool': ExAllocatePool is deprecated, use ExAllocatePool2.
+C:\Users\kasik\source\repos\ecpp\go-kernel\kernel-driver\memory.h(56,33): warning C4100: 'proc': unreferenced formal parameter
+C:\Users\kasik\source\repos\ecpp\go-kernel\kernel-driver\memory.h(113,18): warning C4101: 'name': unreferenced local variable
+C:\Users\kasik\source\repos\ecpp\go-kernel\kernel-driver\memory.h(147,17): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
+C:\Users\kasik\source\repos\ecpp\go-kernel\kernel-driver\memory.h(191,37): warning C4267: 'argument': conversion from 'size_t' to 'ULONG', possible loss of data
+C:\Users\kasik\source\repos\ecpp\go-kernel\kernel-driver\memory.h(177): warning C4715: 'memory::get_process_id': not all control paths return a value
+  kernel-driver.vcxproj -> C:\Users\kasik\source\repos\ecpp\go-kernel\x64\Release\kernel-driver.sys
   Driver is 'Universal'.

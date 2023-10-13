@@ -152,6 +152,7 @@
     <ClCompile Include="src\gui\gui_esp.cpp" />
     <ClCompile Include="src\gui\gui_menu.cpp" />
     <ClCompile Include="src\hacks\hacks.cpp" />
+    <ClCompile Include="src\utils\auto_updater.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\api\api.h" />
