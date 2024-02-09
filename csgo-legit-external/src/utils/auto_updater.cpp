@@ -182,10 +182,10 @@ namespace updater {
 		if (data.empty())
 			return false;
 
-		data["client_dll"]["dwLocalPlayerPawn"] = offset::dwLocalPlayerPawn;
-		data["client_dll"]["dwEntityList"] = offset::dwEntityList;
-		data["client_dll"]["dwViewMatrix"] = offset::dwViewMatrix;
-		data["client_dll"]["dwLocalPlayerController"] = offset::dwLocalPlayerController;
+		offset::dwLocalPlayerPawn = data["client_dll"]["data"]["dwLocalPlayerPawn"]["value"];
+		offset::dwEntityList = data["client_dll"]["data"]["dwEntityList"]["value"];
+		offset::dwViewMatrix = data["client_dll"]["data"]["dwViewMatrix"]["value"];
+		offset::dwLocalPlayerController = data["client_dll"]["data"]["dwLocalPlayerController"]["value"];
 
 		return true;
 	}
@@ -193,10 +193,10 @@ namespace updater {
 	void save() {
 		json data;
 
-		data["client_dll"]["dwLocalPlayerPawn"] = offset::dwLocalPlayerPawn;
-		data["client_dll"]["dwEntityList"] = offset::dwEntityList;
-		data["client_dll"]["dwViewMatrix"] = offset::dwViewMatrix;
-		data["client_dll"]["dwLocalPlayerController"] = offset::dwLocalPlayerController;
+		offset::dwLocalPlayerPawn = data["client_dll"]["data"]["dwLocalPlayerPawn"]["value"];
+		offset::dwEntityList = data["client_dll"]["data"]["dwEntityList"]["value"];
+		offset::dwViewMatrix = data["client_dll"]["data"]["dwViewMatrix"]["value"];
+		offset::dwLocalPlayerController = data["client_dll"]["data"]["dwLocalPlayerController"]["value"];
 
 		std::ofstream output(file_path);
 		output << std::setw(4) << data << std::endl;

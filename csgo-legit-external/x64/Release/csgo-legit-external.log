@@ -1,7 +1,7 @@
-﻿  auto_updater.cpp
+﻿  main.cpp
   Generating code
-  0 of 9416 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  1609 of 7420 functions (21.7%) were compiled, the rest were copied from previous compilation.
+    16 functions were new in current compilation
+    123 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   csgo-legit-external.vcxproj -> C:\Users\kasik\source\repos\ecpp\go-kernel\x64\Release\csgo-legit-external.exe

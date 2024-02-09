@@ -131,17 +131,17 @@ namespace offset
         dwClientState_MaxPlayer,
         dwGameDir, dwClientState_Map, dwForceJump, dwClientState_ViewAngles;
 
-    inline std::ptrdiff_t dwLocalPlayerPawn = 25669576;
-    inline std::ptrdiff_t dwLocalPlayerController = 25019624;
-    inline std::ptrdiff_t dwEntityList = 24697944;
-    inline std::ptrdiff_t dwViewMatrix = 25672368;
+    inline std::ptrdiff_t dwLocalPlayerPawn;
+    inline std::ptrdiff_t dwLocalPlayerController;
+    inline std::ptrdiff_t dwEntityList;
+    inline std::ptrdiff_t dwViewMatrix;
 
     inline std::ptrdiff_t m_iHealth = 812;
-    inline std::ptrdiff_t dwPlayerPawn = 1980;
-    inline std::ptrdiff_t dwSanitizedName = 1824;
+    inline std::ptrdiff_t dwPlayerPawn = 2028;
+    inline std::ptrdiff_t dwSanitizedName = 1848;
     inline std::ptrdiff_t m_iTeamNum = 959;
-    inline std::ptrdiff_t m_vecOrigin = 4628;
-    inline std::ptrdiff_t m_bPawnIsAlive = 1988;
+    inline std::ptrdiff_t m_vecOrigin = 4644;
+    inline std::ptrdiff_t m_bPawnIsAlive = 2036;
 
     namespace Signatures
     {
