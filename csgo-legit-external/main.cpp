@@ -45,7 +45,7 @@ bool readUserToken() {
 int main()
 {
 	SetConsoleMode(GetStdHandle(STD_OUTPUT_HANDLE), ENABLE_PROCESSED_OUTPUT | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
-	/*if (!readUserToken()) {
+	if (!readUserToken()) {
 		std::cout << "Failed to read user token." << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
@@ -77,27 +77,27 @@ int main()
 		std::cout << RED << "FAILED!" << RESET << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
-	}*/
+	}
 
 	std::cout << BOLDGREEN << "OK" << RESET << std::endl;
 	
-	/*std::cout << "Driver check ......";
+	std::cout << "Driver check ......";
 
 	if (!globals::api.downloadDriver(1, 1)) {
 		std::cout << RED << "FAILED!" << RESET << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 		return 0;
-	}*/
+	}
 
 	std::this_thread::sleep_for(std::chrono::seconds(2));
 
 	std::cout << BOLDGREEN << "OK" << RESET << std::endl;
 
-	globals::processID = Driver::get_process_id(AY_OBFUSCATE("cs2.exe"));
+	globals::processID = Driver::get_process_id("cs2.exe");
 
 	while (!globals::processID) {
 		std::cout << "Either csgo.exe is not open or driver failed to load." << std::endl;
-		globals::processID = Driver::get_process_id(AY_OBFUSCATE("cs2.exe"));
+		globals::processID = Driver::get_process_id("cs2.exe");
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
 
@@ -116,7 +116,7 @@ int main()
 	}
 
 
-	updater::check_and_update(true);
+	//updater::check_and_update(true);
 
 
 	std::cout << "G0-K3RN3L ......" << BOLDGREEN << "STARTED!" << RESET << std::endl;
@@ -134,7 +134,7 @@ int main()
 	std::thread(hax::autoAccept).detach();*/
 	std::thread(gui_menu::startMenu).detach();
 	std::thread(gui_esp::drawAll).detach();
-	//std::cout << AY_OBFUSCATE("\033[1;31mPress \033[1;32mINSERT\033[1;31m to open in game menu\033[0m") << std::endl;
+	//std::cout << "\033[1;31mPress \033[1;32mINSERT\033[1;31m to open in game menu\033[0m" << std::endl;
 
 	while (true) {
 		

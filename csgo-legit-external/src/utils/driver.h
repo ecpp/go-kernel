@@ -33,8 +33,8 @@ namespace Driver
 	template<typename ... A>
 	uint64_t call_hook(const A ... arguments)
 	{
-		std::call_once(flag, [] { LoadLibrary(AY_OBFUSCATE("user32.dll")); });
-		void* control_function = GetProcAddress(LoadLibrary(AY_OBFUSCATE("win32u.dll")), AY_OBFUSCATE("NtOpenCompositionSurfaceSectionInfo")); //NtOpenCompositionSurfaceSectionInfo
+		std::call_once(flag, [] { LoadLibrary("user32.dll"); });
+		void* control_function = GetProcAddress(LoadLibrary("win32u.dll"), "NtOpenCompositionSurfaceSectionInfo"); //NtOpenCompositionSurfaceSectionInfo
 
 		const auto control = static_cast<uint64_t(__stdcall*)(A...)>(control_function);
 		return control(arguments ...);

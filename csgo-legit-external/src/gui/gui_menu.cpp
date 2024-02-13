@@ -75,7 +75,7 @@ void gui_menu::initWindow()
 	m_gui::gameHWND = FindWindow(0, _T(globals::windowName));
 	if (m_gui::gameHWND == NULL)
 	{
-		MessageBox(0, AY_OBFUSCATE("[GuiEngine MENU] Game not found"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
+		MessageBox(0, "[GuiEngine MENU] Game not found", "ERROR", MB_OK | MB_ICONERROR);
 
 	}
 
@@ -91,7 +91,7 @@ void gui_menu::initWindow()
 	wcMenu.hbrBackground = (HBRUSH)CreateSolidBrush(RGB(0, 0, 0));
 	wcMenu.lpfnWndProc = m_gui::WndProc;
 	wcMenu.hInstance = hInstance;
-	wcMenu.lpszClassName = AY_OBFUSCATE("M3NU Window");
+	wcMenu.lpszClassName = "M3NU Window";
 
 	RegisterClass(&wcMenu);
 
@@ -100,8 +100,8 @@ void gui_menu::initWindow()
 	windowMenu = CreateWindowEx
 	(
 		WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW,
-		AY_OBFUSCATE("M3NU Window"),
-		AY_OBFUSCATE("G0-K3RN3L"),
+		"M3NU Window",
+		"G0-K3RN3L",
 		WS_POPUP,
 		0,
 		0,
@@ -123,7 +123,7 @@ void gui_menu::initWindow()
 
 	if (!gui_menu::create_device_D3D(windowMenu))
 	{
-		MessageBox(0, AY_OBFUSCATE("[ GuiEngine Menu ] create_device_D3D error"), AY_OBFUSCATE("ERROR"), MB_OK | MB_ICONERROR);
+		MessageBox(0, "[ GuiEngine Menu ] create_device_D3D error", "ERROR", MB_OK | MB_ICONERROR);
 		gui_menu::cleanup_device_D3D();
 		UnregisterClass(wcMenu.lpszClassName, wcMenu.hInstance);
 
@@ -291,7 +291,7 @@ void gui_menu::initRender() {
 		ImGui::SetNextWindowPos({ 0, 0 });
 		//ImGui::SetNextWindowSize({ 750, 450 });
 		ImGui::Begin(
-			AY_OBFUSCATE("eren.exe"),
+			"eren.exe",
 			&globals::run_render,
 			ImGuiWindowFlags_NoResize |
 			ImGuiWindowFlags_NoSavedSettings |
@@ -304,10 +304,10 @@ void gui_menu::initRender() {
 			{ ImGui::GetContentRegionAvail().x * 0.25f, ImGui::GetContentRegionAvail().y },
 			true)) {
 			constexpr auto button_height = 48;
-			if (ImGui::Button(AY_OBFUSCATE("Aimbot"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 0; }
-			if (ImGui::Button(AY_OBFUSCATE("Visuals"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 1; }
-			if (ImGui::Button(AY_OBFUSCATE("Other"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 2; }
-			if (ImGui::Button(AY_OBFUSCATE("Config"), { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 3; }
+			if (ImGui::Button("Aimbot", { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 0; }
+			if (ImGui::Button("Visuals", { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 1; }
+			if (ImGui::Button("Other", { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 2; }
+			if (ImGui::Button("Config", { ImGui::GetContentRegionAvail().x, button_height })) { current_tab = 3; }
 
 			ImGui::EndChild();
 		}
@@ -324,50 +324,50 @@ void gui_menu::initRender() {
 				//create new column
 				ImGui::Columns(2, nullptr, false);
 				//create slider for fov
-				ImGui::SliderFloat(AY_OBFUSCATE("FOV"), &globals::aimFov, 0, 100);
-				ImGui::Checkbox(AY_OBFUSCATE("AIM"), &globals::isAimAssit);
+				ImGui::SliderFloat("FOV", &globals::aimFov, 0, 100);
+				ImGui::Checkbox("AIM", &globals::isAimAssit);
 				ImGui::Spacing();
-				ImGui::SliderFloat(AY_OBFUSCATE("SMOOTH"), &globals::legitAimSmooth, 0.1f, 1.f);
+				ImGui::SliderFloat("SMOOTH", &globals::legitAimSmooth, 0.1f, 1.f);
 				ImGui::NextColumn();
 				aimassist_hotkey.render();
 				ImGui::NextColumn();
-				ImGui::Checkbox(AY_OBFUSCATE("TRIGGER"), &globals::isTrigger);
+				ImGui::Checkbox("TRIGGER", &globals::isTrigger);
 				ImGui::NextColumn();
 				trigger_hotkey.render();
 				ImGui::NextColumn();
-				ImGui::Checkbox(AY_OBFUSCATE("NORECOIL"), &globals::isNoRecoil);
-				/*ImGui::Text(AY_OBFUSCATE("Aimbot is currently"));
-				ImGui::Text(AY_OBFUSCATE("Disabled."));				
-				ImGui::Text(AY_OBFUSCATE("Please wait for"));
-				ImGui::Text(AY_OBFUSCATE("the next update."));*/
+				ImGui::Checkbox("NORECOIL", &globals::isNoRecoil);
+				/*ImGui::Text("Aimbot is currently");
+				ImGui::Text("Disabled.");				
+				ImGui::Text("Please wait for");
+				ImGui::Text("the next update.");*/
 				break;
 
 			case 1:
-				ImGui::Checkbox(AY_OBFUSCATE("BOX ESP"), &globals::isEsp);
+				ImGui::Checkbox("BOX ESP", &globals::isEsp);
 				ImGui::Spacing();
-				ImGui::Checkbox(AY_OBFUSCATE("NAME"), &globals::esp::isName);
+				ImGui::Checkbox("NAME", &globals::esp::isName);
 				ImGui::Spacing();
-				ImGui::Checkbox(AY_OBFUSCATE("HEALTH"), &globals::esp::isHealth);
+				ImGui::Checkbox("HEALTH", &globals::esp::isHealth);
 				ImGui::Spacing();
-				ImGui::Checkbox(AY_OBFUSCATE("PLAYER WEAPON"), &globals::esp::playerWeapon);
+				ImGui::Checkbox("PLAYER WEAPON", &globals::esp::playerWeapon);
 
 
 				break;
 
 			case 2:
-				ImGui::Checkbox(AY_OBFUSCATE("RADAR"), &globals::isRadar);
+				ImGui::Checkbox("RADAR", &globals::isRadar);
 				ImGui::Spacing();
-				ImGui::Checkbox(AY_OBFUSCATE("RECOIL CROSSHAIR"), &globals::isRecoilCross);
+				ImGui::Checkbox("RECOIL CROSSHAIR", &globals::isRecoilCross);
 				ImGui::Spacing();
-				ImGui::Checkbox(AY_OBFUSCATE("BUNNY"), &globals::isBunny);
+				ImGui::Checkbox("BUNNY", &globals::isBunny);
 				ImGui::Spacing();
-				ImGui::Checkbox(AY_OBFUSCATE("N0 FLASH"), &globals::isFlash);
+				ImGui::Checkbox("N0 FLASH", &globals::isFlash);
 				ImGui::Spacing();
-				ImGui::Checkbox(AY_OBFUSCATE("AUTO ACCEPT"), &globals::isAutoAccept);
+				ImGui::Checkbox("AUTO ACCEPT", &globals::isAutoAccept);
 				break;
 
 			case 3:
-				if (ImGui::Button(AY_OBFUSCATE("LOAD LEGIT"), { ImGui::GetContentRegionAvail().x, 25 })) {
+				if (ImGui::Button("LOAD LEGIT", { ImGui::GetContentRegionAvail().x, 25 })) {
 					globals::isEsp = true;
 					globals::esp::isName = true;
 					globals::esp::isHealth = true;
@@ -379,7 +379,7 @@ void gui_menu::initRender() {
 					globals::aimKey = VK_LBUTTON;
 					globals::isRecoilCross = true;
 					//display loaded message
-					MessageBoxA(NULL, AY_OBFUSCATE("Legit config loaded"), AY_OBFUSCATE("G0-K3RN3L"), MB_OK | MB_ICONINFORMATION);
+					MessageBoxA(NULL, "Legit config loaded", "G0-K3RN3L", MB_OK | MB_ICONINFORMATION);
 				}
 				
 
