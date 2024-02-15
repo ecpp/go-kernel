@@ -13,6 +13,7 @@
 #include "src/utils/nondrivermem.h"
 #include <codecvt>
 #include <locale>
+#include "src/hacks/esp.h"
 
 
 
@@ -41,6 +42,12 @@ bool readUserToken() {
 	return true;
 }
 
+void read_thread() {
+	while (true) {
+		g_game.loop();
+		std::this_thread::sleep_for(std::chrono::milliseconds(2));
+	}
+}
 
 int main()
 {
@@ -96,7 +103,7 @@ int main()
 	globals::processID = Driver::get_process_id("cs2.exe");
 
 	while (!globals::processID) {
-		std::cout << "Either csgo.exe is not open or driver failed to load." << std::endl;
+		std::cout << "Either cs2.exe is not open or driver failed to load." << std::endl;
 		globals::processID = Driver::get_process_id("cs2.exe");
 		std::this_thread::sleep_for(std::chrono::seconds(2));
 	}
@@ -132,6 +139,7 @@ int main()
 	std::thread(gui_esp::drawAll).detach();
 	std::thread(hax::noFlash).detach();
 	std::thread(hax::autoAccept).detach();*/
+	std::thread(read_thread).detach();
 	std::thread(gui_menu::startMenu).detach();
 	std::thread(gui_esp::drawAll).detach();
 	//std::cout << "\033[1;31mPress \033[1;32mINSERT\033[1;31m to open in game menu\033[0m" << std::endl;

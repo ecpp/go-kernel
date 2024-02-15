@@ -35,28 +35,23 @@ struct Vector3
 		return Vector3{ x * factor, y * factor, z * factor };
 	}
 
+	constexpr const bool operator>(const Vector3& other) const noexcept {
+		return x > other.x && y > other.y && z > other.z;
+	}
+
+	constexpr const bool operator>=(const Vector3& other) const noexcept {
+		return x >= other.x && y >= other.y && z >= other.z;
+	}
+
+	constexpr const bool operator<(const Vector3& other) const noexcept {
+		return x < other.x && y < other.y && z < other.z;
+	}
+
+	constexpr const bool operator<=(const Vector3& other) const noexcept {
+		return x <= other.x && y <= other.y && z <= other.z;
+	}
+
 	// utils
-	static Vector3 CalculateAngle(
-		const Vector3& localPosition,
-		const Vector3& enemyPosition,
-		const Vector3& viewAngles)  noexcept
-	{
-		return ((enemyPosition - localPosition).ToAngle() - viewAngles);
-	}
-
-	Vector3 ToVector2()
-	{
-		float pitch, yaw;
-		float hypotenuse = sqrt(x * x + y * y + z * z);
-		pitch = ((double)atan(z / hypotenuse) * 180.0) / M_PI;
-		yaw = ((double)atan(y / x) * 180.0) / M_PI;
-		if (x >= 0.0) {
-			yaw += 180.0;
-		}
-
-		return { pitch, yaw };
-	}
-
 	constexpr const Vector3& ToAngle() const noexcept
 	{
 		return Vector3{
@@ -65,9 +60,25 @@ struct Vector3
 			0.0f };
 	}
 
+	float length() const {
+		return std::sqrt(x * x + y * y + z * z);
+	}
+
+	float length2d() const {
+		return std::sqrt(x * x + y * y);
+	}
+
 	constexpr const bool IsZero() const noexcept
 	{
 		return x == 0.f && y == 0.f && z == 0.f;
+	}
+
+	float calculate_distance(const Vector3& point) const {
+		float dx = point.x - x;
+		float dy = point.y - y;
+		float dz = point.z - z;
+
+		return std::sqrt(dx * dx + dy * dy + dz * dz);
 	}
 
 	// struct data

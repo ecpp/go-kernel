@@ -5,6 +5,7 @@
 #include "gui_menu.h"
 #include "main_gui.h"
 #include "../utils/obfuscate.h"
+#include "../hacks/esp.h"
 
 
 
@@ -266,184 +267,161 @@ void gui_esp::drawAll() {
 		{
 			gui_esp::begin_draw_esp();
 
-			uintptr_t localPlayerPawn = Driver::rpm<uintptr_t>(globals::client + offset::dwLocalPlayerPawn);
+			int playerIndex = 0;
+			uintptr_t list_entry;
 
-			if (!localPlayerPawn) return;
+			/**
+			* Loop through all the players in the entity list
+			*
+			* (This could have been done by getting a entity list count from the engine, but I'm too lazy to do that)
+			**/
+			for (auto player = g_game.players.begin(); player < g_game.players.end(); player++) {
+				const Vector3 screenPos = g_game.world_to_screen(&player->origin);
+				const Vector3 screenHead = g_game.world_to_screen(&player->head);
+				if (screenPos.z >= 0.01f) {
+					Vector3 head;
+					head.x = player->origin.x;
+					head.y = player->origin.y;
+					head.z = player->origin.z + 75.f;
+					esp::MAT4X4 viewMatrix = Driver::rpm<esp::MAT4X4>(globals::client + offset::dwViewMatrix);
+					Vector2 screenpos = esp::WorldToScreen(head, viewMatrix);
+					Vector2 screenhead = esp::WorldToScreen(player->origin, viewMatrix);;
 
-			int localTeam = Driver::rpm<int>(localPlayerPawn + offset::m_iTeamNum);
+					float height = screenpos.y - screenhead.y;
+					float width = height / 2.4f;
 
-			esp::MAT4X4 viewMatrix = Driver::rpm<esp::MAT4X4>(globals::client + offset::dwViewMatrix);
+					float distance = g_game.localOrigin.calculate_distance(player->origin);
+					int roundedDistance = std::round(distance / 10.f);
 
-			Vector3 localOrigin = Driver::rpm<Vector3>(localPlayerPawn + offset::m_vecOrigin);
-
-			uintptr_t entity_list = Driver::rpm<uintptr_t>(globals::client + offset::dwEntityList);
-
-			for (int i = 1; i < 32; i++) {
-			
-				uintptr_t list_entry = Driver::rpm<uintptr_t>(entity_list + (8 * (i & 0x7FFF) >> 9) + 16);
-				if (!list_entry) continue;
-				uintptr_t player = Driver::rpm<uintptr_t>(list_entry + 120 * (i & 0x1FF));
-				if (!player) continue;
-
-				
-
-				int isAlive = Driver::rpm<int>(player + offset::m_bPawnIsAlive);
-				if (!isAlive) continue;
-
-				std::uint32_t playerpawn = Driver::rpm<std::uint32_t>(player + offset::m_hPlayerPawn);
-
-				
-
-				uintptr_t list_entry2 = Driver::rpm<uintptr_t>(entity_list + 0x8 * ((playerpawn & 0x7FFF) >> 9) + 16);
-				if (!list_entry2) continue;
-				uintptr_t pCSPlayerPawn = Driver::rpm<uintptr_t>(list_entry2 + 120 * (playerpawn & 0x1FF));
-
-				if (pCSPlayerPawn == localPlayerPawn) continue;
-
-				int playerHealth = Driver::rpm<int>(pCSPlayerPawn + offset::m_iHealth);
-
-				int playerTeam = Driver::rpm<int>(player + offset::m_iTeamNum);
-				std::string playerName = "Invalid Name";
-				//playerName = Driver::rpm<std::string>(player + offset::m_iszPlayerName);
-				//std::cout << playerName << std::endl;
-				Vector3 origin = Driver::rpm<Vector3>(pCSPlayerPawn + offset::m_vecOrigin);
-
-				//if ((localOrigin - origin).length2d() > 1000) return;
-
-				Vector3 head;
-				head.x = origin.x;
-				head.y = origin.y;
-				head.z = origin.z + 75.f;
-
-				Vector2 screenpos = esp::WorldToScreen(head, viewMatrix);
-				Vector2 screenhead = esp::WorldToScreen(origin, viewMatrix);;
-
-				float height = screenpos.y - screenhead.y;
-				float width = height / 2.4f;
-				
-				if (localTeam != playerTeam)
-				{
+					
 					gui_esp::rect(screenhead.x - width / 2, screenhead.y, width, height, D2D1::ColorF(D2D1::ColorF::Red), 1.0f);
-					//gui_esp::String(Vector2(screenhead.x + head.z/2, screenhead.y + 10), std::wstring(playerName.begin(), playerName.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
-					int health = playerHealth;
+					int health = player->health;
 					int healthBar = (int)(height * (health / 100.f));
 					int healthBarY = screenhead.y + height - healthBar;
 					std::string healthText = std::to_string(health);
 					healthText += "%";
 					gui_esp::String(Vector2(screenhead.x - 5, screenhead.y), std::wstring(healthText.begin(), healthText.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
+					//gui_esp::drawHealthBar(screenhead.x + 20, screenhead.y, height, healthBarY, D2D1::ColorF(D2D1::ColorF::Green, 1.0f));
+					//render::DrawBorderBox(
+					//	g::hdcBuffer,
+					//	screenHead.x - (width / 2 + 10),
+					//	screenHead.y + (height * (100 - player->armor) / 100),
+					//	2,
+					//	height - (height * (100 - player->armor) / 100),
+					//	RGB(0, 185, 255)
+					//);
+
+					//render::DrawBorderBox(
+					//	g::hdcBuffer,
+					//	screenHead.x - (width / 2 + 5),
+					//	screenHead.y + (height * (100 - player->health) / 100),
+					//	2,
+					//	height - (height * (100 - player->health) / 100),
+					//	RGB(
+					//		(255 - player->health),
+					//		(55 + player->health * 2),
+					//		75
+					//	)
+					//);
+
+					//render::RenderText(
+					//	g::hdcBuffer,
+					//	screenHead.x + (width / 2 + 5),
+					//	screenHead.y,
+					//	player->name.c_str(),
+					//	config::esp_name_color,
+					//	10
+					//);
+
+					///**
+					//* I know is not the best way but a simple way to not saturate the screen with a ton of information
+					//*/
+					//if (roundedDistance > config::flag_render_distance)
+					//	continue;
+
+					//render::RenderText(
+					//	g::hdcBuffer,
+					//	screenHead.x + (width / 2 + 5),
+					//	screenHead.y + 10,
+					//	(std::to_string(player->health) + "hp").c_str(),
+					//	RGB(
+					//		(255 - player->health),
+					//		(55 + player->health * 2),
+					//		75
+					//	),
+					//	10
+					//);
+
+					//render::RenderText(
+					//	g::hdcBuffer,
+					//	screenHead.x + (width / 2 + 5),
+					//	screenHead.y + 20,
+					//	(std::to_string(player->armor) + "armor").c_str(),
+					//	RGB(
+					//		(255 - player->armor),
+					//		(55 + player->armor * 2),
+					//		75
+					//	),
+					//	10
+					//);
+
+					//if (config::show_extra_flags)
+					//{
+					//	render::RenderText(
+					//		g::hdcBuffer,
+					//		screenHead.x + (width / 2 + 5),
+					//		screenHead.y + 30,
+					//		player->weapon.c_str(),
+					//		config::esp_distance_color,
+					//		10
+					//	);
+
+					//	/*render::RenderText(
+					//		g::hdcBuffer,
+					//		screenHead.x + (width / 2 + 5),
+					//		screenHead.y + 40,
+					//		(std::to_string(roundedDistance) + "m away").c_str(),
+					//		config::esp_distance_color,
+					//		10
+					//	);*/
+
+					//	/*render::RenderText(
+					//		g::hdcBuffer,
+					//		screenHead.x + (width / 2 + 5),
+					//		screenHead.y + 50,
+					//		("$" + std::to_string(player->money)).c_str(),
+					//		RGB(0, 125, 0),
+					//		10
+					//	);*/
+
+					//	/*if (player->flashAlpha > 100)
+					//	{
+					//		render::RenderText(
+					//			g::hdcBuffer,
+					//			screenHead.x + (width / 2 + 5),
+					//			screenHead.y + 60,
+					//			"Player is flashed",
+					//			config::esp_distance_color,
+					//			10
+					//		);
+					//	}*/
+
+					//	/*if (player->is_defusing)
+					//	{
+					//		const std::string defuText = "Player is defusing";
+					//		render::RenderText(
+					//			g::hdcBuffer,
+					//			screenHead.x + (width / 2 + 5),
+					//			screenHead.y + 60,
+					//			defuText.c_str(),
+					//			config::esp_distance_color,
+					//			10
+					//		);
+					//	}*/
+					//}
 				}
-
-				
 			}
-
-			//DWORD localPlayerPawn = Driver::rpm<DWORD>(globals::client + offset::dwlocalPlayerPawnPawn);
-			//DWORD localTeam = Driver::rpm<DWORD>(localPlayerPawn + offset::m_iTeamNum);//fixed
-
-			////Vector3 punchAngle = Driver::rpm<Vector3>(localPlayerPawn + offset::m_aimPunchAngle);
-
-			//const auto clientState = Driver::rpm<std::uint32_t>(globals::engine + offset::dwClientState);
-
-			//const auto userInfoTable = Driver::rpm<std::uint32_t>(clientState + offset::dwClientState_PlayerInfo);
-
-
-
-			//const auto localPlayerPawnId =
-			//	Driver::rpm<std::int32_t>(clientState + offset::dwClientState_GetlocalPlayerPawn);
-
-
-			//punchAngle.x = punchAngle.x * 12; punchAngle.y = punchAngle.y * 12;
-			//float x = globals::screen::width / 2 - punchAngle.y;
-			//float y = globals::screen::height / 2 + punchAngle.x;
-
-			//if (globals::isRecoilCross)
-			//	gui_esp::Line({ x - 2, y - 2 }, { x + 2, y + 2 }, D2D1::ColorF(D2D1::ColorF::Lime), 2.0f);
-
-			//if (globals::isEsp == true) {
-
-			//	esp::MAT4X4 viewMatrix = Driver::rpm<esp::MAT4X4>(globals::client + offset::dwViewMatrix);
-
-			//	for (size_t i = 0; i < 32; i++)
-			//	{
-
-
-			//		DWORD currEnt = Driver::rpm<DWORD>(globals::client + offset::dwEntityList + (i * 0x10));
-			//		if (!currEnt)
-			//			continue;
-
-			//		int entHealth = Driver::rpm<int>(currEnt + offset::m_iHealth);
-			//		if (0 >= entHealth)
-			//			continue;
-
-			//		DWORD dormant = Driver::rpm<DWORD>(currEnt + offset::m_bDormant);
-			//		if (dormant)
-			//			continue;
-
-			//		DWORD teamNum = Driver::rpm<DWORD>(currEnt + offset::m_iTeamNum);
-			//		if (teamNum == localTeam)
-			//			continue;
-
-			//		uintptr_t x = Driver::rpm< std::uintptr_t >(Driver::rpm< uintptr_t >(userInfoTable + 0x40) + 0xC);
-			//		esp::player_info_t p = Driver::rpm<esp::player_info_t >(Driver::rpm< uintptr_t >(x + 0x28 + 0x34 * i));
-
-			//		Vector3 feetPos = Driver::rpm<Vector3>(currEnt + offset::m_vecOrigin);
-			//		Vector2 feetPosScreen = esp::WorldToScreen(feetPos, viewMatrix);
-
-			//		DWORD bonePtr = Driver::rpm<DWORD>(currEnt + offset::m_dwBoneMatrix);
-			//		esp::MAT3X4 boneMatrix = Driver::rpm<esp::MAT3X4>(bonePtr + 0x30 * 8); //head
-			//		Vector3 headPos = { boneMatrix.c[0][3], boneMatrix.c[1][3], boneMatrix.c[2][3] };
-			//		headPos.z += 8.75;
-			//		Vector2 headScreen = WorldToScreen(headPos, viewMatrix);
-
-			//		int height = headScreen.y - feetPosScreen.y;
-			//		int width = height / 4;
-
-			//		float Entity_x = feetPosScreen.x - width;
-			//		float Entity_y = feetPosScreen.y;
-			//		float Entity_w = height / 2;
-
-
-			//		RECT boxEsp = { Entity_x + Entity_w, Entity_y + height, Entity_x, Entity_y };
-			//		//draw health
-			//		if (globals::esp::isHealth == true)
-			//		{
-			//			int health = entHealth;
-			//			int healthBar = (int)(height * (health / 100.f));
-			//			int healthBarY = Entity_y + height - healthBar;
-			//			drawHealthBar(Entity_x, Entity_y, height, healthBarY, D2D1::ColorF(0, 1, 0));
-			//			std::string healthText = std::to_string(health);
-			//			healthText += "%";
-			//			gui_esp::String(Vector2(Entity_x - 5, healthBarY), std::wstring(healthText.begin(), healthText.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
-
-			//		}
-
-			//		if (globals::esp::isName) {
-			//			std::string name = p.name;
-			//			gui_esp::String(Vector2(Entity_x + Entity_w, Entity_y + 10), std::wstring(name.begin(), name.end()).c_str(), D2D1::ColorF(D2D1::ColorF::White, 1.0f), false);
-
-			//		}
-
-			//		if (globals::esp::playerWeapon) {
-			//			DWORD activeWeapon = Driver::rpm<DWORD>(currEnt + offset::m_hActiveWeapon);
-			//			DWORD weaponEntity = (activeWeapon & 0xFFF);
-			//			DWORD weaponEntityAddr = Driver::rpm<DWORD>(globals::client + offset::dwEntityList + (weaponEntity - 1) * 0x10);
-			//			short weaponID = Driver::rpm<short>(weaponEntityAddr + offset::m_iItemDefinitionIndex);
-			//			std::string weaponName = weapons::getWeaponName(weaponID);
-			//			gui_esp::String(Vector2(Entity_x + Entity_w, Entity_y + height + 10), std::wstring(weaponName.begin(), weaponName.end()).c_str(), D2D1::ColorF(D2D1::ColorF::Yellow, 1.0f), false);
-			//		}
-
-			//		
-			//		//check if spotted by mask
-			//		if (Driver::rpm<std::int32_t>(currEnt + offset::m_bSpottedByMask)) {
-
-			//			gui_esp::rect(Entity_x, Entity_y, Entity_w, height, D2D1::ColorF(D2D1::ColorF::Blue, 0.5f));
-			//		}
-			//		else {
-			//			gui_esp::rect(Entity_x, Entity_y, Entity_w, height, D2D1::ColorF(D2D1::ColorF::Red, 0.5f));
-
-			//		}
-
-			//	}
-			//}
+			
 			gui_esp::end_draw_esp();
 		}
 		else {

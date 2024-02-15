@@ -151,6 +151,7 @@
     <ClCompile Include="src\api\api.cpp" />
     <ClCompile Include="src\gui\gui_esp.cpp" />
     <ClCompile Include="src\gui\gui_menu.cpp" />
+    <ClCompile Include="src\hacks\esp.cpp" />
     <ClCompile Include="src\hacks\hacks.cpp" />
     <ClCompile Include="src\utils\auto_updater.cpp" />
   </ItemGroup>
@@ -159,6 +160,7 @@
     <ClInclude Include="src\gui\gui_esp.h" />
     <ClInclude Include="src\gui\gui_menu.h" />
     <ClInclude Include="src\gui\main_gui.h" />
+    <ClInclude Include="src\hacks\esp.h" />
     <ClInclude Include="src\utils\config_manager.h" />
     <ClInclude Include="src\utils\driver.h" />
     <ClInclude Include="external\imgui\imconfig.h" />

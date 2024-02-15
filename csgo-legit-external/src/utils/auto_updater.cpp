@@ -182,7 +182,7 @@ namespace updater {
 		if (data.empty())
 			return false;
 
-		offset::dwLocalPlayerPawn = data["client_dll"]["data"]["dwLocalPlayerPawn"]["value"];
+		offset::dwLocalPlayer = data["client_dll"]["data"]["dwLocalPlayerPawn"]["value"];
 		offset::dwEntityList = data["client_dll"]["data"]["dwEntityList"]["value"];
 		offset::dwViewMatrix = data["client_dll"]["data"]["dwViewMatrix"]["value"];
 		offset::dwLocalPlayerController = data["client_dll"]["data"]["dwLocalPlayerController"]["value"];
@@ -193,7 +193,7 @@ namespace updater {
 	void save() {
 		json data;
 
-		offset::dwLocalPlayerPawn = data["client_dll"]["data"]["dwLocalPlayerPawn"]["value"];
+		offset::dwLocalPlayer = data["client_dll"]["data"]["dwLocalPlayerPawn"]["value"];
 		offset::dwEntityList = data["client_dll"]["data"]["dwEntityList"]["value"];
 		offset::dwViewMatrix = data["client_dll"]["data"]["dwViewMatrix"]["value"];
 		offset::dwLocalPlayerController = data["client_dll"]["data"]["dwLocalPlayerController"]["value"];
