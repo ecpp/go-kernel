@@ -45,7 +45,7 @@ bool readUserToken() {
 void read_thread() {
 	while (true) {
 		g_game.loop();
-		std::this_thread::sleep_for(std::chrono::milliseconds(2));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 	}
 }
 
@@ -112,8 +112,9 @@ int main()
 
 	globals::client = Driver::get_client(globals::processID);
 	globals::clientsize	= Driver::get_client_size(globals::processID);
-	/*globals::engine = Driver::get_engine(globals::processID);
-	globals::enginesize = Driver::get_engine_size(globals::processID);*/
+
+	globals::engine = Driver::get_engine(globals::processID);
+	globals::enginesize = Driver::get_engine_size(globals::processID);
 
 
 	if (!globals::client) {

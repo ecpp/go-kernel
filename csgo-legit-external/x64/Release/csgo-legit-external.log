@@ -1,7 +1,7 @@
-﻿  gui_esp.cpp
+﻿  esp.cpp
   Generating code
-  2 of 5671 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 5669 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    28 functions had inline decision re-evaluated but remain unchanged
+    31 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  csgo-legit-external.vcxproj -> C:\Users\ecpp\source\repos\ecpp\go-kernel\x64\Release\csgo-legit-external.exe
+  csgo-legit-external.vcxproj -> C:\Users\ecpp\Source\Repos\ecpp\go-kernel\x64\Release\csgo-legit-external.exe

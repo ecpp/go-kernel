@@ -38,11 +38,9 @@ Vector3 CC4::get_origin() {
 void CGame::loop() {
 	inGame = false;
 	isC4Planted = false;
-
 	localPlayer = Driver::rpm<uintptr_t>(globals::client + offset::dwLocalPlayerController);
-
 	if (!localPlayer) return;
-
+	
 	localPlayerPawn = Driver::rpm<uintptr_t>(localPlayer + offset::m_hPlayerPawn);
 	if (!localPlayerPawn) return;
 
@@ -64,7 +62,6 @@ void CGame::loop() {
 	std::vector<CPlayer> list;
 	CPlayer player;
 	uintptr_t list_entry, list_entry2, playerPawn, playerMoneyServices, clippingWeapon, weaponData, playerNameData;
-
 	while (true) {
 		playerIndex++;
 		list_entry = Driver::rpm<uintptr_t>(entity_list + (8 * (playerIndex & 0x7FFF) >> 9) + 16);

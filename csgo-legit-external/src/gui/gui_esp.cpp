@@ -296,6 +296,7 @@ void gui_esp::drawAll() {
 					
 					gui_esp::rect(screenhead.x - width / 2, screenhead.y, width, height, D2D1::ColorF(D2D1::ColorF::Red), 1.0f);
 					int health = player->health;
+					std::cout << health << std::endl;
 					int healthBar = (int)(height * (health / 100.f));
 					int healthBarY = screenhead.y + height - healthBar;
 					std::string healthText = std::to_string(health);

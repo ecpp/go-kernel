@@ -33,11 +33,11 @@ namespace offset
         dwClientState_MaxPlayer,
         dwGameDir, dwClientState_Map, dwForceJump, dwClientState_ViewAngles;
 
-    inline std::ptrdiff_t dwLocalPlayer = 24281784;
-    inline std::ptrdiff_t dwLocalPlayerController = 26225032;
-    inline std::ptrdiff_t dwEntityList = 25899032;
-    inline std::ptrdiff_t dwViewMatrix = 26288928;
-    inline std::ptrdiff_t dwPlantedC4 = 26313272;
+    inline std::ptrdiff_t dwLocalPlayer = 24286008;
+    inline std::ptrdiff_t dwLocalPlayerController = 26228968;
+    inline std::ptrdiff_t dwEntityList = 25903000;
+    inline std::ptrdiff_t dwViewMatrix = 26301616;
+    inline std::ptrdiff_t dwPlantedC4 = 26326264;
 
     inline std::ptrdiff_t m_ArmorValue = 5488;
     inline std::ptrdiff_t m_bIsDefusing = 5128;
@@ -118,6 +118,7 @@ namespace globals {
     inline std::uintptr_t serverbrowser = 0;
     inline std::uintptr_t enginesize = 0;
     inline std::uintptr_t clientsize = 0;
+    inline std::uintptr_t buildNumber = 0;
 
     inline std::uintptr_t localPlayer = 0;
     inline std::uintptr_t localTeam = 0;

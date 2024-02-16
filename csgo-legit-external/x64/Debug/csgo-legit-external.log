@@ -1,12 +1,2 @@
-﻿  main.cpp
-  api.cpp
-  gui_esp.cpp
-  gui_menu.cpp
-  hacks.cpp
-  auto_updater.cpp
-  Generating Code...
-C:\Users\eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\vector.h(25): warning C4172: returning address of local variable or temporary
-C:\Users\eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\vector.h(20): warning C4172: returning address of local variable or temporary
-C:\Users\eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\vector.h(35): warning C4172: returning address of local variable or temporary
-C:\Users\eren\source\repos\ecpp\go-kernel\csgo-legit-external\src\utils\vector.h(62): warning C4172: returning address of local variable or temporary
-  csgo-legit-external.vcxproj -> C:\Users\eren\Source\Repos\ecpp\go-kernel\x64\Debug\csgo-legit-external.exe
+﻿  gui_esp.cpp
+  csgo-legit-external.vcxproj -> C:\Users\ecpp\Source\Repos\ecpp\go-kernel\x64\Debug\csgo-legit-external.exe
