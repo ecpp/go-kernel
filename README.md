@@ -1,9 +1,8 @@
 # GO-KERNEL
 
-GO-Kernel is an exemplary software solution for CS:GO that utilizes kernel drivers to facilitate safe, efficient and secure memory access. 
-It offers a range of features, including signature scanning, DirectX 11 ESP, legit aim bot and many more.
+GO-Kernel is an software solution for CS:2 that utilizes kernel drivers to facilitate safe, efficient and secure memory access. 
 
-How-To
+## How-To
 
 1- Build the kernel-driver (Release + x64)
 
@@ -11,20 +10,20 @@ How-To
 
 3- Map the driver (kdmapper or your preference)
 
-4- Start the csgo-legit-external.exe as an admin
+4- Update offsets manually
 
-5- Press INS to open in-game menu
+5- Start the csgo-legit-external.exe as an admin
 
-Some notes
+## Some notes
 
-1- This software is not fully finished. Some features are not working properly (like auto accept).
+1- This software is not fully finished. Some features are not working properly.
 
-2- Using the aimbot probably will decrease your trust factor after 1-2 matches.
+2- Signature scanning is removed for certain reasons. It still can update offsets via GitHub but you may need to update them yourself.
 
-3- This software is no longer supported. Please don't ask for any support
+3- This software is no longer supported. Please don't ask for any support.
 
 
-Disclaimer
+## Disclaimer
 
 Please note that using cheats in online multiplayer games is against the terms of service of most game developers and may result in penalties, including permanent bans. 
 
